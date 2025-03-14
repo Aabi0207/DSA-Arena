@@ -47,6 +47,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     privilege = models.CharField(max_length=50, blank=True, null=True)  # e.g., ADMIN, MEMBER, etc.
 
+    is_accepted = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 

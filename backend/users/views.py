@@ -16,7 +16,7 @@ class UserRegistrationView(APIView):
             send_mail(
                 subject="New User Registration Request",
                 message=f"Username: {user.username}\nDisplay Name: {user.display_name}\nEmail: {user.email}",
-                from_email=settings.DEFAULT_FROM_EMAIL,
+                from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[settings.ADMIN_EMAIL],  # set this in settings.py
                 fail_silently=False,
             )
