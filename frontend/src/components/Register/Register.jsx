@@ -7,23 +7,42 @@ import "./Register.css";
 const Register = () => {
   const [formData, setFormData] = useState({
     username: "",
-    displayName: "",
+    display_name: "",
     email: "",
     password: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
-  const [sending, setSending] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [sending, setSending] = useState(false);
 
-  const validateForm = () => {
+  const validateForm = async () => {
     if (!formData.username.trim()) {
       setErrorMessage("Username is required.");
       return false;
     }
-    if (!formData.displayName.trim()) {
+    if (!/^[a-zA-Z0-9-]+$/.test(formData.username)) {
+      setErrorMessage("Username can only contain letters, numbers, and dashes.");
+      return false;
+    }
+  
+    try {
+      const res = await axios.get(
+        `http://localhost:8000/users/check-username/?username=${formData.username}`
+      );
+      if (res.data.exists) {
+        setErrorMessage("Username already exists.");
+        return false;
+      }
+    } catch (err) {
+      setErrorMessage("Failed to validate username.");
+      return false;
+    }
+  
+    if (!formData.display_name.trim()) {
       setErrorMessage("Display Name is required.");
       return false;
     }
+  
     if (!formData.email.trim()) {
       setErrorMessage("Email is required.");
       return false;
@@ -32,24 +51,41 @@ const Register = () => {
       setErrorMessage("Enter a valid email address.");
       return false;
     }
+  
+    try {
+      const emailCheck = await axios.get(
+        `http://localhost:8000/users/check-email/?email=${formData.email}`
+      );
+      if (emailCheck.data.exists) {
+        setErrorMessage("Email already exists.");
+        return false;
+      }
+    } catch (err) {
+      setErrorMessage("Failed to validate email.");
+      return false;
+    }
+  
     if (!formData.password.trim()) {
       setErrorMessage("Password is required.");
       return false;
     }
+  
     return true;
   };
+  
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
-
     if (errorMessage) setErrorMessage("");
   };
 
   const handleSubmit = async () => {
-    if (!validateForm()) {
+    setShowPopup(false);
+    const isValid = await validateForm();
+    if (!isValid) {
       setShowPopup(true);
       setTimeout(() => setShowPopup(false), 2500);
       return;
@@ -59,95 +95,96 @@ const Register = () => {
     setShowPopup(true);
 
     try {
-      const response = await axios.post("https://your-backend-api.com/api/register/", formData);
-      if (response.data.success && response.data.user.is_accepted) {
-        // Successful register
-        setErrorMessage("register successful");
-        // Redirect to dashboard or homepage here
+      const response = await axios.post("http://localhost:8000/users/", formData);
+      if (response.status === 201) {
+        setErrorMessage("Registration successful. Admin will review your request.");
       } else {
-        setErrorMessage("User not accepted yet or invalid credentials.");
+        setErrorMessage("Registration failed.");
       }
     } catch (error) {
       console.error(error);
-      setErrorMessage("register failed. Try again later.");
+      setErrorMessage("Regestration failed.");
     } finally {
       setSending(false);
-      setTimeout(() => setShowPopup(false), 2500);
+      setTimeout(() => setShowPopup(false), 3000);
     }
   };
 
   return (
     <div className='register-holder'>
-    <div className="register-title">
-        Register
-    </div>
-    <div className="register-page">
-      <Stepper
-        initialStep={1}
-        onFinalStepCompleted={handleSubmit}
-        backButtonText="Previous"
-        nextButtonText="Next"
-        sending={sending}
-        page='register'
-      >
-        <Step>
-          <h2>Choose a Username</h2>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            placeholder="Username"
-            required
-          />
-        </Step>
-        <Step>
-          <h2>Choose a Display Name</h2>
-          <input
-            type="text"
-            name="displayName"
-            value={formData.displayName}
-            onChange={handleChange}
-            placeholder="Display Name"
-            required
-          />
-        </Step>
-        <Step>
-          <h2>Your Email Address</h2>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email"
-            required
-          />
-        </Step>
-        <Step>
-          <h2>Choose a Password</h2>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Password"
-            required
-          />
-        </Step>
-      </Stepper>
+      <div className="register-title">Register</div>
+      <div className="register-page">
+        <Stepper
+          initialStep={1}
+          onFinalStepCompleted={handleSubmit}
+          backButtonText="Previous"
+          nextButtonText="Next"
+          sending={sending}
+          page='register'
+        >
+          <Step>
+            <h2>Choose a Username</h2>
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              placeholder="Username"
+              required
+            />
+          </Step>
+          <Step>
+            <h2>Choose a Display Name</h2>
+            <input
+              type="text"
+              name="display_name"
+              value={formData.display_name}
+              onChange={handleChange}
+              placeholder="Display Name"
+              required
+            />
+          </Step>
+          <Step>
+            <h2>Your Email Address</h2>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email"
+              required
+            />
+          </Step>
+          <Step>
+            <h2>Choose a Password</h2>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Password"
+              required
+            />
+          </Step>
+        </Stepper>
 
-      {/* Popup Notification */}
-      {showPopup && (
-        <AlertPopup
-          message={sending ? "Registering in..." : errorMessage}
-          type={sending ? "info" : errorMessage.includes("success") ? "success" : "error"}
-        />
-      )}
+        {showPopup && (
+          <AlertPopup
+            message={sending ? "Registering..." : errorMessage}
+            type={
+              sending
+                ? "info"
+                : errorMessage.includes("success")
+                ? "success"
+                : "error"
+            }
+          />
+        )}
 
-      <p className="register-redirect">
-        Already Registered? <a href="/register">Login Here</a>
-      </p>
-    </div>
+        <p className="register-redirect">
+          Already Registered? <a href="/login">Login Here</a>
+        </p>
+      </div>
     </div>
   );
 };

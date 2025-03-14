@@ -26,6 +26,14 @@ class CustomUserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', True)
         return self.create_user(email, username, display_name, password, **extra_fields)
 
+# Varna choices for privilege field
+VARNA_CHOICES = [
+    ("BRAHMIN", "Brahmin"),
+    ("KSHATRIYA", "Kshatriya"),
+    ("VAISHYA", "Vaishya"),
+    ("SHUDRA", "Shudra"),
+]
+
 # Custom User Model
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
@@ -43,15 +51,20 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     portfolio = models.URLField(blank=True, null=True)
 
     score = models.IntegerField(default=0)
-    rank = models.CharField(max_length=50, default="JADHAV")
+    rank = models.CharField(max_length=50, default="JADHAV", blank=True, null=True)
 
-    privilege = models.CharField(max_length=50, blank=True, null=True)  # e.g., ADMIN, MEMBER, etc.
+    privilege = models.CharField(
+        max_length=50,
+        choices=VARNA_CHOICES,
+        blank=True,
+        null=True
+    )
 
     is_accepted = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    date_joined = models.DateTimeField(auto_now_add=True)
+    date_joined = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     objects = CustomUserManager()
 

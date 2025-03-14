@@ -11,16 +11,6 @@ function App() {
     <>
       <Login />
       <Register />
-      <div>
-        {showAlert && (
-          <AlertPopup
-            message="Something went wrong!"
-            type="error"
-            onClose={() => setShowAlert(false)}
-            duration={4000}
-          />
-        )}
-      </div>
     </>
   );
 }
