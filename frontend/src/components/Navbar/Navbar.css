@@ -1,0 +1,47 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    color: white;
+  }
+  
+  .logo {
+    height: 80px;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px; /* outer ring size */
+    height: 48px;
+    border-radius: 50%;
+    border: 3px solid white; /* Default ring */
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .profile-wrapper.gold {
+    border-color: #FFD700;
+  }
+  .profile-wrapper.silver {
+    border-color: #C0C0C0;
+  }
+  .profile-wrapper.bronze {
+    border-color: #CD7F32;
+  }
+  
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  

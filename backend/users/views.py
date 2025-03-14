@@ -6,6 +6,7 @@ from django.conf import settings
 from .models import CustomUser
 from .serializers import UserRegistrationSerializer
 from rest_framework.decorators import api_view
+from django.contrib.auth import authenticate
 
 class UserRegistrationView(APIView):
     def post(self, request):
@@ -50,3 +51,30 @@ def check_email(request):
 
     exists = CustomUser.objects.filter(email=email).exists()
     return Response({"exists": exists}, status=status.HTTP_200_OK)
+
+class UserLoginView(APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+
+        if not email or not password:
+            return Response({'success': False, 'message': 'Email and password are required.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        user = authenticate(request, email=email, password=password)
+
+        if user is not None:
+            if user.is_accepted:
+                return Response({
+                    'success': True,
+                    'message': 'Login successful',
+                    'user': {
+                        'username': user.username,
+                        'display_name': user.display_name,
+                        'email': user.email,
+                        'is_accepted': user.is_accepted
+                    }
+                }, status=status.HTTP_200_OK)
+            else:
+                return Response({'success': False, 'message': 'User is not accepted yet.'}, status=status.HTTP_403_FORBIDDEN)
+        else:
+            return Response({'success': False, 'message': 'Invalid credentials.'}, status=status.HTTP_401_UNAUTHORIZED)

@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import CustomUser
 from django.contrib.auth.hashers import make_password
+import random
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,4 +12,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data['password'] = make_password(validated_data['password'])
         validated_data['is_accepted'] = False
+        random_num = random.randint(1, 10)
+        validated_data['profile_photo'] = f'profile_pics/{random_num}.jpg'
         return CustomUser.objects.create(**validated_data)

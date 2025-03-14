@@ -49,16 +49,21 @@ const Login = () => {
     setShowPopup(true);
 
     try {
-      const response = await axios.post("https://your-backend-api.com/api/login/", formData);
-      if (response.data.success && response.data.user.is_accepted) {
+      const response = await axios.post("http://localhost:8000/users/login/", formData);
+    
+      if (response.data.success) {
         setErrorMessage("Login successful");
-        // Redirect user here
+        // Redirect or save user info
       } else {
-        setErrorMessage("User not accepted yet or invalid credentials.");
+        setErrorMessage(response.data.message || "Login failed.");
       }
     } catch (error) {
       console.error(error);
-      setErrorMessage("Login failed. Try again later.");
+      if (error.response && error.response.data && error.response.data.message) {
+        setErrorMessage(error.response.data.message); // ← show the actual backend message
+      } else {
+        setErrorMessage("Login failed. Try again later.");
+      }
     } finally {
       setSending(false);
       setTimeout(() => setShowPopup(false), 2500);

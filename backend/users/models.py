@@ -12,7 +12,7 @@ class CustomUserManager(BaseUserManager):
         user.set_password(password)
 
         # Assign random profile image between 1.jpg and 20.jpg
-        random_number = random.randint(1, 20)
+        random_number = random.randint(1, 10)
         user.profile_photo = f"profile_pics/{random_number}.jpg"
 
         # Set default score and rank
