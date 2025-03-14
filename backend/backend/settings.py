@@ -28,6 +28,8 @@ EMAIL_USE_TLS = env('EMAIL_USE_TLS')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
+ADMIN_EMAIL = "abhishekbiradar0207@gmail.com"
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -37,6 +39,10 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+# 6 weeks = 6 * 7 * 24 * 60 * 60 seconds = 3628800 seconds
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 42  # 6 weeks
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  
 
 ALLOWED_HOSTS = []
 
