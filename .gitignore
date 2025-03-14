@@ -1,0 +1,41 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+*.sqlite3
+
+# Django
+db.sqlite3
+/media/
+*.log
+
+# Environment Variables
+.env
+
+# Virtual Environment
+env/
+venv/
+ENV/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs
+.idea/
+*.swp
+*.swo
+
+# Node modules (in case frontend has any setup later)
+node_modules/
+
+# React build (if frontend has a build folder later)
+frontend/build/
