@@ -3,6 +3,7 @@ import axios from "axios";
 import Stepper, { Step } from "../Stepper/Stepper";
 import AlertPopup from "../AlertPopup/AlertPopup";
 import "./Login.css";
+import { useAuth } from "../../contexts/AuthContext"; // ✅ typo fixed
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [sending, setSending] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const { login } = useAuth();
 
   const validateForm = () => {
     if (!formData.email.trim()) {
@@ -50,17 +52,18 @@ const Login = () => {
 
     try {
       const response = await axios.post("http://localhost:8000/users/login/", formData);
-    
+
       if (response.data.success) {
         setErrorMessage("Login successful");
-        // Redirect or save user info
+        login(response.data.user); // ✅ context handles localStorage
+        window.location.href = "/sheet"; // ✅ redirect
       } else {
         setErrorMessage(response.data.message || "Login failed.");
       }
     } catch (error) {
       console.error(error);
-      if (error.response && error.response.data && error.response.data.message) {
-        setErrorMessage(error.response.data.message); // ← show the actual backend message
+      if (error.response?.data?.message) {
+        setErrorMessage(error.response.data.message);
       } else {
         setErrorMessage("Login failed. Try again later.");
       }

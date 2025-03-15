@@ -1,20 +1,32 @@
-import { useState } from "react";
-import "./App.css";
-import AlertPopup from "./components/AlertPopup/AlertPopup";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
-import Navbar from "./components/Navbar/Navbar";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { useAuth } from "./contexts/AuthContext";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import SheetPage from "./pages/SheetPage";
+import { AuthProvider } from "./contexts/AuthContext";
+import "./App.css"
 
-function App() {
-  const [showAlert, setShowAlert] = useState(true);
+const App = () => {
+  return (
+    <AuthProvider>
+      <AppRoutes />
+    </AuthProvider>
+  );
+};
+
+const AppRoutes = () => {
+  const { user } = useAuth();
 
   return (
-    <>
-      <Navbar Rank={1}/>
-      <Login />
-      <Register />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to={user ? "/sheet" : "/login"} />} />
+        <Route path="/login" element={user ? <Navigate to="/sheet" /> : <LoginPage />} />
+        <Route path="/register" element={user ? <Navigate to="/sheet" /> : <RegisterPage />} />
+        <Route path="/sheet" element={user ? <SheetPage /> : <Navigate to="/login" />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

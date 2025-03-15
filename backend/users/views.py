@@ -64,15 +64,28 @@ class UserLoginView(APIView):
 
         if user is not None:
             if user.is_accepted:
+                # Build full user object
+                user_data = {
+                    'username': user.username,
+                    'display_name': user.display_name,
+                    'email': user.email,
+                    'tagline': user.tagline,
+                    'pronouns': user.pronouns,
+                    'location': user.location,
+                    'profile_photo': user.profile_photo.url if user.profile_photo else None,
+                    'github': user.github,
+                    'linkedin': user.linkedin,
+                    'portfolio': user.portfolio,
+                    'score': user.score,
+                    'rank': user.rank,
+                    'privilege': user.privilege,
+                    'is_accepted': user.is_accepted,
+                }
+
                 return Response({
                     'success': True,
                     'message': 'Login successful',
-                    'user': {
-                        'username': user.username,
-                        'display_name': user.display_name,
-                        'email': user.email,
-                        'is_accepted': user.is_accepted
-                    }
+                    'user': user_data
                 }, status=status.HTTP_200_OK)
             else:
                 return Response({'success': False, 'message': 'User is not accepted yet.'}, status=status.HTTP_403_FORBIDDEN)
