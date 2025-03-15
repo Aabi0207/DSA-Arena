@@ -23,6 +23,7 @@ SCORE_MAPPING = {
 class DSASheet(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
+    image = models.ImageField(upload_to='sheet_images/', blank=True, null=True)  # ✅ New image field
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -42,6 +43,7 @@ class Question(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='questions')
     question = models.CharField(max_length=255)
     link = models.URLField()
+    solution = models.URLField(blank=True, null=True)  # ✅ New solution field
     platform = models.CharField(max_length=100)
     difficulty = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES, default="UNMARKED")
 

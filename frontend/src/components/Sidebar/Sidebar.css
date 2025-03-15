@@ -1,0 +1,143 @@
+/* Sidebar.css */
+.sidebar {
+    background-color: #000;
+    color: #80868b;
+    width: 260px;
+    height: 60vh;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    margin-left: 15px;
+  }
+  
+  .sidebar-section {
+    display: flex;
+    align-items: center;
+    padding: 10px 8px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .sidebar-section:hover {
+    color: #fff;
+  }
+  
+  .icon {
+    margin-right: 6px;
+    width: 24px;
+    height: 24px;
+    stroke: #80868b;
+    transition: stroke 0.3s;
+  }
+  
+  .sidebar-section:hover .icon {
+    stroke: #fff;
+  }
+  
+  .sidebar-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #80868b;
+    transition: color 0.3s;
+  }
+  
+  .sidebar-section:hover .sidebar-text {
+    color: #fff;
+  }
+  
+  .divider {
+    border-top: 1px solid #222;
+    margin: 18px 0;
+  }
+  
+  .dsa-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 8px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .dsa-header:hover .dsa-icon,
+  .dsa-header:hover .chevron-icon,
+  .dsa-header:hover .sidebar-text {
+    stroke: #fff;
+    color: #fff;
+  }
+  
+  .dsa-icon {
+    margin-right: 6px;
+    stroke: #80868b;
+    width: 24px;
+    height: 24px;
+    transition: stroke 0.3s;
+  }
+  
+  .dsa-title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .chevron-icon {
+    width: 18px;
+    height: 18px;
+    stroke: #80868b;
+    transition: transform 0.3s, stroke 0.3s;
+    margin-left: auto;
+  }
+  
+  .sheet-list {
+    margin-top: 4px;
+    padding-left: 22px;
+  }
+  
+  .sheet-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    cursor: pointer;
+    color: #80868b;
+    transition: color 0.3s;
+    font-size: 13px;
+    font-weight: 400;
+  }
+  
+  .sheet-item:hover {
+    color: #fff;
+  }
+  
+  .sheet-item:hover span {
+    color: #fff;
+  }
+  
+  .sheet-logo {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  
+  .sheet-item span {
+    color: #80868b;
+    transition: color 0.1s;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .selected-sheet span {
+    color: #00ffff;
+    font-weight: 600;
+  }
+  
+  .selected-sheet {
+    color: #00ffff;
+    font-weight: 600;
+  }
+
+  .selected-dsa .dsa-icon,
+.selected-dsa .sidebar-text,
+.selected-dsa .chevron-icon {
+  stroke: #00ffff;
+  color: #00ffff;
+}
+

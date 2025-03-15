@@ -2,8 +2,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 40px;
+    padding: 0px 30px;
     color: white;
+    position: sticky;
+    top: 0;
+    background-color: black;
   }
   
   .logo {
