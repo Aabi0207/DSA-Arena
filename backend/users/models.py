@@ -45,6 +45,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     location = models.CharField(max_length=100, blank=True, null=True)
 
     profile_photo = models.ImageField(upload_to="profile_pics/", blank=True, null=True)
+    profile_banner = models.ImageField(upload_to="profile_banner/", blank=True, null=True)
 
     github = models.URLField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)

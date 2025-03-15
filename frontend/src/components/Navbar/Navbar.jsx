@@ -3,15 +3,16 @@ import './Navbar.css';
 import logo from '../../assets/logo.png'; // Replace with your logo path
 
 const getRingClass = (rank) => {
-  if (rank === 1) return 'gold';
-  if (rank === 2) return 'silver';
-  if (rank === 3) return 'bronze';
+  if (rank == "Surya Bhai") return 'gold';
+  if (rank == "Rocky Bhai") return 'silver';
+  if (rank == "Bahubali") return 'bronze';
   return '';
 };
 
-const Navbar = ({ user }) => {
-  const profilePic = `/profile_pics/${user?.profile_photo || '1.jpg'}`;
-  const ringClass = getRingClass(user?.rank_position);
+const Navbar = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const profilePic = `http://localhost:8000/${user?.profile_photo || '/profile-pics/trial.jpg'}`;
+  const ringClass = getRingClass(user?.rank);
 
   return (
     <nav className="navbar">
@@ -20,7 +21,7 @@ const Navbar = ({ user }) => {
       </div>
       <div className="navbar-right">
         <div className={`profile-wrapper ${ringClass}`}>
-          <img src={"/profile-pics/trial.jpg"} alt="Profile" className="profile-pic" />
+          <img src={profilePic} alt="Profile" className="profile-pic" />
         </div>
       </div>
     </nav>

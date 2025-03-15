@@ -14,4 +14,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         validated_data['is_accepted'] = False
         random_num = random.randint(1, 10)
         validated_data['profile_photo'] = f'profile_pics/{random_num}.jpg'
+        random_num = random.randint(1, 3)
+        validated_data['profile_banner'] = f'profile_banner/{random_num}.jpg'
         return CustomUser.objects.create(**validated_data)

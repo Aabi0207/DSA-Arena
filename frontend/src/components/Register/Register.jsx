@@ -3,6 +3,7 @@ import axios from "axios";
 import Stepper, { Step } from "../Stepper/Stepper";
 import AlertPopup from "../AlertPopup/AlertPopup";
 import "./Register.css";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [sending, setSending] = useState(false);
+  const navigate = useNavigate();
 
   const validateForm = async () => {
     if (!formData.username.trim()) {
@@ -98,6 +100,9 @@ const Register = () => {
       const response = await axios.post("http://localhost:8000/users/", formData);
       if (response.status === 201) {
         setErrorMessage("Registration successful. Admin will review your request.");
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
       } else {
         setErrorMessage("Registration failed.");
       }
