@@ -68,10 +68,15 @@ class UserQuestionStatus(models.Model):
 class UserSheetProgress(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='sheet_progress')
     sheet = models.ForeignKey(DSASheet, on_delete=models.CASCADE, related_name='user_progress')
+    
     solved_count = models.PositiveIntegerField(default=0)
+    solved_easy = models.PositiveIntegerField(default=0)
+    solved_medium = models.PositiveIntegerField(default=0)
+    solved_hard = models.PositiveIntegerField(default=0)
 
     class Meta:
         unique_together = ('user', 'sheet')
 
     def __str__(self):
         return f"{self.user.display_name} - {self.sheet.name} Progress"
+

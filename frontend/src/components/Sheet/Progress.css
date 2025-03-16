@@ -1,0 +1,144 @@
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background-color: #000;
+    padding: 30px;
+    border-radius: 15px;
+    width: calc(100vw - 350px);
+    margin: 40px auto;
+    border: 1px solid #00ffff;
+  }
+  
+  .progress-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    /* width: 400px; */
+    margin: 20px 40px;
+  }
+  
+  .progress-box {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    width: 500px;
+  }
+  
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 300;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+  
+  .difficulty-label {
+    font-weight: 400;
+  }
+  
+  .solved-count {
+    color: #ffdbdb;
+    font-weight: 400;
+  }
+  
+  .progress-bar-wrapper {
+    background-color: #1e1e1e;
+    height: 6px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.4s ease-in-out;
+  }
+  
+ .progress-separator {
+  width: 1px;
+  height: 100%;
+  background-color: #444;
+  margin: 0 20px;
+  transform: translateX(-20px);
+}
+  
+  .progress-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .circular-progress {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+  
+  .progress-ring {
+    transform: rotate(-90deg);
+  }
+  
+  .progress-ring-bg {
+    fill: none;
+    stroke: #333;
+    stroke-width: 8;
+  }
+  
+  .progress-ring-fill {
+    fill: none;
+    stroke: #00ff85;
+    stroke-width: 10;
+    stroke-linecap: butt; /* square edges */
+    transition: stroke-dashoffset 0.5s ease;
+  }
+  
+  .progress-ring-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #00ffff;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .total-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #525050;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  
+  .Progress-tex{
+    font-size: 14px;
+    font-weight: 400;
+    padding-right: 7px;
+  }
+
+  .percen{
+    font-size: 26px;
+    font-weight: 500;
+    text-align: center;
+    color: #00ffff;
+  }
+
+  .progress-info{
+    margin: 0px 20px;
+  }
+
+  .tot{
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .dope{
+    font-size: 40px;
+    font-weight: 500;
+  }

@@ -12,7 +12,7 @@ class CustomUserAdmin(UserAdmin):
         ("Personal Info", {"fields": ("username", "display_name", "tagline", "pronouns", "location")}),
         ("Profile Links", {"fields": ("github", "linkedin", "portfolio")}),
         ("Permissions", {"fields": ("is_active", "is_staff", "is_superuser", "is_accepted", "groups", "user_permissions")}),
-        ("DSA Arena Info", {"fields": ("score", "rank", "privilege", "profile_photo")}),
+        ("DSA Arena Info", {"fields": ("score", "rank", "privilege", "profile_photo", "profile_banner")}),
     )
 
     add_fieldsets = (

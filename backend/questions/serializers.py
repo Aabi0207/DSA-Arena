@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import DSASheet, Topic, Question, UserQuestionStatus, UserSheetProgress
+from questions.models import Question
 
 class DSASheetSerializer(serializers.ModelSerializer):
     class Meta:
@@ -50,3 +51,35 @@ class DSASheetDetailSerializer(serializers.ModelSerializer):
 
     def get_total_questions(self, obj):
         return Question.objects.filter(topic__sheet=obj).count()
+
+
+class UserSheetProgressSerializer(serializers.ModelSerializer):
+    total_questions = serializers.SerializerMethodField()
+    total_easy = serializers.SerializerMethodField()
+    total_medium = serializers.SerializerMethodField()
+    total_hard = serializers.SerializerMethodField()
+
+    class Meta:
+        model = UserSheetProgress
+        fields = [
+            'solved_count',
+            'solved_easy',
+            'solved_medium',
+            'solved_hard',
+            'total_questions',
+            'total_easy',
+            'total_medium',
+            'total_hard',
+        ]
+
+    def get_total_questions(self, obj):
+        return Question.objects.filter(topic__sheet=obj.sheet).count()
+
+    def get_total_easy(self, obj):
+        return Question.objects.filter(topic__sheet=obj.sheet, difficulty='EASY').count()
+
+    def get_total_medium(self, obj):
+        return Question.objects.filter(topic__sheet=obj.sheet, difficulty='MEDIUM').count()
+
+    def get_total_hard(self, obj):
+        return Question.objects.filter(topic__sheet=obj.sheet, difficulty='HARD').count()
