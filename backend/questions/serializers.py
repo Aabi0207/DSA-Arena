@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import DSASheet, Topic, Question, UserQuestionStatus, UserSheetProgress
-from questions.models import Question
+from questions.models import Topic, Question
 
 class DSASheetSerializer(serializers.ModelSerializer):
     class Meta:
@@ -83,3 +83,29 @@ class UserSheetProgressSerializer(serializers.ModelSerializer):
 
     def get_total_hard(self, obj):
         return Question.objects.filter(topic__sheet=obj.sheet, difficulty='HARD').count()
+    
+
+class TopicWithQuestionsSerializer(serializers.ModelSerializer):
+    questions = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Topic
+        fields = ['id', 'name', 'questions']  # <-- questions must be included here
+
+    def get_questions(self, topic):
+        user = self.context.get('user')
+        questions = topic.questions.all()
+
+        data = []
+        for q in questions:
+            data.append({
+                'id': q.id,
+                'question': q.question,
+                'link': q.link,
+                'solution': q.solution,
+                'platform': q.platform,
+                'difficulty': q.difficulty,
+                'is_saved': UserQuestionStatus.objects.filter(user=user, question=q, status="SAVED").exists() if user and user.is_authenticated else False,
+                'is_solved': UserQuestionStatus.objects.filter(user=user, question=q, status="SOLVED").exists() if user and user.is_authenticated else False,
+            })
+        return data

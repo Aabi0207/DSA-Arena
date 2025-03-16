@@ -2,12 +2,23 @@ import React, { useEffect, useState } from "react";
 import SheetHeader from "./SheetHeader";
 import AlertPopup from "../AlertPopup/AlertPopup";
 import Progress from "./Progress";
+import Question from "../Question/Question";
 
 const Sheet = ({ sheetId }) => {
   const [sheet, setSheet] = useState(null);
   const [progress, setProgress] = useState(null);
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
+  const question = {
+    "id": 1,
+    "question": "Set Matrix Zeros",
+    "link": "https://leetcode.com/problems/set-matrix-zeroes/",
+    "solution": "https://takeuforward.org/data-structure/set-matrix-zero/",
+    "platform": "leetcode",
+    "difficulty": "MEDIUM",
+    "is_saved": false,
+    "is_solved": false
+}
 
   const fetchSheetAndProgress = async () => {
     try {
@@ -53,6 +64,7 @@ const Sheet = ({ sheetId }) => {
       {errorMsg && <AlertPopup type="error" message={errorMsg} />}
       {sheet && <SheetHeader sheet={sheet} />}
       {progress && <Progress progressData={progress} />}
+      <Question question={question} />
     </div>
   );
 };

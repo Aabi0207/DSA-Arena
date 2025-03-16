@@ -100,7 +100,7 @@ const Progress = ({ progressData }) => {
         </div>
         <div className="progress-info">
           <div className="tot" style={{ color: "#fff", fontSize: "14px" }}>Total Questions Solved</div>
-          <div style={{ color: "#fff", fontWeight: "400", fontSize: "18px", textAlign: "center", color: "#898989"}}>
+          <div style={{ fontWeight: "400", fontSize: "18px", textAlign: "center", color: "#898989"}}>
             <span className="dope">{solved_count}</span> of {total_questions}
           </div>
         </div>
