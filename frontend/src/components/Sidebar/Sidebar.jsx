@@ -9,35 +9,28 @@ import {
   NotepadText,
   ChevronUp,
 } from "lucide-react";
-
 import AlertPopup from "../AlertPopup/AlertPopup";
 
-const Sidebar = () => {
-  const [sheets, setSheets] = useState([]);
+const Sidebar = ({ sheets, activeSheetId, onSheetSelect }) => {
   const [isExpanded, setIsExpanded] = useState(true);
-  const [selectedSheetId, setSelectedSheetId] = useState(null);
+  const [alertMessage, setAlertMessage] = useState("");
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/questions/sheets")
-      .then((res) => res.json())
-      .then((data) => setSheets(data));
-  }, []);
-
-  const handleSheetClick = (id) => {
-    setSelectedSheetId(id);
+  const handleComingSoon = () => {
+    setAlertMessage("Coming Soon!");
   };
 
   return (
     <div className="sidebar">
-      <div className="sidebar-section">
+      {/* Static sections */}
+      <div className="sidebar-section" onClick={handleComingSoon}>
         <User className="icon" />
         <span className="sidebar-text">Profile</span>
       </div>
-      <div className="sidebar-section">
+      <div className="sidebar-section" onClick={handleComingSoon}>
         <Trophy className="icon" />
         <span className="sidebar-text">Leaderboard</span>
       </div>
-      <div className="sidebar-section">
+      <div className="sidebar-section" onClick={handleComingSoon}>
         <Bookmark className="icon" />
         <span className="sidebar-text">Saved</span>
       </div>
@@ -46,7 +39,7 @@ const Sidebar = () => {
 
       <div
         className={`sidebar-section dsa-header ${
-          selectedSheetId ? "selected-dsa" : ""
+          isExpanded ? "selected-dsa" : ""
         }`}
         onClick={() => setIsExpanded(!isExpanded)}
       >
@@ -65,15 +58,25 @@ const Sidebar = () => {
             <div
               key={sheet.id}
               className={`sheet-item ${
-                selectedSheetId === sheet.id ? "selected-sheet" : ""
+                sheet.id === activeSheetId ? "active-sheet" : ""
               }`}
-              onClick={() => handleSheetClick(sheet.id)}
+              onClick={() => onSheetSelect(sheet.id)}
             >
               <img src={sheet.image} alt="sheet logo" className="sheet-logo" />
               <span>{sheet.name}</span>
             </div>
           ))}
         </div>
+      )}
+
+      {/* AlertPopup integration */}
+      {alertMessage && (
+        <AlertPopup
+          message={alertMessage}
+          type="info"
+          duration={2000}
+          onClose={() => setAlertMessage("")}
+        />
       )}
     </div>
   );

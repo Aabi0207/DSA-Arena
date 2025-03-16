@@ -1,23 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Sidebar from "../components/Sidebar/Sidebar";
+import Sheet from "../components/Sheet/Sheet";
 
 const SheetPage = () => {
+  const [sheets, setSheets] = useState([]);
   const [activeSheetId, setActiveSheetId] = useState(null);
-  const [activeSection, setActiveSection] = useState("sheets");
 
-  const sheets = [
-    { id: 1, name: "Striver's A2Z Sheet", image: "/sheet_images/1.jpg" },
-    { id: 2, name: "Striver's SDE Sheet", image: "/sheet_images/2.jpg" },
-    { id: 3, name: "Striver's 79 Sheet", image: "/sheet_images/3.jpg" },
-    { id: 4, name: "Blind 75 Sheet", image: "/sheet_images/4.jpg" },
-  ];
+  useEffect(() => {
+    // Fetch sheets first
+    fetch("http://127.0.0.1:8000/questions/sheets")
+      .then((res) => res.json())
+      .then((data) => {
+        setSheets(data);
+        // Set default to id 3 if available
+        const defaultSheet = data.find((sheet) => sheet.id === 3);
+        setActiveSheetId(defaultSheet ? defaultSheet.id : data[0]?.id || null);
+      });
+  }, []);
 
-  const handleSheetSelect = (id, section) => {
-    setActiveSheetId(id);
-    setActiveSection(section);
-    // You can also handle page content change based on section here
+  const handleSheetSelect = (id) => {
+    setActiveSheetId(id); // Only update internal state, no navigation
   };
+
   return (
     <>
       <Navbar />
@@ -28,15 +33,14 @@ const SheetPage = () => {
       <div
         className="group-together"
         style={{
-          display: "flex", // Make it horizontal flex
-          height: "calc(100vh - 85px)", // Adjust for Navbar + top horizontal separator if needed
+          display: "flex",
+          height: "calc(100vh - 85px)",
         }}
       >
         <Sidebar
           sheets={sheets}
           activeSheetId={activeSheetId}
           onSheetSelect={handleSheetSelect}
-          activeSection={activeSection}
         />
         <div
           className="seperator"
@@ -46,7 +50,7 @@ const SheetPage = () => {
             backgroundColor: "#27272a",
           }}
         ></div>
-        {/* Add your right side content section here later */}
+        {activeSheetId && <Sheet sheetId={activeSheetId} />}
       </div>
     </>
   );

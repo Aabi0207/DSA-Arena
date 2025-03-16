@@ -1,0 +1,24 @@
+.sheet-header-container {
+  width: calc(100vw - 275px);
+  padding: 1rem 1rem;
+  text-align: center;
+}
+
+.sheet-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #00FFFF; /* Neon Green */
+  font-family: 'Allan', 'serif';
+  margin-bottom: 1rem;
+}
+
+.sheet-description {
+  font-size: 1rem;
+  color: white;
+  max-width: calc(100vw - 300px);
+  margin: 0 auto;
+  padding: 0 1rem;
+  line-height: 1.6;
+}
+
+
