@@ -75,10 +75,12 @@ const Sheet = ({ sheetId }) => {
       {progress && <Progress progressData={progress} />}
       {progress && <div className="section-separator" />}
 
+      <div className="topics-title">Topics</div>
+
       <div className="topics-container">
         {topics.map((topic, index) => (
           <div className="questionlist-spacing" key={topic.id}>
-            <QuestionList topic={topic} keep_open={index === 0} onStatusChange={handleStatusChange} />
+            <QuestionList topic={topic} onStatusChange={handleStatusChange} />
           </div>
         ))}
       </div>

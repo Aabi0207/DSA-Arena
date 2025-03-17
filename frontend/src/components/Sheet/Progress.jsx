@@ -66,8 +66,6 @@ const Progress = ({ progressData }) => {
         ))}
       </div>
 
-      <div className="progress-bar-separator"></div>
-
       <div className="progress-bar-right">
         <div className="progress-bar-circular-progress">
           <svg className="progress-bar-ring" width="200" height="200">

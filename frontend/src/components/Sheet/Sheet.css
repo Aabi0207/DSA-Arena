@@ -37,3 +37,9 @@
     display: block;
   }
   
+  .topics-title{
+    font-size: 65px;
+    font-family: 'Allan', cursive;
+    font-weight: 700;
+    color: #00ffff;
+  }

@@ -7,16 +7,13 @@ import { useAuth } from "../../contexts/AuthContext";
 const Question = ({ question, onStatusChange }) => {
   const [isSolved, setIsSolved] = useState(question.is_solved);
   const [isSaved, setIsSaved] = useState(question.is_saved);
-
   const { user } = useAuth();
 
   const updateStatus = async (questionId, actionType) => {
     try {
       const response = await fetch(`http://localhost:8000/questions/update-status/`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: user.email,
           question_id: questionId,
@@ -25,14 +22,10 @@ const Question = ({ question, onStatusChange }) => {
       });
 
       const data = await response.json();
-      if (!response.ok) {
-        console.error("Backend Error:", data);
-        throw new Error(data?.error || "Failed to update status");
-      }
-
+      if (!response.ok) throw new Error(data?.error || "Failed to update status");
       return data;
     } catch (error) {
-      console.error("Fetch Error:", error);
+      console.error("Error updating status:", error);
       throw error;
     }
   };
@@ -40,61 +33,33 @@ const Question = ({ question, onStatusChange }) => {
   const handleCheckboxToggle = async () => {
     const action = isSolved ? "unsolve" : "solve";
     const newSolved = !isSolved;
-
     try {
       await updateStatus(question.id, action);
       setIsSolved(newSolved);
-
-      // 🔥 Notify parent
-      if (onStatusChange) {
-        onStatusChange({
-          questionId: question.id,
-          isSolved: newSolved,
-          isSaved,
-          difficulty: question.difficulty,
-        });
-      }
-    } catch (error) {
-      alert("Something went wrong while updating solved status.");
+      onStatusChange?.({ questionId: question.id, isSolved: newSolved, isSaved, difficulty: question.difficulty });
+    } catch {
+      alert("Failed to update solved status.");
     }
   };
 
   const handleBookmarkToggle = async () => {
     const action = isSaved ? "unsave" : "save";
     const newSaved = !isSaved;
-
     try {
       await updateStatus(question.id, action);
       setIsSaved(newSaved);
-
-      // 🔥 Notify parent
-      if (onStatusChange) {
-        onStatusChange({
-          questionId: question.id,
-          isSolved,
-          isSaved: newSaved,
-          difficulty: question.difficulty,
-        });
-      }
-    } catch (error) {
-      alert("Something went wrong while updating saved status.");
+      onStatusChange?.({ questionId: question.id, isSolved, isSaved: newSaved, difficulty: question.difficulty });
+    } catch {
+      alert("Failed to update saved status.");
     }
   };
 
-  const getTextColorClass = () => {
-    if (isSaved) return "question-text saved";
-    if (isSolved) return "question-text solved";
-    return "question-text";
-  };
-
-  const getIconColorClass = () => {
-    if (isSaved) return "icon saved";
-    if (isSolved) return "icon solved";
-    return "icon";
-  };
+  const getTextColorClass = () => (isSaved ? "question-text saved" : isSolved ? "question-text solved" : "question-text");
+  const getIconColorClass = () => (isSaved ? "icon saved" : isSolved ? "icon solved" : "icon");
+  const getContainerBorderClass = () => (isSaved ? "question-container saved-border" : isSolved ? "question-container solved-border" : "question-container");
 
   return (
-    <div className="question-container">
+    <div className={getContainerBorderClass()}>
       <div className="checkbox leftmost">
         <input
           type="checkbox"
@@ -132,16 +97,8 @@ const Question = ({ question, onStatusChange }) => {
       </div>
 
       <div className="checkbox">
-        <a
-          href={question.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="platform-icon"
-        >
-          <img
-            src={`/platforms/${question.platform}.png`}
-            alt={question.platform}
-          />
+        <a href={question.link} target="_blank" rel="noopener noreferrer" className="platform-icon">
+          <img src={`/platforms/${question.platform}.png`} alt={question.platform} />
         </a>
       </div>
 
@@ -155,9 +112,7 @@ const Question = ({ question, onStatusChange }) => {
         <button className="bookmark-btn" onClick={handleBookmarkToggle}>
           <Bookmark
             size={28}
-            className={`bookmark-icon ${
-              isSaved ? "active" : isSolved ? "solved" : ""
-            }`}
+            className={`bookmark-icon ${isSaved ? "active" : isSolved ? "solved" : ""}`}
           />
         </button>
       </div>

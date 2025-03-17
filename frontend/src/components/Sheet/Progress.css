@@ -1,13 +1,13 @@
 .progress-bar-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  /* gap: 20px; */
   background-color: #000;
   padding: 30px;
   border-radius: 15px;
   width: calc(100vw - 400px);
-  margin: 40px auto;
+  margin: 30px auto;
   border: 1px solid #ffffff;
 }
 
@@ -23,7 +23,7 @@
   border: 1px solid;
   border-radius: 5px;
   padding: 10px;
-  width: 500px;
+  max-width: 500px;
 }
 
 .progress-bar-header {
@@ -127,9 +127,27 @@
   font-weight: 500;
   color: #fff;
   font-size: 14px;
+  text-align: center;
 }
 
 .progress-bar-solved-total {
   font-size: 40px;
   font-weight: 500;
+}
+
+@media screen and (max-width: 1080px) {
+  .progress-bar-container {
+    flex-direction: column;
+  }
+  .progress-bar-right{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media  screen and (max-width: 800px) {
+  .progress-bar-right{
+    flex-direction: column;
+  }
+  
 }
