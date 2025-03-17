@@ -1,144 +1,135 @@
-.progress-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    background-color: #000;
-    padding: 30px;
-    border-radius: 15px;
-    width: calc(100vw - 350px);
-    margin: 40px auto;
-    border: 1px solid #00ffff;
-  }
-  
-  .progress-left {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    /* width: 400px; */
-    margin: 20px 40px;
-  }
-  
-  .progress-box {
-    border: 1px solid;
-    border-radius: 5px;
-    padding: 10px;
-    width: 500px;
-  }
-  
-  .progress-header {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 300;
-    margin-bottom: 6px;
-    font-size: 14px;
-  }
-  
-  .difficulty-label {
-    font-weight: 400;
-  }
-  
-  .solved-count {
-    color: #ffdbdb;
-    font-weight: 400;
-  }
-  
-  .progress-bar-wrapper {
-    background-color: #1e1e1e;
-    height: 6px;
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  
-  .progress-bar-fill {
-    height: 100%;
-    border-radius: 5px;
-    transition: width 0.4s ease-in-out;
-  }
-  
- .progress-separator {
+.progress-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background-color: #000;
+  padding: 30px;
+  border-radius: 15px;
+  width: calc(100vw - 400px);
+  margin: 40px auto;
+  border: 1px solid #ffffff;
+}
+
+.progress-bar-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 40px;
+}
+
+.progress-bar-box {
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 10px;
+  width: 500px;
+}
+
+.progress-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 300;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.progress-bar-difficulty-label {
+  font-weight: 400;
+}
+
+.progress-bar-solved-count {
+  color: #ffdbdb;
+  font-weight: 400;
+}
+
+.progress-bar-wrapper {
+  background-color: #1e1e1e;
+  height: 6px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.4s ease-in-out;
+}
+
+.progress-bar-separator {
   width: 1px;
   height: 100%;
-  background-color: #444;
+  background-color: #3a3a3a;
   margin: 0 20px;
   transform: translateX(-20px);
 }
-  
-  .progress-right {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
-  
-  .circular-progress {
-    position: relative;
-    width: 200px;
-    height: 200px;
-  }
-  
-  .progress-ring {
-    transform: rotate(-90deg);
-  }
-  
-  .progress-ring-bg {
-    fill: none;
-    stroke: #333;
-    stroke-width: 8;
-  }
-  
-  .progress-ring-fill {
-    fill: none;
-    stroke: #00ff85;
-    stroke-width: 10;
-    stroke-linecap: butt; /* square edges */
-    transition: stroke-dashoffset 0.5s ease;
-  }
-  
-  .progress-ring-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #00ffff;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .total-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: #525050;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.5;
-  }
-  
-  .Progress-tex{
-    font-size: 14px;
-    font-weight: 400;
-    padding-right: 7px;
-  }
 
-  .percen{
-    font-size: 26px;
-    font-weight: 500;
-    text-align: center;
-    color: #00ffff;
-  }
+.progress-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Reduced gap to bring elements closer */
+}
 
-  .progress-info{
-    margin: 0px 20px;
-  }
+.progress-bar-circular-progress {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
 
-  .tot{
-    margin-bottom: 10px;
-    font-weight: 500;
-  }
+.progress-bar-ring {
+  transform: rotate(-90deg);
+}
 
-  .dope{
-    font-size: 40px;
-    font-weight: 500;
-  }
+.progress-bar-ring-bg {
+  fill: none;
+  stroke: #333;
+  stroke-width: 8;
+}
+
+.progress-bar-ring-fill {
+  fill: none;
+  stroke: #00ff85;
+  stroke-width: 10;
+  stroke-linecap: butt; /* square edges */
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-bar-ring-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #00ffff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.progress-bar-text {
+  font-size: 14px;
+  font-weight: 400;
+  padding-right: 7px;
+}
+
+.progress-bar-percentage {
+  font-size: 26px;
+  font-weight: 500;
+  text-align: center;
+  color: #00ffff;
+}
+
+.progress-bar-info {
+  margin: 0px 10px; /* Reduced margin to bring elements closer */
+}
+
+.progress-bar-total-text {
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #fff;
+  font-size: 14px;
+}
+
+.progress-bar-solved-total {
+  font-size: 40px;
+  font-weight: 500;
+}

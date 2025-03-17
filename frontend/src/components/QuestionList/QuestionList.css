@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Allan:wght@700&display=swap');
+
+.questionlist-wrapper {
+  width: calc(100vw - 375px);
+  border: 1px solid #2d2d2d;
+  border-radius: 10px;
+  padding: 8px 14px;
+  background-color: transparent;
+}
+
+
+.questionlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 0; /* remove extra left padding */
+}
+
+.questionlist-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.topic-title {
+  font-family: 'Allan', cursive;
+  font-size: 30px;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.solved-count {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 6px;
+}
+
+.highlight {
+  color: #00ffff !important;
+}
+
+.questionlist-body {
+  padding-left: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 10px;
+}
+
+.questionlist-question-row {
+  margin-bottom: 6px;
+}

@@ -22,8 +22,8 @@ const Progress = ({ progressData }) => {
   const progressOffset = circumference * (1 - solved_count / total_questions);
 
   return (
-    <div className="progress-container">
-      <div className="progress-left">
+    <div className="progress-bar-container">
+      <div className="progress-bar-left">
         {[
           {
             label: "Easy",
@@ -44,12 +44,12 @@ const Progress = ({ progressData }) => {
             total: total_hard,
           },
         ].map((item, idx) => (
-          <div className="progress-box" key={idx} style={{ borderColor: "#626262" }}>
-            <div className="progress-header">
-              <span className="difficulty-label" style={{ color: item.color }}>
+          <div className="progress-bar-box" key={idx} style={{ borderColor: "#626262" }}>
+            <div className="progress-bar-header">
+              <span className="progress-bar-difficulty-label" style={{ color: item.color }}>
                 {item.label}
               </span>
-              <span className="solved-count">
+              <span className="progress-bar-solved-count">
                 {item.solved}/{item.total}
               </span>
             </div>
@@ -66,20 +66,20 @@ const Progress = ({ progressData }) => {
         ))}
       </div>
 
-      <div className="progress-separator"></div>
+      <div className="progress-bar-separator"></div>
 
-      <div className="progress-right">
-        <div className="circular-progress">
-          <svg className="progress-ring" width="200" height="200">
+      <div className="progress-bar-right">
+        <div className="progress-bar-circular-progress">
+          <svg className="progress-bar-ring" width="200" height="200">
             <circle
-              className="progress-ring-bg"
+              className="progress-bar-ring-bg"
               cx="100"
               cy="100"
               r={radius}
               strokeWidth={strokeWidth - 4}
             />
             <circle
-              className="progress-ring-fill"
+              className="progress-bar-ring-fill"
               cx="100"
               cy="100"
               r={radius}
@@ -91,17 +91,17 @@ const Progress = ({ progressData }) => {
               }}
             />
           </svg>
-          <div className="progress-ring-text">
+          <div className="progress-bar-ring-text">
             <div>
-              <span className="Progress-tex">Progress</span>
-              <p className="percen">{getPercentage(solved_count, total_questions)}%</p>
+              <span className="progress-bar-text">Progress</span>
+              <p className="progress-bar-percentage">{getPercentage(solved_count, total_questions)}%</p>
             </div>
           </div>
         </div>
-        <div className="progress-info">
-          <div className="tot" style={{ color: "#fff", fontSize: "14px" }}>Total Questions Solved</div>
+        <div className="progress-bar-info">
+          <div className="progress-bar-total-text">Total Questions Solved</div>
           <div style={{ fontWeight: "400", fontSize: "18px", textAlign: "center", color: "#898989"}}>
-            <span className="dope">{solved_count}</span> of {total_questions}
+            <span className="progress-bar-solved-total">{solved_count}</span> of {total_questions}
           </div>
         </div>
       </div>

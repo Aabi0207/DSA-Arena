@@ -20,37 +20,42 @@ const SheetPage = () => {
   }, []);
 
   const handleSheetSelect = (id) => {
-    setActiveSheetId(id); // Only update internal state, no navigation
+    setActiveSheetId(id);
   };
 
   return (
     <>
       <Navbar />
+
+      {/* Top separator under navbar */}
       <div
-        className="seperator"
-        style={{ width: "100%", height: "1px", backgroundColor: "#27272a" }}
-      ></div>
+        className="separator"
+        style={{ width: "100%", height: "1px", backgroundColor: "#2d2d2d" }}
+      />
+
       <div
-        className="group-together"
         style={{
           display: "flex",
-          height: "calc(100vh - 85px)",
+          height: "calc(100vh - 85px)", // assuming Navbar height is 85px
         }}
       >
+        {/* Sidebar - fixed width */}
         <Sidebar
           sheets={sheets}
           activeSheetId={activeSheetId}
           onSheetSelect={handleSheetSelect}
         />
+
+        {/* Vertical separator */}
         <div
-          className="seperator"
-          style={{
-            width: "1px",
-            height: "100%",
-            backgroundColor: "#27272a",
-          }}
-        ></div>
-        {activeSheetId && <Sheet sheetId={activeSheetId} />}
+          className="separator"
+          style={{ width: "1px", backgroundColor: "#2d2d2d" }}
+        />
+
+        {/* Scrollable Sheet area */}
+        <div style={{ flex: 1, overflowY: "auto", overflowX: 'auto' }}>
+          {activeSheetId && <Sheet sheetId={activeSheetId} />}
+        </div>
       </div>
     </>
   );
