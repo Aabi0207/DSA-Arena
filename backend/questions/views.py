@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
 from .models import DSASheet, UserSheetProgress, CustomUser, Topic, Question, SCORE_MAPPING, UserQuestionStatus
 from .serializers import DSASheetSerializer, DSASheetDetailSerializer, UserSheetProgressSerializer, TopicWithQuestionsSerializer
 from users.utils import calculate_rank
@@ -31,6 +31,7 @@ class DSASheetDetailView(APIView):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def get_user_sheet_progress(request, user_name, sheet_id):
     try:
         user = CustomUser.objects.get(username=user_name)
@@ -54,34 +55,37 @@ class TopicsWithQuestionsView(APIView):
     
 
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
 def update_question_status(request):
-    user = request.user
+    email = request.data.get("email")
     question_id = request.data.get("question_id")
-    action = request.data.get("action")  # "solve" / "unsolve" / "save" / "unsave"
+    action = request.data.get("action")  # Expected: "solve", "unsolve", "save", "unsave"
+
+    if not email or not question_id or not action:
+        return Response({"error": "Missing email, question_id, or action"}, status=400)
+
+    try:
+        user = CustomUser.objects.get(email=email)
+    except CustomUser.DoesNotExist:
+        return Response({"error": "User not found"}, status=404)
 
     try:
         question = Question.objects.get(id=question_id)
     except Question.DoesNotExist:
-        return Response({"error": "Question not found"}, status=status.HTTP_404_NOT_FOUND)
+        return Response({"error": "Question not found"}, status=404)
 
     sheet = question.topic.sheet
     score_value = question.get_score()
-    updated_progress = False
+    max_score = 1985  # Centralized value
 
-    # 🟩 Solve
     if action == "solve":
-        # Add status
         status_obj, created = UserQuestionStatus.objects.get_or_create(
             user=user, question=question, status="SOLVED"
         )
         if created:
-            # Increase user score
             user.score += score_value
-            user.rank = calculate_rank(user.score, max_score=1985)  # Adjust max_score as needed
+            user.rank = calculate_rank(user.score, max_score)
             user.save()
 
-            # Update progress
             progress, _ = UserSheetProgress.objects.get_or_create(user=user, sheet=sheet)
             progress.solved_count += 1
             if question.difficulty == "EASY":
@@ -92,19 +96,14 @@ def update_question_status(request):
                 progress.solved_hard += 1
             progress.save()
 
-    # 🟥 Unsolve
     elif action == "unsolve":
         try:
             status_obj = UserQuestionStatus.objects.get(user=user, question=question, status="SOLVED")
             status_obj.delete()
-
-            # Decrease user score
-            user.score -= score_value
-            user.score = max(user.score, 0)
-            user.rank = calculate_rank(user.score, max_score=1000)
+            user.score = max(user.score - score_value, 0)
+            user.rank = calculate_rank(user.score, max_score)
             user.save()
 
-            # Update progress
             try:
                 progress = UserSheetProgress.objects.get(user=user, sheet=sheet)
                 progress.solved_count = max(progress.solved_count - 1, 0)
@@ -120,17 +119,13 @@ def update_question_status(request):
         except UserQuestionStatus.DoesNotExist:
             pass
 
-    # 📌 Save
     elif action == "save":
-        UserQuestionStatus.objects.get_or_create(
-            user=user, question=question, status="SAVED"
-        )
+        UserQuestionStatus.objects.get_or_create(user=user, question=question, status="SAVED")
 
-    # ❌ Unsave
     elif action == "unsave":
         UserQuestionStatus.objects.filter(user=user, question=question, status="SAVED").delete()
 
     else:
-        return Response({"error": "Invalid action"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"error": "Invalid action"}, status=400)
 
-    return Response({"message": f"Question {action} successful"}, status=status.HTTP_200_OK)
+    return Response({"message": f"Question {action} successful"}, status=200)

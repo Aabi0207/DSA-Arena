@@ -27,19 +27,19 @@ const Progress = ({ progressData }) => {
         {[
           {
             label: "Easy",
-            color: "#00ff00",
+            color: "#128734",
             solved: solved_easy,
             total: total_easy,
           },
           {
             label: "Medium",
-            color: "#ffa500",
+            color: "#b18a03",
             solved: solved_medium,
             total: total_medium,
           },
           {
             label: "Hard",
-            color: "#ff0000",
+            color: "#f43531",
             solved: solved_hard,
             total: total_hard,
           },

@@ -2,13 +2,63 @@
 import React, { useState } from "react";
 import "./Question.css";
 import { NotebookPen, Bookmark } from "lucide-react";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Question = ({ question }) => {
   const [isSolved, setIsSolved] = useState(question.is_solved);
   const [isSaved, setIsSaved] = useState(question.is_saved);
 
-  const handleCheckboxToggle = () => setIsSolved(!isSolved);
-  const handleBookmarkToggle = () => setIsSaved(!isSaved);
+  const { user } = useAuth();
+
+  const updateStatus = async (questionId, actionType) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8000/questions/update-status/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: user.email,  // ✅ this was missing
+            question_id: questionId,
+            action: actionType,
+          }),
+        }
+      );
+  
+      const data = await response.json();
+      if (!response.ok) {
+        console.error("Backend Error:", data);
+        throw new Error(data?.error || "Failed to update status");
+      }
+  
+      return data;
+    } catch (error) {
+      console.error("Fetch Error:", error);
+      throw error;
+    }
+  };
+
+  const handleCheckboxToggle = async () => {
+    const action = isSolved ? "unsolve" : "solve";
+    try {
+      await updateStatus(question.id, action);
+      setIsSolved(!isSolved);
+    } catch (error) {
+      alert("Something went wrong while updating solved status.");
+    }
+  };
+
+  const handleBookmarkToggle = async () => {
+    const action = isSaved ? "unsave" : "save";
+    try {
+      await updateStatus(question.id, action);
+      setIsSaved(!isSaved);
+    } catch (error) {
+      alert("Something went wrong while updating saved status.");
+    }
+  };
 
   const getTextColorClass = () => {
     if (isSaved) return "question-text saved";
@@ -30,8 +80,10 @@ const Question = ({ question }) => {
           className="custom-checkbox"
           checked={isSolved}
           onChange={handleCheckboxToggle}
+          style={{ accentColor: isSolved ? "#00ffff" : undefined }}
         />
       </div>
+
       <div className="q-name">
         <a
           href={question.link}
@@ -57,6 +109,7 @@ const Question = ({ question }) => {
           <span className={getTextColorClass()}>-</span>
         )}
       </div>
+
       <div className="checkbox">
         <a
           href={question.link}
@@ -69,19 +122,21 @@ const Question = ({ question }) => {
             alt={question.platform}
           />
         </a>
-        </div>
+      </div>
 
-        <div className="checkbox">
+      <div className="checkbox">
         <span className={`difficulty ${question.difficulty.toLowerCase()}`}>
           {question.difficulty}
         </span>
-        </div>
+      </div>
 
-        <div className="checkbox rightmost">
+      <div className="checkbox rightmost">
         <button className="bookmark-btn" onClick={handleBookmarkToggle}>
           <Bookmark
             size={28}
-            className={`bookmark-icon ${isSaved ? "active" : ""}`}
+            className={`bookmark-icon ${
+              isSaved ? "active" : isSolved ? "solved" : ""
+            }`}
           />
         </button>
       </div>
