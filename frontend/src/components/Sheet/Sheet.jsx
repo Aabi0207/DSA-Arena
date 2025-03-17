@@ -3,7 +3,7 @@ import SheetHeader from "./SheetHeader";
 import AlertPopup from "../AlertPopup/AlertPopup";
 import Progress from "./Progress";
 import QuestionList from "../QuestionList/QuestionList";
-import './Sheet.css'; // Make sure this contains the required layout classes
+import './Sheet.css';
 
 const Sheet = ({ sheetId }) => {
   const [sheet, setSheet] = useState(null);
@@ -29,7 +29,7 @@ const Sheet = ({ sheetId }) => {
       const progressData = await progressRes.json();
       setProgress(progressData);
 
-      const topicsRes = await fetch(`http://127.0.0.1:8000/questions/sheets/${sheetId}/topics-with-questions/`);
+      const topicsRes = await fetch(`http://127.0.0.1:8000/questions/sheets/${sheetId}/topics-with-questions/?email=${user.email}`);
       if (!topicsRes.ok) throw new Error("Failed to fetch topics");
       const topicsData = await topicsRes.json();
       setTopics(topicsData);
@@ -52,6 +52,18 @@ const Sheet = ({ sheetId }) => {
     }
   }, [errorMsg]);
 
+  // 🔥 New handler for difficulty-wise progress update
+  const handleStatusChange = ({ isSolved, difficulty }) => {
+    if (!progress) return;
+    const diffKey = difficulty.toLowerCase();
+
+    setProgress((prev) => ({
+      ...prev,
+      solved_count: prev.solved_count + (isSolved ? 1 : -1),
+      [`solved_${diffKey}`]: prev[`solved_${diffKey}`] + (isSolved ? 1 : -1),
+    }));
+  };
+
   return (
     <div className="sheet-wrapper">
       {loading && <AlertPopup type="info" message="Loading sheet and progress..." />}
@@ -66,7 +78,7 @@ const Sheet = ({ sheetId }) => {
       <div className="topics-container">
         {topics.map((topic, index) => (
           <div className="questionlist-spacing" key={topic.id}>
-            <QuestionList topic={topic} keep_open={index === 0} />
+            <QuestionList topic={topic} keep_open={index === 0} onStatusChange={handleStatusChange} />
           </div>
         ))}
       </div>

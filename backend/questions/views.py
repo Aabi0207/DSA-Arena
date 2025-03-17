@@ -49,9 +49,19 @@ def get_user_sheet_progress(request, user_name, sheet_id):
 
 class TopicsWithQuestionsView(APIView):
     def get(self, request, sheet_id):
+        email = request.GET.get('email')
+        user = None
+
+        if email:
+            try:
+                user = CustomUser.objects.get(email=email)
+            except CustomUser.DoesNotExist:
+                user = None
+
         topics = Topic.objects.filter(sheet_id=sheet_id).prefetch_related('questions')
-        serializer = TopicWithQuestionsSerializer(topics, many=True, context={'user': request.user})
+        serializer = TopicWithQuestionsSerializer(topics, many=True, context={'user': user})
         return Response(serializer.data, status=status.HTTP_200_OK)
+
     
 
 @api_view(["POST"])
