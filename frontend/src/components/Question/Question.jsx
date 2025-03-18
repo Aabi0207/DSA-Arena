@@ -1,28 +1,32 @@
 // src/components/Question/Question.jsx
 import React, { useState } from "react";
 import "./Question.css";
-import { NotebookPen, Bookmark } from "lucide-react";
+import { NotebookPen, Bookmark, CirclePlus } from "lucide-react";
 import { useAuth } from "../../contexts/AuthContext";
 
-const Question = ({ question, onStatusChange }) => {
+const Question = ({ question, onStatusChange, onNotesClick }) => {
   const [isSolved, setIsSolved] = useState(question.is_solved);
   const [isSaved, setIsSaved] = useState(question.is_saved);
   const { user } = useAuth();
 
   const updateStatus = async (questionId, actionType) => {
     try {
-      const response = await fetch(`http://localhost:8000/questions/update-status/`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: user.email,
-          question_id: questionId,
-          action: actionType,
-        }),
-      });
+      const response = await fetch(
+        `http://localhost:8000/questions/update-status/`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: user.email,
+            question_id: questionId,
+            action: actionType,
+          }),
+        }
+      );
 
       const data = await response.json();
-      if (!response.ok) throw new Error(data?.error || "Failed to update status");
+      if (!response.ok)
+        throw new Error(data?.error || "Failed to update status");
       return data;
     } catch (error) {
       console.error("Error updating status:", error);
@@ -36,7 +40,12 @@ const Question = ({ question, onStatusChange }) => {
     try {
       await updateStatus(question.id, action);
       setIsSolved(newSolved);
-      onStatusChange?.({ questionId: question.id, isSolved: newSolved, isSaved, difficulty: question.difficulty });
+      onStatusChange?.({
+        questionId: question.id,
+        isSolved: newSolved,
+        isSaved,
+        difficulty: question.difficulty,
+      });
     } catch {
       alert("Failed to update solved status.");
     }
@@ -48,15 +57,31 @@ const Question = ({ question, onStatusChange }) => {
     try {
       await updateStatus(question.id, action);
       setIsSaved(newSaved);
-      onStatusChange?.({ questionId: question.id, isSolved, isSaved: newSaved, difficulty: question.difficulty });
+      onStatusChange?.({
+        questionId: question.id,
+        isSolved,
+        isSaved: newSaved,
+        difficulty: question.difficulty,
+      });
     } catch {
       alert("Failed to update saved status.");
     }
   };
 
-  const getTextColorClass = () => (isSaved ? "question-text saved" : isSolved ? "question-text solved" : "question-text");
-  const getIconColorClass = () => (isSaved ? "icon saved" : isSolved ? "icon solved" : "icon");
-  const getContainerBorderClass = () => (isSaved ? "question-container saved-border" : isSolved ? "question-container solved-border" : "question-container");
+  const getTextColorClass = () =>
+    isSaved
+      ? "question-text saved"
+      : isSolved
+      ? "question-text solved"
+      : "question-text";
+  const getIconColorClass = () =>
+    isSaved ? "icon saved" : isSolved ? "icon solved" : "icon";
+  const getContainerBorderClass = () =>
+    isSaved
+      ? "question-container saved-border"
+      : isSolved
+      ? "question-container solved-border"
+      : "question-container";
 
   return (
     <div className={getContainerBorderClass()}>
@@ -97,8 +122,16 @@ const Question = ({ question, onStatusChange }) => {
       </div>
 
       <div className="checkbox">
-        <a href={question.link} target="_blank" rel="noopener noreferrer" className="platform-icon">
-          <img src={`/platforms/${question.platform}.png`} alt={question.platform} />
+        <a
+          href={question.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="platform-icon"
+        >
+          <img
+            src={`/platforms/${question.platform}.png`}
+            alt={question.platform}
+          />
         </a>
       </div>
 
@@ -108,11 +141,27 @@ const Question = ({ question, onStatusChange }) => {
         </span>
       </div>
 
-      <div className="checkbox rightmost">
+      <div className="checkbox">
         <button className="bookmark-btn" onClick={handleBookmarkToggle}>
           <Bookmark
             size={28}
-            className={`bookmark-icon ${isSaved ? "active" : isSolved ? "solved" : ""}`}
+            className={`bookmark-icon ${
+              isSaved ? "active" : isSolved ? "solved" : ""
+            }`}
+          />
+        </button>
+      </div>
+
+      <div className="checkbox notes-icon-box rightmost">
+        <button
+          className="notes-btn"
+          onClick={() => onNotesClick?.(question.id, user.email)}
+        >
+          <CirclePlus
+            size={28}
+            className={`notes-icon ${
+              isSaved ? "active" : isSolved ? "solved" : ""
+            }`}
           />
         </button>
       </div>

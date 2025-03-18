@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import DSASheet, Topic, Question, UserQuestionStatus, UserSheetProgress
+from .models import DSASheet, Topic, Question, UserQuestionStatus, UserSheetProgress, UserNote
 
 @admin.register(DSASheet)
 class DSASheetAdmin(admin.ModelAdmin):
@@ -29,3 +29,10 @@ class UserSheetProgressAdmin(admin.ModelAdmin):
     list_display = ('user', 'sheet', 'solved_count')
     list_filter = ('sheet',)
     search_fields = ('user__email', 'sheet__name')
+
+# ✅ NEW: Register UserNote Model
+@admin.register(UserNote)
+class UserNoteAdmin(admin.ModelAdmin):
+    list_display = ('user', 'question', 'content', 'created_at')
+    list_filter = ('question__topic__sheet',)
+    search_fields = ('user__email', 'question__question', 'content')

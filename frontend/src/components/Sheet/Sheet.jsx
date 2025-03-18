@@ -3,7 +3,8 @@ import SheetHeader from "./SheetHeader";
 import AlertPopup from "../AlertPopup/AlertPopup";
 import Progress from "./Progress";
 import QuestionList from "../QuestionList/QuestionList";
-import './Sheet.css';
+import "./Sheet.css";
+import Notes from "../Notes/Notes";
 
 const Sheet = ({ sheetId }) => {
   const [sheet, setSheet] = useState(null);
@@ -12,6 +13,22 @@ const Sheet = ({ sheetId }) => {
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
 
+  const [showNotes, setShowNotes] = useState(false);
+  const [noteQuestionId, setNoteQuestionId] = useState(null);
+  const [noteEmail, setNoteEmail] = useState(null);
+
+  const handleNotesOpen = (questionId, email) => {
+    setNoteQuestionId(questionId);
+    setNoteEmail(email);
+    setShowNotes(true);
+  };
+
+  const handleNotesClose = () => {
+    setShowNotes(false);
+    setNoteQuestionId(null);
+    setNoteEmail(null);
+  };
+
   const fetchSheetAndProgress = async () => {
     try {
       setLoading(true);
@@ -19,21 +36,26 @@ const Sheet = ({ sheetId }) => {
       const username = user?.username;
       if (!username) throw new Error("User not logged in");
 
-      const sheetRes = await fetch(`http://127.0.0.1:8000/questions/sheets/${sheetId}/`);
+      const sheetRes = await fetch(
+        `http://127.0.0.1:8000/questions/sheets/${sheetId}/`
+      );
       if (!sheetRes.ok) throw new Error("Failed to fetch sheet");
       const sheetData = await sheetRes.json();
       setSheet(sheetData);
 
-      const progressRes = await fetch(`http://127.0.0.1:8000/questions/progress/${username}/${sheetId}/`);
+      const progressRes = await fetch(
+        `http://127.0.0.1:8000/questions/progress/${username}/${sheetId}/`
+      );
       if (!progressRes.ok) throw new Error("Failed to fetch progress");
       const progressData = await progressRes.json();
       setProgress(progressData);
 
-      const topicsRes = await fetch(`http://127.0.0.1:8000/questions/sheets/${sheetId}/topics-with-questions/?email=${user.email}`);
+      const topicsRes = await fetch(
+        `http://127.0.0.1:8000/questions/sheets/${sheetId}/topics-with-questions/?email=${user.email}`
+      );
       if (!topicsRes.ok) throw new Error("Failed to fetch topics");
       const topicsData = await topicsRes.json();
       setTopics(topicsData);
-
     } catch (err) {
       setErrorMsg(err.message || "Something went wrong");
     } finally {
@@ -66,7 +88,9 @@ const Sheet = ({ sheetId }) => {
 
   return (
     <div className="sheet-wrapper">
-      {loading && <AlertPopup type="info" message="Loading sheet and progress..." />}
+      {loading && (
+        <AlertPopup type="info" message="Loading sheet and progress..." />
+      )}
       {errorMsg && <AlertPopup type="error" message={errorMsg} />}
 
       {sheet && <SheetHeader sheet={sheet} />}
@@ -80,10 +104,22 @@ const Sheet = ({ sheetId }) => {
       <div className="topics-container">
         {topics.map((topic, index) => (
           <div className="questionlist-spacing" key={topic.id}>
-            <QuestionList topic={topic} onStatusChange={handleStatusChange} />
+            <QuestionList
+              topic={topic}
+              onStatusChange={handleStatusChange}
+              onNotesClick={handleNotesOpen} // ✅ Now it's passed properly
+            />
           </div>
         ))}
       </div>
+
+      {showNotes && (
+        <Notes
+          questionId={noteQuestionId}
+          email={noteEmail}
+          onClose={handleNotesClose}
+        />
+      )}
     </div>
   );
 };

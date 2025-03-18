@@ -15,7 +15,7 @@
 }
 
 .checkbox {
-  width: calc((100vw - 500px) * 0.12);
+  width: calc((100vw - 500px) * 0.10);
   height: 70px;
   border-left: 1px solid #2d2d2d;
   border-right: 1px solid #2d2d2d;
@@ -166,3 +166,52 @@
   fill: #ee4b2b;
   stroke: #ee4b2b;
 }
+
+/* Custom widths */
+.checkbox.leftmost {
+  width: calc((100vw - 500px) * 0.08);
+}
+
+.q-name {
+  width: calc((100vw - 500px) * 0.40);
+}
+
+.solution-icon-box {
+  width: calc((100vw - 500px) * 0.10);
+}
+
+.notes-icon-box {
+  width: calc((100vw - 500px) * 0.10);
+  border-left: 1px solid #2d2d2d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notes-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notes-icon {
+  color: #ffffff;
+  stroke: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.notes-icon.solved {
+  color: #00b9b9;
+  stroke: #00b9b9;
+}
+
+.notes-icon.active {
+  color: #ee4b2b;
+  /* fill: #ee4b2b; */
+  stroke: #ee4b2b;
+}
+

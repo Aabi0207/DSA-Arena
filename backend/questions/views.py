@@ -3,8 +3,8 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
-from .models import DSASheet, UserSheetProgress, CustomUser, Topic, Question, SCORE_MAPPING, UserQuestionStatus
-from .serializers import DSASheetSerializer, DSASheetDetailSerializer, UserSheetProgressSerializer, TopicWithQuestionsSerializer
+from .models import DSASheet, UserSheetProgress, CustomUser, Topic, Question, SCORE_MAPPING, UserQuestionStatus, UserNote
+from .serializers import DSASheetSerializer, DSASheetDetailSerializer, UserSheetProgressSerializer, TopicWithQuestionsSerializer, UserNoteSerializer
 from users.utils import calculate_rank
 
 
@@ -139,3 +139,62 @@ def update_question_status(request):
         return Response({"error": "Invalid action"}, status=400)
 
     return Response({"message": f"Question {action} successful"}, status=200)
+
+
+class UserNoteView(APIView):
+    def get(self, request):
+        email = request.query_params.get('email')
+        question_id = request.query_params.get('question_id')
+
+        if not email or not question_id:
+            return Response({'error': 'Email and question_id are required.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            user = CustomUser.objects.get(email=email)
+            question = Question.objects.get(id=question_id)
+        except CustomUser.DoesNotExist:
+            return Response({'error': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
+        except Question.DoesNotExist:
+            return Response({'error': 'Question not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+        notes = UserNote.objects.filter(user=user, question=question)
+        serializer = UserNoteSerializer(notes, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        email = request.data.get('email')
+        question_id = request.data.get('question_id')
+        content = request.data.get('content')
+
+        if not email or not question_id or not content:
+            return Response({'error': 'Email, question_id and content are required.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            user = CustomUser.objects.get(email=email)
+            question = Question.objects.get(id=question_id)
+        except CustomUser.DoesNotExist:
+            return Response({'error': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
+        except Question.DoesNotExist:
+            return Response({'error': 'Question not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+        note = UserNote.objects.create(user=user, question=question, content=content)
+        serializer = UserNoteSerializer(note)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    def delete(self, request):
+        email = request.data.get('email')
+        note_id = request.data.get('note_id')
+
+        if not email or not note_id:
+            return Response({'error': 'Email and note_id are required.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            user = CustomUser.objects.get(email=email)
+            note = UserNote.objects.get(id=note_id, user=user)  # Ensure user owns the note
+        except CustomUser.DoesNotExist:
+            return Response({'error': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
+        except UserNote.DoesNotExist:
+            return Response({'error': 'Note not found or does not belong to user.'}, status=status.HTTP_404_NOT_FOUND)
+
+        note.delete()
+        return Response({'message': 'Note deleted successfully.'}, status=status.HTTP_200_OK)

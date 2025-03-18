@@ -80,3 +80,15 @@ class UserSheetProgress(models.Model):
     def __str__(self):
         return f"{self.user.display_name} - {self.sheet.name} Progress"
 
+
+class UserNote(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='notes')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='notes')
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']  # newest first
+
+    def __str__(self):
+        return f"Note by {self.user.display_name} on {self.question.question}"

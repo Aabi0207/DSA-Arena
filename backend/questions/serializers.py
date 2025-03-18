@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import DSASheet, Topic, Question, UserQuestionStatus, UserSheetProgress
-from questions.models import Topic, Question
+from questions.models import Topic, Question, UserNote
 
 class DSASheetSerializer(serializers.ModelSerializer):
     class Meta:
@@ -109,3 +109,9 @@ class TopicWithQuestionsSerializer(serializers.ModelSerializer):
                 'is_solved': UserQuestionStatus.objects.filter(user=user, question=q, status="SOLVED").exists() if user and user.is_authenticated else False,
             })
         return data
+
+
+class UserNoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserNote
+        fields = ['id', 'content', 'created_at']
