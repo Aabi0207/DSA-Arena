@@ -58,12 +58,12 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
     try {
       await updateStatus(question.id, action);
       setIsSaved(newSaved);
-      onStatusChange?.({
-        questionId: question.id,
-        isSolved,
-        isSaved: newSaved,
-        difficulty: question.difficulty,
-      });
+      // onStatusChange?.({
+      //   questionId: question.id,
+      //   isSolved,
+      //   isSaved: newSaved,
+      //   difficulty: question.difficulty,
+      // });
     } catch {
       alert("Failed to update saved status.");
     }

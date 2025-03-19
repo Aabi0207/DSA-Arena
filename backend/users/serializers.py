@@ -11,7 +11,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         validated_data['password'] = make_password(validated_data['password'])
-        validated_data['is_accepted'] = False
+        validated_data['is_accepted'] = True
         random_num = random.randint(1, 10)
         validated_data['profile_photo'] = f'profile_pics/{random_num}.jpg'
         random_num = random.randint(1, 3)
