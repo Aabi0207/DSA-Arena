@@ -4,7 +4,8 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import SheetPage from "./pages/SheetPage";
 import { AuthProvider } from "./contexts/AuthContext";
-import "./App.css"
+import { useEffect, useState } from "react";
+import "./App.css";
 
 const App = () => {
   return (
@@ -16,6 +17,30 @@ const App = () => {
 
 const AppRoutes = () => {
   const { user } = useAuth();
+  const [isAuthLoaded, setIsAuthLoaded] = useState(false);
+
+  useEffect(() => {
+    // Wait for a short moment to ensure user is read from localStorage
+    const timer = setTimeout(() => {
+      setIsAuthLoaded(true);
+    }, 100); // can adjust delay if needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (isAuthLoaded) {
+      const loader = document.getElementById("initial-loader");
+      if (loader) {
+        loader.classList.add("fade-out");
+        setTimeout(() => {
+          loader.remove();
+        }, 500); // matches the CSS transition duration
+      }
+    }
+  }, [isAuthLoaded]);
+
+  if (!isAuthLoaded) return null; // don't render anything until ready
 
   return (
     <Router>

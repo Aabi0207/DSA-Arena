@@ -1,17 +1,19 @@
-// src/components/LoadingScreen.jsx
+// components/Loading.jsx
 import React from "react";
-import "./LoadingScreen.css";
+import "./Loading.css";
 
-const LoadingScreen = () => {
+const Loading = () => {
   return (
     <div className="loading-screen">
       <div className="loader">
-        <div className="circle circle1"></div>
-        <div className="circle circle2"></div>
-        <div className="circle circle3"></div>
+        <div className="outer-ring pink-ring"></div>
+        <div className="outer-ring white-ring"></div>
+        <div className="wave-circle">
+          <div className="wave"></div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default LoadingScreen;
+export default Loading;

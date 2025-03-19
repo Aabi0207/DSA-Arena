@@ -5,6 +5,7 @@ import Progress from "./Progress";
 import QuestionList from "../QuestionList/QuestionList";
 import "./Sheet.css";
 import Notes from "../Notes/Notes";
+import LoadingScreen from "../Loading/Loading";
 
 const Sheet = ({ sheetId }) => {
   const [sheet, setSheet] = useState(null);
@@ -120,6 +121,8 @@ const Sheet = ({ sheetId }) => {
           onClose={handleNotesClose}
         />
       )}
+
+      {/* <LoadingScreen></LoadingScreen> */}
     </div>
   );
 };

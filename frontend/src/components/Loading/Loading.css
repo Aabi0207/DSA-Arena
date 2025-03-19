@@ -1,4 +1,4 @@
-/* src/components/LoadingScreen.css */
+/* LoadingScreen.css */
 .loading-screen {
     position: fixed;
     top: 0;
@@ -14,54 +14,88 @@
   
   .loader {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
   }
   
-  .circle {
+  /* Outer Rotating Rings */
+  .outer-ring {
     position: absolute;
     border: 4px solid transparent;
     border-radius: 50%;
-    animation: pulse 1.5s ease-out infinite;
+    animation: rotate 1.2s linear infinite;
   }
   
-  .circle1 {
-    width: 100px;
-    height: 100px;
-    border-color: #ff007f;
+  .pink-ring {
+    width: 80px;
+    height: 80px;
+    border-top: 4px solid #ff007f;
+    border-left: 4px solid #ff007f;
     animation-delay: 0s;
   }
   
-  .circle2 {
-    width: 70px;
-    height: 70px;
-    border-color: #ffffff;
-    animation-delay: 0.3s;
-    top: 15px;
-    left: 15px;
+  .white-ring {
+    width: 60px;
+    height: 60px;
+    border-top: 3px solid #fff;
+    border-right: 3px solid #fff;
+    top: 10px;
+    left: 10px;
+    animation-delay: -0.5s;
   }
   
-  .circle3 {
-    width: 40px;
-    height: 40px;
-    border-color: #00cfff;
-    animation-delay: 0.6s;
-    top: 30px;
-    left: 30px;
-  }
-  
-  @keyframes pulse {
+  @keyframes rotate {
     0% {
-      transform: scale(0.9);
-      opacity: 0.8;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 1;
+      transform: rotate(0deg);
     }
     100% {
-      transform: scale(0.9);
-      opacity: 0.8;
+      transform: rotate(360deg);
     }
+  }
+  
+  /* Inner Wave Fill Circle */
+  .wave-circle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #00cfff;
+    background-color: #0a3d5e;
+    z-index: 2;
+  }
+  
+  .wave {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 200%;
+    background: #00cfff;
+    border-radius: 40%;
+    animation: waveAnimation 2s linear infinite;
+    transform: translateX(-50%);
+  }
+  
+  @keyframes waveAnimation {
+    0% {
+      transform: translateX(-50%) translateY(10%);
+    }
+    50% {
+      transform: translateX(-60%) translateY(0%);
+    }
+    100% {
+      transform: translateX(-50%) translateY(10%);
+    }
+  }
+  
+  .loading-screen {
+    transition: opacity 0.5s ease;
+    opacity: 1;
+  }
+  .loading-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
   }
   
