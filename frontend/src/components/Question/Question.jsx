@@ -5,7 +5,7 @@ import { ClipboardCheck, Bookmark, CirclePlus } from "lucide-react";
 import { useAuth } from "../../contexts/AuthContext";
 import HoverMessage from "../HoverMessage/HoverMessage";
 
-const Question = ({ question, onStatusChange, onNotesClick }) => {
+const Question = ({ question, onStatusChange, onNotesClick, isSavedView = false }) => {
   const [isSolved, setIsSolved] = useState(question.is_solved);
   const [isSaved, setIsSaved] = useState(question.is_saved);
   const { user } = useAuth();
@@ -58,12 +58,15 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
     try {
       await updateStatus(question.id, action);
       setIsSaved(newSaved);
-      // onStatusChange?.({
-      //   questionId: question.id,
-      //   isSolved,
-      //   isSaved: newSaved,
-      //   difficulty: question.difficulty,
-      // });
+      if (isSavedView) {
+        // Only call parent update in Saved view (to remove question from list)
+        onStatusChange?.({
+          questionId: question.id,
+          isSolved,
+          isSaved: newSaved,
+          difficulty: question.difficulty,
+        });
+      }
     } catch {
       alert("Failed to update saved status.");
     }
@@ -88,13 +91,13 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
     <div className={getContainerBorderClass()}>
       <div className="checkbox leftmost">
         <HoverMessage message={"Mark as Solved"}>
-        <input
-          type="checkbox"
-          className="custom-checkbox"
-          checked={isSolved}
-          onChange={handleCheckboxToggle}
-          style={{ accentColor: isSolved ? "#00ffff" : undefined }}
-        />
+          <input
+            type="checkbox"
+            className="custom-checkbox"
+            checked={isSolved}
+            onChange={handleCheckboxToggle}
+            style={{ accentColor: isSolved ? "#00ffff" : undefined }}
+          />
         </HoverMessage>
       </div>
 
@@ -112,14 +115,14 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
       <div className="checkbox solution-icon-box">
         {question.solution ? (
           <HoverMessage message={"Solution"}>
-          <a
-            href={question.solution}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={getIconColorClass()}
-          >
-            <ClipboardCheck size={28} />
-          </a>
+            <a
+              href={question.solution}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={getIconColorClass()}
+            >
+              <ClipboardCheck size={28} />
+            </a>
           </HoverMessage>
         ) : (
           <span className={getTextColorClass()}>-</span>
@@ -128,17 +131,17 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
 
       <div className="checkbox platform-icon-box">
         <HoverMessage message={"Solve"}>
-        <a
-          href={question.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="platform-icon"
-        >
-          <img
-            src={`/platforms/${question.platform}.png`}
-            alt={question.platform}
-          />
-        </a>
+          <a
+            href={question.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="platform-icon"
+          >
+            <img
+              src={`/platforms/${question.platform}.png`}
+              alt={question.platform}
+            />
+          </a>
         </HoverMessage>
       </div>
 
@@ -150,30 +153,30 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
 
       <div className="checkbox">
         <HoverMessage message={"Save"}>
-        <button className="bookmark-btn" onClick={handleBookmarkToggle}>
-          <Bookmark
-            size={28}
-            className={`bookmark-icon ${
-              isSaved ? "active" : isSolved ? "solved" : ""
-            }`}
-          />
-        </button>
+          <button className="bookmark-btn" onClick={handleBookmarkToggle}>
+            <Bookmark
+              size={28}
+              className={`bookmark-icon ${
+                isSaved ? "active" : isSolved ? "solved" : ""
+              }`}
+            />
+          </button>
         </HoverMessage>
       </div>
 
       <div className="checkbox notes-icon-box rightmost">
         <HoverMessage message={"Add Note"}>
-        <button
-          className="notes-btn"
-          onClick={() => onNotesClick?.(question.id, user.email)}
-        >
-          <CirclePlus
-            size={28}
-            className={`notes-icon ${
-              isSaved ? "active" : isSolved ? "solved" : ""
-            }`}
-          />
-        </button>
+          <button
+            className="notes-btn"
+            onClick={() => onNotesClick?.(question.id, user.email)}
+          >
+            <CirclePlus
+              size={28}
+              className={`notes-icon ${
+                isSaved ? "active" : isSolved ? "solved" : ""
+              }`}
+            />
+          </button>
         </HoverMessage>
       </div>
     </div>

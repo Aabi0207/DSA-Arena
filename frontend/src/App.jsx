@@ -6,6 +6,7 @@ import SheetPage from "./pages/SheetPage";
 import { AuthProvider } from "./contexts/AuthContext";
 import { useEffect, useState } from "react";
 import "./App.css";
+import SavedPage from "./pages/SavedPage";
 
 const App = () => {
   return (
@@ -49,6 +50,7 @@ const AppRoutes = () => {
         <Route path="/login" element={user ? <Navigate to="/sheet" /> : <LoginPage />} />
         <Route path="/register" element={user ? <Navigate to="/sheet" /> : <RegisterPage />} />
         <Route path="/sheet" element={user ? <SheetPage /> : <Navigate to="/login" />} />
+        <Route path="/saved" element={user ? <SavedPage /> : <Navigate to="/login" />} />
       </Routes>
     </Router>
   );

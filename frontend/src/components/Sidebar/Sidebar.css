@@ -139,6 +139,12 @@
   color: #00ffff !important;
 }
 
+.active-section .dsa-icon,
+.active-section .sidebar-text {
+  stroke: #00ffff !important;
+  color: #00ffff !important;
+}
+
 /* Sidebar Logo */
 .sidebar-logo {
   width: 120px;
@@ -210,4 +216,18 @@
 
 .close-icon:hover {
   stroke: red;
+}
+
+.sidebar-section.active-section {
+  color: #00ffff;
+  font-weight: 600;
+}
+
+.sheet-item.active-sheet {
+  color: #00ffff;
+  font-weight: 600;
+}
+
+.icon {
+  transition: stroke 0.3s, color 0.3s;
 }

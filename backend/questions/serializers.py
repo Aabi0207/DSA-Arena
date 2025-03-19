@@ -115,3 +115,20 @@ class UserNoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserNote
         fields = ['id', 'content', 'created_at']
+
+
+class SavedQuestionSerializer(serializers.ModelSerializer):
+    is_saved = serializers.SerializerMethodField()
+    is_solved = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Question
+        fields = ['id', 'question', 'difficulty', 'platform', 'link', 'solution', 'is_saved', 'is_solved']
+
+    def get_is_saved(self, obj):
+        user = self.context.get('user')
+        return UserQuestionStatus.objects.filter(user=user, question=obj, status="SAVED").exists()
+
+    def get_is_solved(self, obj):
+        user = self.context.get('user')
+        return UserQuestionStatus.objects.filter(user=user, question=obj, status="SOLVED").exists()

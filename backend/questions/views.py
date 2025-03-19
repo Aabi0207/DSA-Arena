@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
 from .models import DSASheet, UserSheetProgress, CustomUser, Topic, Question, SCORE_MAPPING, UserQuestionStatus, UserNote
-from .serializers import DSASheetSerializer, DSASheetDetailSerializer, UserSheetProgressSerializer, TopicWithQuestionsSerializer, UserNoteSerializer
+from .serializers import DSASheetSerializer, DSASheetDetailSerializer, UserSheetProgressSerializer, TopicWithQuestionsSerializer, UserNoteSerializer, SavedQuestionSerializer
 from users.utils import calculate_rank
 
 
@@ -198,3 +198,40 @@ class UserNoteView(APIView):
 
         note.delete()
         return Response({'message': 'Note deleted successfully.'}, status=status.HTTP_200_OK)
+
+
+class SavedQuestionsByTopicView(APIView):
+
+    def get(self, request):
+        email = request.query_params.get("email")
+        if not email:
+            return Response({"error": "Email is required"}, status=400)
+
+        try:
+            user = CustomUser.objects.get(email=email)
+        except CustomUser.DoesNotExist:
+            return Response({"error": "User not found"}, status=404)
+
+        saved_statuses = UserQuestionStatus.objects.filter(user=user, status="SAVED").select_related('question__topic__sheet')
+        
+        # Create mapping from topic to list of questions
+        topic_map = {}
+        for status in saved_statuses:
+            question = status.question
+            topic_obj = question.topic
+            topic_key = f"{topic_obj.name} ({topic_obj.sheet.name})"
+            
+            if topic_key not in topic_map:
+                topic_map[topic_key] = []
+
+            topic_map[topic_key].append(question)
+
+        result = []
+        for topic_name, questions in topic_map.items():
+            serialized_questions = SavedQuestionSerializer(questions, many=True, context={'user': user}).data
+            result.append({
+                "name": topic_name,
+                "questions": serialized_questions
+            })
+
+        return Response(result)

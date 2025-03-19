@@ -35,6 +35,7 @@ const SheetPage = () => {
           sheets={sheets}
           activeSheetId={activeSheetId}
           onSheetSelect={handleSheetSelect}
+          activeSection="sheet"
         />
 
         {/* Vertical separator */}
@@ -44,7 +45,7 @@ const SheetPage = () => {
         />
 
         {/* Scrollable Sheet area */}
-        <div style={{ flex: 1, overflowY: "auto", overflowX: 'auto' }}>
+        <div style={{ flex: 1, overflowY: "auto", overflowX: "auto" }}>
           {activeSheetId && <Sheet sheetId={activeSheetId} />}
         </div>
       </div>
