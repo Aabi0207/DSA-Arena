@@ -1,0 +1,33 @@
+.hover-message-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .hover-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+    background-color: #000000;
+    border: 1px solid #3a3a3a;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999;
+  
+    white-space: nowrap;        /* ✅ Force single line */
+    width: fit-content;         /* ✅ Shrink to content size */
+    max-width: none;            /* ✅ Don't restrict width */
+    text-align: center;         /* optional */
+  }
+  .hover-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  

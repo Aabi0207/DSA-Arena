@@ -28,15 +28,17 @@
 .topic-title {
   font-family: 'Allan', cursive;
   font-size: 30px;
-  color: #ffffff;
+  color: #c5c5c5;
   line-height: 1.2;
+  font-weight: 700;
 }
 
 .solved-count {
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 18px;
+  color: #c5c5c5;
+  font-size: 22px;
   margin-left: 6px;
+  font-family: 'Allan', cursive;
+  font-weight: 700;
 }
 
 .highlight {

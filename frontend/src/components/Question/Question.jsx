@@ -1,8 +1,9 @@
 // src/components/Question/Question.jsx
 import React, { useState } from "react";
 import "./Question.css";
-import { NotebookPen, Bookmark, CirclePlus } from "lucide-react";
+import { ClipboardCheck, Bookmark, CirclePlus } from "lucide-react";
 import { useAuth } from "../../contexts/AuthContext";
+import HoverMessage from "../HoverMessage/HoverMessage";
 
 const Question = ({ question, onStatusChange, onNotesClick }) => {
   const [isSolved, setIsSolved] = useState(question.is_solved);
@@ -86,6 +87,7 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
   return (
     <div className={getContainerBorderClass()}>
       <div className="checkbox leftmost">
+        <HoverMessage message={"Mark as Solved"}>
         <input
           type="checkbox"
           className="custom-checkbox"
@@ -93,6 +95,7 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
           onChange={handleCheckboxToggle}
           style={{ accentColor: isSolved ? "#00ffff" : undefined }}
         />
+        </HoverMessage>
       </div>
 
       <div className="q-name">
@@ -108,20 +111,23 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
 
       <div className="checkbox">
         {question.solution ? (
+          <HoverMessage message={"Solution"}>
           <a
             href={question.solution}
             target="_blank"
             rel="noopener noreferrer"
             className={getIconColorClass()}
           >
-            <NotebookPen size={28} />
+            <ClipboardCheck size={28} />
           </a>
+          </HoverMessage>
         ) : (
           <span className={getTextColorClass()}>-</span>
         )}
       </div>
 
       <div className="checkbox">
+        <HoverMessage message={"Solve"}>
         <a
           href={question.link}
           target="_blank"
@@ -133,6 +139,7 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
             alt={question.platform}
           />
         </a>
+        </HoverMessage>
       </div>
 
       <div className="checkbox">
@@ -142,6 +149,7 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
       </div>
 
       <div className="checkbox">
+        <HoverMessage message={"Save"}>
         <button className="bookmark-btn" onClick={handleBookmarkToggle}>
           <Bookmark
             size={28}
@@ -150,9 +158,11 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
             }`}
           />
         </button>
+        </HoverMessage>
       </div>
 
       <div className="checkbox notes-icon-box rightmost">
+        <HoverMessage message={"Add Note"}>
         <button
           className="notes-btn"
           onClick={() => onNotesClick?.(question.id, user.email)}
@@ -164,6 +174,7 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
             }`}
           />
         </button>
+        </HoverMessage>
       </div>
     </div>
   );
