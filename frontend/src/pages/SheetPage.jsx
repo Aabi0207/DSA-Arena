@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar/Navbar";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Sheet from "../components/Sheet/Sheet";
 
@@ -25,18 +24,10 @@ const SheetPage = () => {
 
   return (
     <>
-      <Navbar />
-
-      {/* Top separator under navbar */}
-      <div
-        className="separator"
-        style={{ width: "100%", height: "1px", backgroundColor: "#2d2d2d" }}
-      />
-
       <div
         style={{
           display: "flex",
-          height: "calc(100vh - 85px)", // assuming Navbar height is 85px
+          height: "100vh", // assuming Navbar height is 85px
         }}
       >
         {/* Sidebar - fixed width */}

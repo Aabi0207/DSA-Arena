@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Allan:wght@700&display=swap');
 
 .questionlist-wrapper {
-  width: calc(100vw - 375px);
+  max-width: calc(100vw - 375px);
   border: 1px solid #2d2d2d;
   border-radius: 10px;
   padding: 8px 14px;
@@ -55,4 +55,18 @@
 
 .questionlist-question-row {
   margin-bottom: 6px;
+}
+
+@media screen and (max-width: 768px){
+  .questionlist-wrapper{
+    max-width: 80vw;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .questionlist-body {
+    padding-left: 0px;
+    display: flex;
+    align-items: center;
+  }
 }

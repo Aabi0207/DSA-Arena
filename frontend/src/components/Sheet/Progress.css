@@ -138,6 +138,7 @@
 @media screen and (max-width: 1080px) {
   .progress-bar-container {
     flex-direction: column;
+    /* width: 80vw; */
   }
   .progress-bar-right{
     display: flex;
@@ -145,9 +146,12 @@
   }
 }
 
-@media  screen and (max-width: 800px) {
+@media  screen and (max-width: 768px) {
   .progress-bar-right{
     flex-direction: column;
+  }
+  .progress-bar-container{
+    width: 80vw;
   }
   
 }

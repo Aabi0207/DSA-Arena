@@ -5,7 +5,7 @@ import Progress from "./Progress";
 import QuestionList from "../QuestionList/QuestionList";
 import "./Sheet.css";
 import Notes from "../Notes/Notes";
-import LoadingScreen from "../Loading/Loading";
+import Header from "../Header/Header";
 
 const Sheet = ({ sheetId }) => {
   const [sheet, setSheet] = useState(null);
@@ -88,6 +88,7 @@ const Sheet = ({ sheetId }) => {
   };
 
   return (
+    <><Header titleText={sheet?.name}></Header>
     <div className="sheet-wrapper">
       {loading && (
         <AlertPopup type="info" message="Loading sheet and progress..." />
@@ -124,6 +125,7 @@ const Sheet = ({ sheetId }) => {
 
       {/* <LoadingScreen></LoadingScreen> */}
     </div>
+    </>
   );
 };
 

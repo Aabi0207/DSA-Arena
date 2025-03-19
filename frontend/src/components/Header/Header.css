@@ -1,0 +1,77 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px;
+  background-color: #000;
+  position: relative;
+  padding-left: 80px; /* Leave space for hamburger sidebar */
+  box-sizing: border-box;
+}
+
+.header-title {
+  font-family: 'Allan', cursive;
+  font-size: 48px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  flex-grow: 1;
+  padding-right: 60px; /* Prevent text overlap with profile */
+}
+
+/* Profile Styling */
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid white;
+  overflow: hidden;
+  cursor: pointer;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.profile-wrapper.gold {
+  border-color: #FFD700;
+}
+.profile-wrapper.silver {
+  border-color: #C0C0C0;
+}
+.profile-wrapper.bronze {
+  border-color: #CD7F32;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 💡 Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 16px 20px;
+    padding-left: 80px; /* still leave space on mobile */
+  }
+
+  .header-title {
+    font-size: 32px;
+    padding-right: 70px; /* adjust spacing for mobile profile pic */
+  }
+
+  .profile-wrapper {
+    width: 42px;
+    height: 42px;
+  }
+
+  .profile-pic {
+    width: 36px;
+    height: 36px;
+  }
+}

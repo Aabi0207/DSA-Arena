@@ -4,8 +4,8 @@
   background-color: #000;
   color: #80868b;
   width: 260px;
-  height: 60vh;
-  padding: 20px 15px;
+  height: 98vh;
+  padding: 8px 15px;
   box-sizing: border-box;
   margin-left: 15px;
 }
@@ -137,4 +137,77 @@
 .selected-dsa .chevron-icon {
   stroke: #00ffff !important;
   color: #00ffff !important;
+}
+
+/* Sidebar Logo */
+.sidebar-logo {
+  width: 120px;
+  margin-bottom: 20px;
+  display: block;
+  margin-bottom: 50px;
+}
+
+@media (min-width: 768px) {
+  .desktop-logo {
+    display: block;
+  }
+}
+
+
+/* Hamburger Icon */
+.hamburger-icon {
+  display: flex;
+  padding: 10px;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 999;
+  background-color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .hamburger-icon {
+    display: none;
+  }
+}
+
+/* Mobile Sidebar Slide-in Effect */
+.sidebar {
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 260px;
+    background-color: #000;
+    z-index: 998;
+    transform: translateX(-100%);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .sidebar.open-mobile {
+    transform: translateX(0);
+  }
+
+  .sidebar-logo{
+    margin-left: 10px;
+
+  }
+}
+
+/* Close icon */
+.close-icon {
+  stroke: #80868b;
+  cursor: pointer;
+  transition: stroke 0.3s;
+}
+
+.close-icon:hover {
+  stroke: red;
 }

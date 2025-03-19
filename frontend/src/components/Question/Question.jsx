@@ -109,7 +109,7 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
         </a>
       </div>
 
-      <div className="checkbox">
+      <div className="checkbox solution-icon-box">
         {question.solution ? (
           <HoverMessage message={"Solution"}>
           <a
@@ -126,7 +126,7 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
         )}
       </div>
 
-      <div className="checkbox">
+      <div className="checkbox platform-icon-box">
         <HoverMessage message={"Solve"}>
         <a
           href={question.link}
@@ -142,7 +142,7 @@ const Question = ({ question, onStatusChange, onNotesClick }) => {
         </HoverMessage>
       </div>
 
-      <div className="checkbox">
+      <div className="checkbox difficulty-icon-box">
         <span className={`difficulty ${question.difficulty.toLowerCase()}`}>
           {question.difficulty}
         </span>

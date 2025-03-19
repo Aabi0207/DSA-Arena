@@ -2,6 +2,7 @@
   width: calc(100vw - 275px);
   padding: 1rem 1rem;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .sheet-title {
@@ -14,11 +15,25 @@
 
 .sheet-description {
   font-size: 1rem;
-  color: white;
+  color: #e0e0e0; /* slightly less white */
   max-width: calc(100vw - 300px);
   margin: 0 auto;
   padding: 0 1rem;
   line-height: 1.6;
 }
 
+/* 💡 Responsive styles */
+@media screen and (max-width: 768px) {
+  .sheet-header-container {
+    width: 100vw;
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
 
+  .sheet-description {
+    font-size: 0.95rem;
+    max-width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+  }
+}

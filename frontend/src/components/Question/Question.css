@@ -215,3 +215,90 @@
   stroke: #ee4b2b;
 }
 
+@media screen and (max-width: 1200px){
+  .question-container{
+    max-width: 80vw;
+  }
+  .difficulty-icon-box{
+    display: none;
+  }
+
+  .checkbox.leftmost {
+    width: calc((75vw) * 0.09);
+  }
+  
+  .q-name {
+    width: calc((75vw) * 0.45);
+  }
+  
+  .solution-icon-box {
+    width: calc((75vw) * 0.13);
+  }
+  
+  .notes-icon-box {
+    width: calc((75vw) * 0.1);
+  }
+}
+
+@media screen and (max-width: 1000px){
+  .question-container{
+    max-width: 80vw;
+  }
+  .difficulty-icon-box{
+    display: none;
+  }
+
+  .platform-icon-box{
+    display: none;
+  }
+
+  .solution-icon-box{
+    display: none;
+  }
+
+  .checkbox{
+    width: calc((75vw) * 0.13);
+  }
+
+  .checkbox.leftmost {
+    width: calc((75vw) * 0.1);
+  }
+  
+  .q-name {
+    width: calc((75vw) * 0.45);
+  }
+  
+  .solution-icon-box {
+    width: calc((75vw) * 0.16);
+  }
+  
+  .notes-icon-box {
+    width: calc((75vw) * 0.12);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .question-container{
+    width: 75vw;
+  }
+
+  .checkbox{
+    width: calc((75vw) * 0.15);
+  }
+
+  .checkbox.leftmost {
+    width: calc((75vw) * 0.13);
+  }
+  
+  .q-name {
+    width: calc((75vw) * 0.55);
+  }
+  
+  .solution-icon-box {
+    width: calc((75vw) * 0.13);
+  }
+  
+  .notes-icon-box {
+    width: calc((75vw) * 0.15);
+  }
+}
