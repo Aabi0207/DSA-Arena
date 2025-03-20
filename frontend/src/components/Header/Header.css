@@ -7,6 +7,7 @@
   position: relative;
   padding-left: 80px; /* Leave space for hamburger sidebar */
   box-sizing: border-box;
+  min-height: 80px;
 }
 
 .header-title {
@@ -27,7 +28,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 3px solid white;
+  border: 3px solid #00ffff;
   overflow: hidden;
   cursor: pointer;
   position: absolute;

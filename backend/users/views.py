@@ -4,7 +4,7 @@ from rest_framework import status
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import CustomUser
-from .serializers import UserRegistrationSerializer
+from .serializers import UserRegistrationSerializer, CustomUserSerializer, ProfileBannerUpdateSerializer, ProfilePhotoUpdateSerializer, ProfileInfoUpdateSerializer, SocialLinksUpdateSerializer
 from rest_framework.decorators import api_view
 from django.contrib.auth import authenticate
 
@@ -80,6 +80,7 @@ class UserLoginView(APIView):
                     'rank': user.rank,
                     'privilege': user.privilege,
                     'is_accepted': user.is_accepted,
+                    # 'profile_banner': user.profile_banner if user.profile_banner else None,
                 }
 
                 return Response({
@@ -91,3 +92,70 @@ class UserLoginView(APIView):
                 return Response({'success': False, 'message': 'User is not accepted yet.'}, status=status.HTTP_403_FORBIDDEN)
         else:
             return Response({'success': False, 'message': 'Invalid credentials.'}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+class UserProfileView(APIView):
+    def post(self, request):
+        username = request.data.get("username")
+
+        if not username:
+            return Response({"error": "username is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            user = CustomUser.objects.get(username=username)
+            serializer = CustomUserSerializer(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except CustomUser.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+        
+    
+class UpdateProfilePhotoView(APIView):
+    def post(self, request):
+        username = request.data.get('username')
+        try:
+            user = CustomUser.objects.get(username=username)
+        except CustomUser.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = ProfilePhotoUpdateSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({
+                "message": "Profile photo updated successfully",
+                "profile_photo": user.profile_photo.url if user.profile_photo else None
+            })
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class UpdateProfileBannerView(APIView):
+    def post(self, request):
+        username = request.data.get('username')
+        try:
+            user = CustomUser.objects.get(username=username)
+        except CustomUser.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = ProfileBannerUpdateSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "Profile banner updated successfully"})
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+@api_view(['POST'])
+def update_profile_info(request):
+    serializer = ProfileInfoUpdateSerializer(data=request.data)
+    if serializer.is_valid():
+        user_instance = serializer.validated_data.pop('user_instance')
+        serializer.update(user_instance, serializer.validated_data)
+        return Response({"message": "Profile info updated successfully."}, status=status.HTTP_200_OK)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def update_social_links(request):
+    serializer = SocialLinksUpdateSerializer(data=request.data)
+    if serializer.is_valid():
+        user_instance = serializer.validated_data.pop('user_instance')
+        serializer.update(user_instance, serializer.validated_data)
+        return Response({"message": "Social links updated successfully."}, status=status.HTTP_200_OK)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

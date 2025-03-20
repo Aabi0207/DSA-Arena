@@ -1,0 +1,174 @@
+.user-info-container{
+    max-width: 50%;
+    margin-top: 40px;
+}
+
+.user-info-social-container{
+  max-width: 30%;
+  margin-top: 40px;
+  margin-right: 100px;
+}
+
+.upper-section{
+    margin-bottom: 40px;
+}
+
+.user-name{
+    color: #898e93;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 2px 0px;
+}
+
+.display-name{
+    color: #e8eaed;
+    font-size: 52px;
+    font-weight: 800;
+    margin: 2px 0px;
+}
+
+.tagline{
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.logo-info{
+    display: flex;
+    gap: 10px;
+    font-size: 16px;
+    color: #898e93;
+    stroke: #898e93;
+    padding: 4px 0px;
+}
+.logo-info span{
+    font-size: 16px;
+    color: #898e93;
+}
+
+.logo {
+    stroke: #898e93;
+}
+
+.input-field {
+    background: transparent;
+    border: 1px solid white;
+    padding: 6px 10px;
+    color: #e8eaed;
+    border-radius: 6px;
+    outline: none;
+    margin-top: 6px;
+    width: 100%;
+  }
+  
+  .location-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .location-input {
+    padding-left: 30px;
+  }
+  
+  .location-icon {
+    position: absolute;
+    left: 8px;
+    color: #e8eaed;
+    pointer-events: none;
+  }
+  
+  .action-btns {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  .action-btns-social {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .save-btn {
+    padding: 8px 20px;
+    background: #ffffff;
+    border: none;
+    border-radius: 6px;
+    color: #121212;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .cancel-btn {
+    padding: 8px 20px;
+    background: #3a3a3a;
+    border: none;
+    border-radius: 6px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .edit-btn {
+    margin-top: 20px;
+    padding: 8px 16px;
+    background: #e8eaed;
+    border: none;
+    border-radius: 6px;
+    color: #121212;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .social-link {
+    margin-left: 0px;
+    color: #898e93;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .social-link:hover {
+    text-decoration: underline;
+  }
+  
+
+  @media screen and (max-width: 1080px) {
+    .user-info-container{
+      max-width: 90%;
+
+    }
+
+    .user-info-social-container{
+      max-width: 25%;
+      margin-right: 0px;
+    }
+
+    .display-name{
+      font-size: 24px;
+    }
+
+    .user-name{
+      font-size: 14px;
+    }
+
+    .tagline{
+      font-size: 16px;
+    }
+
+    .logo{
+      width: 15px;
+    }
+
+    .location-icon{
+      width: 15px;
+    }
+
+    .logo-info span{
+      font-size: 12px;
+    }
+
+    .action-btns-social{
+      flex-direction: column;
+    }
+
+  }

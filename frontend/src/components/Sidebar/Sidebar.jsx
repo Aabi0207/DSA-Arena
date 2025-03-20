@@ -55,9 +55,12 @@ const Sidebar = ({ sheets = [], activeSheetId, onSheetSelect, activeSection = "s
         {/* Profile */}
         <div
           className={`sidebar-section ${activeSection === "profile" ? "active-section" : ""}`}
-          onClick={handleComingSoon}
+          onClick={() => {
+            navigate(`/profile/${JSON.parse(localStorage.getItem('user'))['username']}`);
+            setIsMobileSidebarOpen(false);
+          }}
         >
-          <User className="icon" />
+          <User className="icon dsa-icon" />
           <span className="sidebar-text">Profile</span>
         </div>
 
@@ -66,7 +69,7 @@ const Sidebar = ({ sheets = [], activeSheetId, onSheetSelect, activeSection = "s
           className={`sidebar-section ${activeSection === "leaderboard" ? "active-section" : ""}`}
           onClick={handleComingSoon}
         >
-          <Trophy className="icon" />
+          <Trophy className="icon dsa-icon" />
           <span className="sidebar-text">Leaderboard</span>
         </div>
 

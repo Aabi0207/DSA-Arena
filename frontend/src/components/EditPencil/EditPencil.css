@@ -1,0 +1,21 @@
+.edit-icon-button {
+    background-color: #111; /* black background */
+    border: 2px solid white; /* white border */
+    border-radius: 50%; /* make it a circle */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-icon-button:hover {
+    background-color: #2a2a2a;
+  }
+  
+  .edit-icon {
+    stroke: white; /* white pencil stroke */
+  }
+  
