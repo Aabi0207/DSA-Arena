@@ -67,7 +67,10 @@ const Sidebar = ({ sheets = [], activeSheetId, onSheetSelect, activeSection = "s
         {/* Leaderboard */}
         <div
           className={`sidebar-section ${activeSection === "leaderboard" ? "active-section" : ""}`}
-          onClick={handleComingSoon}
+          onClick={() => {
+            navigate(`/leaderboard`);
+            setIsMobileSidebarOpen(false);
+          }}
         >
           <Trophy className="icon dsa-icon" />
           <span className="sidebar-text">Leaderboard</span>

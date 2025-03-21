@@ -119,3 +119,9 @@ class SocialLinksUpdateSerializer(serializers.ModelSerializer):
         instance.portfolio = validated_data.get('portfolio', instance.portfolio)
         instance.save()
         return instance
+
+
+class UserSummarySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['username','display_name', 'profile_photo', 'score', 'rank']

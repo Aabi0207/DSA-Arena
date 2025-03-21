@@ -8,13 +8,14 @@
   padding-left: 80px; /* Leave space for hamburger sidebar */
   box-sizing: border-box;
   min-height: 80px;
+  border-bottom: 1px solid #3a3a3a;
 }
 
 .header-title {
-  font-family: 'Allan', cursive;
-  font-size: 48px;
-  font-weight: 700;
-  color: white;
+  /* font-family: 'Allan', cursive; */
+  font-size: 50px;
+  font-weight: 800;
+  color: #00ffff;
   text-align: center;
   flex-grow: 1;
   padding-right: 60px; /* Prevent text overlap with profile */

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MapPinned, CalendarDays } from "lucide-react";
+import { MapPinned, CalendarDays, Award } from "lucide-react";
 import "./UserInfo.css";
 
 const UserInfo = ({ userInfo, isEditable }) => {
@@ -35,16 +35,19 @@ const UserInfo = ({ userInfo, isEditable }) => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:8000/users/profile-info/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: userInfo.username,
-          ...formData,
-        }),
-      });
+      const response = await fetch(
+        "http://127.0.0.1:8000/users/profile-info/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: userInfo.username,
+            ...formData,
+          }),
+        }
+      );
 
       if (response.ok) {
         setEditMode(false);
@@ -99,7 +102,9 @@ const UserInfo = ({ userInfo, isEditable }) => {
         ) : (
           <>
             <div className="display-name">{formData.display_name}</div>
-            {formData.tagline && <div className="user-name tagline">{formData.tagline}</div>}
+            {formData.tagline && (
+              <div className="user-name tagline">{formData.tagline}</div>
+            )}
             {/* {formData.pronouns && <div className="user-name">{formData.pronouns}</div>} */}
           </>
         )}
@@ -134,6 +139,10 @@ const UserInfo = ({ userInfo, isEditable }) => {
             <div className="logo-info">
               <CalendarDays size={18} className="logo" />
               <span>Date Joined: {formatDate(userInfo.date_joined)}</span>
+            </div>
+            <div className="logo-info">
+              <Award size={18} className="logo" />
+              <span>Rank: {userInfo.rank || "Unranked"}</span>
             </div>
           </>
         )}

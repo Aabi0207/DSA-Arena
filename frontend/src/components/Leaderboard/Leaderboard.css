@@ -1,0 +1,53 @@
+.first{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    max-width: 90%;
+    border: 1px solid #3a3a3a;
+    border-radius: 10px 10px 0 0;
+    margin: 0px auto;
+    margin-top: 70px;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.first:hover{
+    background-color: #2a2a2aab;
+}
+
+
+.name{
+    width: calc(100% * 0.35);
+}
+
+.others{
+    width: calc(100% * 0.13);
+}
+
+.first span{
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px){
+    .first{
+        width: 80%;
+        font-size: 12px;
+    }
+
+    .others{
+        width: calc((100% * 0.15));
+    }
+
+    .username{
+        display: none !important;
+        width: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .name{
+        width: calc(100% * 0.40);
+    }
+}

@@ -38,8 +38,8 @@
 }
 
 .topics-title {
-  font-size: 65px;
-  font-family: 'Allan', cursive;
+  font-size: 50px !important;
+  font-family: "Inter", sans-serif !important;
   font-weight: 700;
   color: #00ffff;
   text-align: center;

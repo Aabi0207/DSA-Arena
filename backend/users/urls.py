@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UserRegistrationView, check_username, check_email, UserLoginView, UserProfileView, UpdateProfileBannerView, UpdateProfilePhotoView
+from .views import UserRegistrationView, check_username, check_email, UserLoginView, UserProfileView, UpdateProfileBannerView, UpdateProfilePhotoView, all_users_summary
 from .views import update_profile_info, update_social_links
 
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
     path('update-banner/', UpdateProfileBannerView.as_view(), name='update-profile-banner'),
     path('profile-info/', update_profile_info, name='update_profile_info'),
     path('social-links/', update_social_links, name='update_social_links'),
+    path('summary/', all_users_summary, name='all_users_summary'),
 ]

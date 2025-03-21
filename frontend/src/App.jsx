@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import SavedPage from "./pages/SavedPage";
 import ProfilePage from "./pages/ProfilePage";
+import LeaderboardPage from "./pages/LeaderboardPage";
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const AppRoutes = () => {
         <Route path="/register" element={user ? <Navigate to="/sheet" /> : <RegisterPage />} />
         <Route path="/sheet" element={user ? <SheetPage /> : <Navigate to="/login" />} />
         <Route path="/saved" element={user ? <SavedPage /> : <Navigate to="/login" />} />
+        <Route path="/leaderboard" element={user ? <LeaderboardPage /> : <Navigate to="/login" />} />
         <Route path="/profile/:username" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
       </Routes>
     </Router>

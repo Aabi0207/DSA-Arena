@@ -2,13 +2,13 @@
 def calculate_rank(score, max_score):
     percentage = (score / max_score) * 100
     if percentage > 95:
-        return "Surya Bhai"
+        return "Bahubali"
     elif percentage > 80:
         return "Rocky Bhai"
     elif percentage > 60:
-        return "Bahubali"
+        return "Pushpa Bahu"
     elif percentage > 40:
-        return "Lucky the Racer"
+        return "Mass"
     elif percentage > 20:
-        return "Aadi"
-    return "JADHAV"
+        return "Singham"
+    return "Chulbul Pandey"

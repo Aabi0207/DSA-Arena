@@ -1,0 +1,114 @@
+.row {
+  max-width: 90%;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin: 0px auto;
+  height: 65px;
+  font-weight: 500;
+  color: #3a3a3a;
+  border: 1px solid #3a3a3a;
+  justify-content: center;
+  position: relative;
+}
+
+.row:hover {
+  background-color: #2a2a2a;
+}
+
+.comman {
+  width: calc(100% * 0.13);
+}
+
+.name {
+  width: calc(100% * 0.35);
+}
+
+.row span {
+  display: flex;
+  justify-content: center;
+  color: #b0afaf;
+}
+
+.sep-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 3px solid #00ffff;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.wrapper.gold {
+  border-color: #ffd700;
+}
+.wrapper.silver {
+  border-color: #c0c0c0;
+}
+.wrapper.bronze {
+  border-color: #cd7f32;
+}
+
+.pfp {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.medal {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: -30px;
+}
+
+.rank-img {
+  width: 30px;
+}
+
+.rank-img-contain {
+  width: calc(100% * 0.13);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .row {
+    width: 80%;
+  }
+
+  /* Completely remove username span in mobile */
+  .username {
+    display: none !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Redistribute freed-up width */
+  .comman {
+    width: calc(100% * 0.15); /* +0.02% here */
+  }
+
+  .name {
+    width: calc(100% * 0.40); /* +0.05% here */
+    /* font-size: 14px; */
+  }
+
+  .rank-img-contain {
+    width: calc(100% * 0.15); /* +0.02% here */
+  }
+}

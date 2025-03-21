@@ -4,7 +4,7 @@ from rest_framework import status
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import CustomUser
-from .serializers import UserRegistrationSerializer, CustomUserSerializer, ProfileBannerUpdateSerializer, ProfilePhotoUpdateSerializer, ProfileInfoUpdateSerializer, SocialLinksUpdateSerializer
+from .serializers import UserRegistrationSerializer, CustomUserSerializer, ProfileBannerUpdateSerializer, ProfilePhotoUpdateSerializer, ProfileInfoUpdateSerializer, SocialLinksUpdateSerializer, UserSummarySerializer
 from rest_framework.decorators import api_view
 from django.contrib.auth import authenticate
 
@@ -159,3 +159,10 @@ def update_social_links(request):
         serializer.update(user_instance, serializer.validated_data)
         return Response({"message": "Social links updated successfully."}, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def all_users_summary(request):
+    users = CustomUser.objects.all()
+    serializer = UserSummarySerializer(users, many=True)
+    return Response({'users': serializer.data})
