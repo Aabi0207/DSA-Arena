@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Stepper, { Step } from "../Stepper/Stepper";
 import AlertPopup from "../AlertPopup/AlertPopup";
@@ -13,7 +13,19 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [sending, setSending] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1); // Track current step
+  const inputRefs = useRef([]); // Array of refs for each input field
   const { login } = useAuth();
+
+  // Auto-focus the input field when the step changes
+  useEffect(() => {
+    if (inputRefs.current[currentStep - 1]) {
+      // Focus the input field after a slight delay to allow the transition to complete
+      setTimeout(() => {
+        inputRefs.current[currentStep - 1].focus();
+      }, 300); // Adjust delay to match the transition duration
+    }
+  }, [currentStep]);
 
   const validateForm = () => {
     if (!formData.email.trim()) {
@@ -56,7 +68,7 @@ const Login = () => {
       if (response.data.success) {
         setErrorMessage("Login successful");
         login(response.data.user); // ✅ context handles localStorage
-        window.location.href = "/sheet"; // ✅ redirect
+        window.location.href = "/sheet/3"; // ✅ redirect
       } else {
         setErrorMessage(response.data.message || "Login failed.");
       }
@@ -84,6 +96,7 @@ const Login = () => {
           nextButtonText="Next"
           sending={sending}
           page="login"
+          onStepChange={setCurrentStep} // Pass the step change handler
         >
           <Step>
             <h2>Enter your Email</h2>
@@ -94,6 +107,7 @@ const Login = () => {
               onChange={handleChange}
               placeholder="Email"
               required
+              ref={(el) => (inputRefs.current[0] = el)} // Assign ref for the first input
             />
           </Step>
           <Step>
@@ -105,6 +119,7 @@ const Login = () => {
               onChange={handleChange}
               placeholder="Password"
               required
+              ref={(el) => (inputRefs.current[1] = el)} // Assign ref for the second input
             />
           </Step>
         </Stepper>

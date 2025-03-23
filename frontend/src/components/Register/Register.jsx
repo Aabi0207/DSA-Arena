@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Stepper, { Step } from "../Stepper/Stepper";
 import AlertPopup from "../AlertPopup/AlertPopup";
@@ -15,7 +15,28 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [sending, setSending] = useState(false);
+  const [currentStep, setCurrentStep] = useState(0);
+  const inputRefs = useRef([]); // Array of refs for each input field
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Initial mount auto focus
+    setTimeout(() => {
+      if (inputRefs.current[0]) {
+        inputRefs.current[0].focus();
+      }
+    }, 300);
+  }, []); // Only runs once on mount
+
+  // Auto-focus the input field when the step changes
+  useEffect(() => {
+    if (inputRefs.current[currentStep - 1]) {
+      // Focus the input field after a slight delay to allow the transition to complete
+      setTimeout(() => {
+        inputRefs.current[currentStep - 1].focus();
+      }, 300); // Adjust delay to match the transition duration
+    }
+  }, [currentStep]);
 
   const validateForm = async () => {
     if (!formData.username.trim()) {
@@ -26,7 +47,7 @@ const Register = () => {
       setErrorMessage("Username can only contain letters, numbers, and dashes.");
       return false;
     }
-  
+
     try {
       const res = await axios.get(
         `http://localhost:8000/users/check-username/?username=${formData.username}`
@@ -39,12 +60,12 @@ const Register = () => {
       setErrorMessage("Failed to validate username.");
       return false;
     }
-  
+
     if (!formData.display_name.trim()) {
       setErrorMessage("Display Name is required.");
       return false;
     }
-  
+
     if (!formData.email.trim()) {
       setErrorMessage("Email is required.");
       return false;
@@ -53,7 +74,7 @@ const Register = () => {
       setErrorMessage("Enter a valid email address.");
       return false;
     }
-  
+
     try {
       const emailCheck = await axios.get(
         `http://localhost:8000/users/check-email/?email=${formData.email}`
@@ -66,15 +87,14 @@ const Register = () => {
       setErrorMessage("Failed to validate email.");
       return false;
     }
-  
+
     if (!formData.password.trim()) {
       setErrorMessage("Password is required.");
       return false;
     }
-  
+
     return true;
   };
-  
 
   const handleChange = (e) => {
     setFormData({
@@ -108,7 +128,7 @@ const Register = () => {
       }
     } catch (error) {
       console.error(error);
-      setErrorMessage("Regestration failed.");
+      setErrorMessage("Registration failed.");
     } finally {
       setSending(false);
       setTimeout(() => setShowPopup(false), 3000);
@@ -126,6 +146,7 @@ const Register = () => {
           nextButtonText="Next"
           sending={sending}
           page='register'
+          onStepChange={setCurrentStep}
         >
           <Step>
             <h2>Choose a Username</h2>
@@ -136,6 +157,7 @@ const Register = () => {
               onChange={handleChange}
               placeholder="Username"
               required
+              ref={(el) => (inputRefs.current[0] = el)} // Assign ref for the first input
             />
           </Step>
           <Step>
@@ -147,6 +169,7 @@ const Register = () => {
               onChange={handleChange}
               placeholder="Display Name"
               required
+              ref={(el) => (inputRefs.current[1] = el)} // Assign ref for the second input
             />
           </Step>
           <Step>
@@ -158,6 +181,7 @@ const Register = () => {
               onChange={handleChange}
               placeholder="Email"
               required
+              ref={(el) => (inputRefs.current[2] = el)} // Assign ref for the third input
             />
           </Step>
           <Step>
@@ -169,6 +193,7 @@ const Register = () => {
               onChange={handleChange}
               placeholder="Password"
               required
+              ref={(el) => (inputRefs.current[3] = el)} // Assign ref for the fourth input
             />
           </Step>
         </Stepper>

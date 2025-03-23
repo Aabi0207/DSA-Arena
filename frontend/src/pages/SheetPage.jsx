@@ -1,26 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useParams } from "react-router-dom"; // Add useParams
 import Sidebar from "../components/Sidebar/Sidebar";
 import Sheet from "../components/Sheet/Sheet";
 
 const SheetPage = () => {
-  const [sheets, setSheets] = useState([]);
-  const [activeSheetId, setActiveSheetId] = useState(null);
-
-  useEffect(() => {
-    // Fetch sheets first
-    fetch("http://127.0.0.1:8000/questions/sheets")
-      .then((res) => res.json())
-      .then((data) => {
-        setSheets(data);
-        // Set default to id 3 if available
-        const defaultSheet = data.find((sheet) => sheet.id === 3);
-        setActiveSheetId(defaultSheet ? defaultSheet.id : data[0]?.id || null);
-      });
-  }, []);
-
-  const handleSheetSelect = (id) => {
-    setActiveSheetId(id);
-  };
+  const { sheetId } = useParams(); // Get sheetId from URL
 
   return (
     <>
@@ -32,9 +16,7 @@ const SheetPage = () => {
       >
         {/* Sidebar - fixed width */}
         <Sidebar
-          sheets={sheets}
-          activeSheetId={activeSheetId}
-          onSheetSelect={handleSheetSelect}
+          activeSheetId={sheetId ? parseInt(sheetId) : null} // Pass sheetId from URL
           activeSection="sheet"
         />
 
@@ -46,7 +28,7 @@ const SheetPage = () => {
 
         {/* Scrollable Sheet area */}
         <div style={{ flex: 1, overflowY: "auto", overflowX: "auto" }}>
-          {activeSheetId && <Sheet sheetId={activeSheetId} />}
+          {sheetId && <Sheet sheetId={parseInt(sheetId)} />} {/* Render sheet if sheetId exists */}
         </div>
       </div>
     </>

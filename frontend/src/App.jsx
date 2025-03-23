@@ -48,10 +48,10 @@ const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to={user ? "/sheet" : "/login"} />} />
-        <Route path="/login" element={user ? <Navigate to="/sheet" /> : <LoginPage />} />
-        <Route path="/register" element={user ? <Navigate to="/sheet" /> : <RegisterPage />} />
-        <Route path="/sheet" element={user ? <SheetPage /> : <Navigate to="/login" />} />
+        <Route path="/" element={<Navigate to={user ? "/sheet/3" : "/login"} />} />
+        <Route path="/login" element={user ? <Navigate to="/sheet/3" /> : <LoginPage />} />
+        <Route path="/register" element={user ? <Navigate to="/sheet/3" /> : <RegisterPage />} />
+        <Route path="/sheet/:sheetId" element={user ? <SheetPage /> : <Navigate to="/login" />} />
         <Route path="/saved" element={user ? <SavedPage /> : <Navigate to="/login" />} />
         <Route path="/leaderboard" element={user ? <LeaderboardPage /> : <Navigate to="/login" />} />
         <Route path="/profile/:username" element={user ? <ProfilePage /> : <Navigate to="/login" />} />

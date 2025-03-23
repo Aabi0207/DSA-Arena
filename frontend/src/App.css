@@ -22,3 +22,13 @@ input:-webkit-autofill:active {
   font-family: inherit !important;                          /* Keep the same font */
   transition: background-color 9999s ease-in-out 0s;
 }
+
+.initial-loader-fallback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 18px;
+  font-weight: 500;
+  color: #666;
+}

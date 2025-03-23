@@ -3,16 +3,6 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import SavedSheet from "../components/SavedSheet/SavedSheet";
 
 const SavedPage = () => {
-  const [sheets, setSheets] = useState([]);
-
-  useEffect(() => {
-    // Fetch sheets (needed for Sidebar only)
-    fetch("http://127.0.0.1:8000/questions/sheets")
-      .then((res) => res.json())
-      .then((data) => {
-        setSheets(data);
-      });
-  }, []);
 
   return (
     <>
@@ -23,7 +13,7 @@ const SavedPage = () => {
         }}
       >
         {/* Sidebar with activeSection set to 'saved' */}
-        <Sidebar sheets={sheets} activeSection="saved" />
+        <Sidebar activeSection="saved" />
 
         {/* Vertical separator */}
         <div

@@ -10,6 +10,7 @@ const Notes = ({ email, questionId, onClose }) => {
   const [loading, setLoading] = useState(true);
   const [alertMessage, setAlertMessage] = useState("");
   const popupRef = useRef();
+  const inputRef = useRef();
 
   const fetchNotes = async () => {
     try {
@@ -18,7 +19,7 @@ const Notes = ({ email, questionId, onClose }) => {
         `http://127.0.0.1:8000/questions/notes/?email=${email}&question_id=${questionId}`
       );
       const data = await res.json();
-      setNotes(data || []);
+      setNotes(data.reverse() || []);
     } catch (err) {
       setAlertMessage("Failed to fetch notes");
     } finally {
@@ -40,7 +41,7 @@ const Notes = ({ email, questionId, onClose }) => {
       });
       const data = await res.json();
       if (res.ok) {
-        setNotes((prev) => [...prev, data]); // Add new note from response
+        setNotes((prev) => [...prev, data]);
         setNoteText("");
         setAlertMessage("Note added");
       } else {
@@ -60,7 +61,7 @@ const Notes = ({ email, questionId, onClose }) => {
       });
 
       if (res.ok) {
-        setNotes((prev) => prev.filter((note) => note.id !== noteId)); // Remove deleted note
+        setNotes((prev) => prev.filter((note) => note.id !== noteId));
         setAlertMessage("Note deleted");
       } else {
         setAlertMessage("Failed to delete note");
@@ -74,7 +75,6 @@ const Notes = ({ email, questionId, onClose }) => {
     fetchNotes();
   }, []);
 
-  // Handle click outside
   useEffect(() => {
     const handleOutsideClick = (e) => {
       if (popupRef.current && !popupRef.current.contains(e.target)) {
@@ -84,6 +84,15 @@ const Notes = ({ email, questionId, onClose }) => {
     document.addEventListener("mousedown", handleOutsideClick);
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, [onClose]);
+
+  // Autofocus input on open
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") handleAddNote();
+  };
 
   return (
     <div className="notes-popup-overlay">
@@ -102,28 +111,28 @@ const Notes = ({ email, questionId, onClose }) => {
         />
       )}
       <div className="notes-popup-box" ref={popupRef}>
-        <button className="close-btn" onClick={onClose}>
-          ×
-        </button>
+        <button className="close-btn" onClick={onClose}>×</button>
         <h2 className="notes-title">Notes</h2>
         <div className="note-input-section">
           <input
+            ref={inputRef}
             type="text"
             value={noteText}
             placeholder="Write your note..."
             onChange={(e) => setNoteText(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
           <button onClick={handleAddNote}>Add</button>
         </div>
         <ul className="notes-list">
           {notes.length > 0 ? (
-            notes.map((note, index) => (
-              <li key={index} className="note-item">
-                <span>• {note.content}</span>
+            notes.map((note) => (
+              <li key={note.id} className="note-item">
+                <span className="note-content">• {note.content}</span>
                 <Trash2
                   className="trash-icon"
-                  size={14}
-                  onClick={() => handleDeleteNote(note.id)} // Make sure note.id is correct
+                  size={16}
+                  onClick={() => handleDeleteNote(note.id)}
                 />
               </li>
             ))

@@ -10,20 +10,27 @@ import {
   Menu,
 } from "lucide-react";
 import AlertPopup from "../AlertPopup/AlertPopup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const Sidebar = ({ sheets = [], activeSheetId, onSheetSelect, activeSection = "sheet" }) => {
-  const [isExpanded, setIsExpanded] = useState(activeSection === "sheet");
+const Sidebar = ({ activeSection = "sheet" }) => {
+  const [isExpanded, setIsExpanded] = useState(true); // Default to expanded
   const [alertMessage, setAlertMessage] = useState("");
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const [sheets, setSheets] = useState([]); // State to store sheets data
+  const { sheetId } = useParams(); // Get sheetId from URL (if available)
   const navigate = useNavigate();
 
+  // Fetch sheets data on component mount
   useEffect(() => {
-    // Auto-collapse if not in sheet section
-    if (activeSection !== "sheet") {
-      setIsExpanded(false);
-    }
-  }, [activeSection]);
+    fetch("http://127.0.0.1:8000/questions/sheets")
+      .then((res) => res.json())
+      .then((data) => {
+        setSheets(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch sheets:", error);
+      });
+  }, []);
 
   const handleComingSoon = () => {
     setAlertMessage("Coming Soon!");
@@ -34,11 +41,12 @@ const Sidebar = ({ sheets = [], activeSheetId, onSheetSelect, activeSection = "s
   };
 
   const handleDSAHeaderClick = () => {
-    if (activeSection !== "sheet") {
-      navigate("/"); // go to home route
-    } else {
-      setIsExpanded((prev) => !prev); // toggle expand/collapse
-    }
+    setIsExpanded((prev) => !prev); // Toggle expand/collapse
+    setIsMobileSidebarOpen(false);
+  };
+
+  const handleSheetClick = (sheetId) => {
+    navigate(`/sheet/${sheetId}`); // Navigate to the sheet URL
     setIsMobileSidebarOpen(false);
   };
 
@@ -103,20 +111,15 @@ const Sidebar = ({ sheets = [], activeSheetId, onSheetSelect, activeSection = "s
         </div>
 
         {/* Sheet List */}
-        {isExpanded && activeSection === "sheet" && (
+        {isExpanded && (
           <div className="sheet-list">
             {sheets.map((sheet) => (
               <div
                 key={sheet.id}
-                className={`sheet-item ${sheet.id === activeSheetId ? "active-sheet" : ""}`}
-                onClick={() => {
-                  if (onSheetSelect) {
-                    onSheetSelect(sheet.id);
-                  } else {
-                    navigate("/");
-                  }
-                  setIsMobileSidebarOpen(false);
-                }}
+                className={`sheet-item ${
+                  activeSection === "sheet" && sheet.id === parseInt(sheetId) ? "active-sheet" : ""
+                }`}
+                onClick={() => handleSheetClick(sheet.id)} // Use handleSheetClick
               >
                 <img src={sheet.image} alt="sheet logo" className="sheet-logo" />
                 <span>{sheet.name}</span>
