@@ -58,7 +58,7 @@ class TopicsWithQuestionsView(APIView):
             except CustomUser.DoesNotExist:
                 user = None
 
-        topics = Topic.objects.filter(sheet_id=sheet_id).prefetch_related('questions')
+        topics = Topic.objects.filter(sheet_id=sheet_id).order_by('-id').prefetch_related('questions').reverse()
         serializer = TopicWithQuestionsSerializer(topics, many=True, context={'user': user})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
