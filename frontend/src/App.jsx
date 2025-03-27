@@ -23,10 +23,9 @@ const AppRoutes = () => {
   const [isAuthLoaded, setIsAuthLoaded] = useState(false);
 
   useEffect(() => {
-    // Wait for a short moment to ensure user is read from localStorage
     const timer = setTimeout(() => {
       setIsAuthLoaded(true);
-    }, 100); // can adjust delay if needed
+    }, 100); 
 
     return () => clearTimeout(timer);
   }, []);
@@ -38,12 +37,12 @@ const AppRoutes = () => {
         loader.classList.add("fade-out");
         setTimeout(() => {
           loader.remove();
-        }, 500); // matches the CSS transition duration
+        }, 500);
       }
     }
   }, [isAuthLoaded]);
 
-  if (!isAuthLoaded) return null; // don't render anything until ready
+  if (!isAuthLoaded) return null;
 
   return (
     <Router>
@@ -55,6 +54,7 @@ const AppRoutes = () => {
         <Route path="/saved" element={user ? <SavedPage /> : <Navigate to="/login" />} />
         <Route path="/leaderboard" element={user ? <LeaderboardPage /> : <Navigate to="/login" />} />
         <Route path="/profile/:username" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
+        <Route path="*" element={<Navigate to="/sheet/3" />} />
       </Routes>
     </Router>
   );
