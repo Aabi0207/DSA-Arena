@@ -3,7 +3,7 @@ import axios from "axios";
 import Stepper, { Step } from "../Stepper/Stepper";
 import AlertPopup from "../AlertPopup/AlertPopup";
 import "./Login.css";
-import { useAuth } from "../../contexts/AuthContext"; // ✅ typo fixed
+import { useAuth } from "../../contexts/AuthContext";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -13,8 +13,8 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [sending, setSending] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [currentStep, setCurrentStep] = useState(1); // Track current step
-  const inputRefs = useRef([]); // Array of refs for each input field
+  const [currentStep, setCurrentStep] = useState(1);
+  const inputRefs = useRef([]);
   const { login } = useAuth();
 
   // Auto-focus the input field when the step changes
@@ -67,8 +67,8 @@ const Login = () => {
 
       if (response.data.success) {
         setErrorMessage("Login successful");
-        login(response.data.user); // ✅ context handles localStorage
-        window.location.href = "/sheet/3"; // ✅ redirect
+        login(response.data.user);
+        window.location.href = "/sheet/3";
       } else {
         setErrorMessage(response.data.message || "Login failed.");
       }
@@ -96,7 +96,7 @@ const Login = () => {
           nextButtonText="Next"
           sending={sending}
           page="login"
-          onStepChange={setCurrentStep} // Pass the step change handler
+          onStepChange={setCurrentStep}
         >
           <Step>
             <h2>Enter your Email</h2>
@@ -107,7 +107,7 @@ const Login = () => {
               onChange={handleChange}
               placeholder="Email"
               required
-              ref={(el) => (inputRefs.current[0] = el)} // Assign ref for the first input
+              ref={(el) => (inputRefs.current[0] = el)}
             />
           </Step>
           <Step>

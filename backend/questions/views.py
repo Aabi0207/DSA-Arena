@@ -12,7 +12,7 @@ class DSASheetListView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get(self, request):
-        sheets = DSASheet.objects.all().order_by('-created_at')
+        sheets = DSASheet.objects.all().order_by('-created_at').reverse()
         serializer = DSASheetSerializer(sheets, many=True, context={"request": request})
         return Response(serializer.data)
 

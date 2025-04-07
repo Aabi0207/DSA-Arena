@@ -37,10 +37,9 @@ const QuestionList = ({
     const newSolvedCount = updatedQuestions.filter((q) => q.is_solved).length;
     setSolvedCount(newSolvedCount);
 
-    // 🔥 In Saved View, we don't update solved count or progress
     if (onStatusChange) {
       if (isSavedView) {
-        onStatusChange({ questionId, isSaved }); // only unsave will be handled
+        onStatusChange({ questionId, isSaved });
       } else {
         onStatusChange({ questionId, isSolved, difficulty });
       }

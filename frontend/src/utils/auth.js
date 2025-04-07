@@ -1,5 +1,3 @@
-// utils/Auth.js
-
 export const saveUserToLocalStorage = (userData) => {
   const existingUser = JSON.parse(localStorage.getItem("user"));
   const expiryTime = existingUser?.expiryTime || (Date.now() + 6 * 7 * 24 * 60 * 60 * 1000); // 6 weeks

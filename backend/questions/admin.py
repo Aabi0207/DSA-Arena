@@ -30,7 +30,6 @@ class UserSheetProgressAdmin(admin.ModelAdmin):
     list_filter = ('sheet',)
     search_fields = ('user__email', 'sheet__name')
 
-# ✅ NEW: Register UserNote Model
 @admin.register(UserNote)
 class UserNoteAdmin(admin.ModelAdmin):
     list_display = ('user', 'question', 'content', 'created_at')

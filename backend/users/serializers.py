@@ -4,7 +4,7 @@ from django.contrib.auth.hashers import make_password
 import random
 import os
 
-DEFAULT_PROFILE_PHOTOS = {f"{i}.jpg" for i in range(1, 11)}   # 1.jpg to 10.jpg
+DEFAULT_PROFILE_PHOTOS = {f"{i}.jpg" for i in range(1, 11)}
 DEFAULT_PROFILE_BANNERS = {f"{i}.jpg" for i in range(1, 8)}
 
 

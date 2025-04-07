@@ -104,19 +104,6 @@
 
     <div id="root"></div>
 
-    <script type="module">
-      // Hide loader once React has mounted
-      window.addEventListener("DOMContentLoaded", () => {
-        const loader = document.getElementById("initial-loader");
-        if (loader) {
-          loader.classList.add("fade-out");
-          setTimeout(() => {
-            loader.remove();
-          }, 500);
-        }
-      });
-    </script>
-
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

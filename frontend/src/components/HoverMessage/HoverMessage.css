@@ -21,10 +21,10 @@
     transition: opacity 0.3s ease, visibility 0.3s ease;
     z-index: 999;
   
-    white-space: nowrap;        /* ✅ Force single line */
-    width: fit-content;         /* ✅ Shrink to content size */
-    max-width: none;            /* ✅ Don't restrict width */
-    text-align: center;         /* optional */
+    white-space: nowrap;
+    width: fit-content;
+    max-width: none;
+    text-align: center;
   }
   .hover-tooltip.show {
     opacity: 1;

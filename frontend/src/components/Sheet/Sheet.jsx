@@ -75,7 +75,6 @@ const Sheet = ({ sheetId }) => {
     }
   }, [errorMsg]);
 
-  // 🔥 New handler for difficulty-wise progress update
   const handleStatusChange = ({ isSolved, difficulty }) => {
     if (!progress) return;
     const diffKey = difficulty.toLowerCase();
@@ -109,7 +108,7 @@ const Sheet = ({ sheetId }) => {
             <QuestionList
               topic={topic}
               onStatusChange={handleStatusChange}
-              onNotesClick={handleNotesOpen} // ✅ Now it's passed properly
+              onNotesClick={handleNotesOpen}
             />
           </div>
         ))}
@@ -122,8 +121,6 @@ const Sheet = ({ sheetId }) => {
           onClose={handleNotesClose}
         />
       )}
-
-      {/* <LoadingScreen></LoadingScreen> */}
     </div>
     </>
   );

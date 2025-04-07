@@ -11,7 +11,7 @@ const ICONS = {
 const AlertPopup = ({ message, type = "success", onClose, duration = 3000 }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      onClose?.(); // call onClose if passed
+      onClose?.();
     }, duration);
 
     return () => clearTimeout(timer);

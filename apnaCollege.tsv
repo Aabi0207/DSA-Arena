@@ -1,0 +1,376 @@
+Problem Name	Problem Link	Topic	Solution Link	Difficulty
+Maximum and Minimum Element in an Array	https://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/	Arrays		Easy
+Reverse the Array	https://www.geeksforgeeks.org/write-a-program-to-reverse-an-array-or-string/	Arrays		Easy
+Maximum-Subarray	https://leetcode.com/problems/maximum-subarray/	Arrays		Easy
+Contains Duplicate	https://leetcode.com/problems/contains-duplicate/	Arrays		Easy
+Chocolate Distribution Problem	https://www.geeksforgeeks.org/chocolate-distribution-problem/	Arrays		Easy
+Search in Rotated Sorted Array	https://leetcode.com/problems/search-in-rotated-sorted-array/	Arrays		Easy
+Next Permutation	https://leetcode.com/problems/next-permutation/	Arrays		Medium
+Best time to Buy and Sell Stock	https://leetcode.com/problems/best-time-to-buy-and-sell-stock/	Arrays		Medium
+Repeat and Missing Number Array	https://www.interviewbit.com/problems/repeat-and-missing-number-array/	Arrays		Medium
+Kth-Largest Element in an Array	https://leetcode.com/problems/kth-largest-element-in-an-array/	Arrays		Medium
+Trapping Rain Water	https://leetcode.com/problems/trapping-rain-water/	Arrays		Medium
+Product of Array Except Self	https://leetcode.com/problems/product-of-array-except-self/	Arrays		Medium
+Maximum Product Subarray	https://leetcode.com/problems/maximum-product-subarray/	Arrays		Medium
+Find Minimum in Rotated Sorted Array	https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/	Arrays		Medium
+Find Pair with Sum in Sorted & Rotated Array	https://www.geeksforgeeks.org/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum/?ref=lbp	Arrays		Medium
+3Sum	https://leetcode.com/problems/3sum/	Arrays		Medium
+Container With Most Water	https://leetcode.com/problems/container-with-most-water/	Arrays		Medium
+Given Sum Pair	https://www.geeksforgeeks.org/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum/	Arrays		Medium
+Kth - Smallest Element	https://practice.geeksforgeeks.org/problems/kth-smallest-element5635/1	Arrays		Medium
+Merge Overlapping Intervals	https://www.geeksforgeeks.org/merging-intervals/	Arrays		Medium
+Find Minimum Number of Merge Operations to Make an Array Palindrome	https://www.geeksforgeeks.org/find-minimum-number-of-merge-operations-to-make-an-array-palindrome/	Arrays		Medium
+Given an Array of Numbers Arrange the Numbers to Form the Biggest Number	https://www.geeksforgeeks.org/given-an-array-of-numbers-arrange-the-numbers-to-form-the-biggest-number/	Arrays		Medium
+Space Optimization Using Bit Manipulations	https://www.geeksforgeeks.org/space-optimization-using-bit-manipulations/	Arrays		Medium
+Subarray Sum Divisible K	https://www.geeksforgeeks.org/longest-subarray-sum-divisible-k/	Arrays		Hard
+Print all Possible Combinations of r Elements in a Given Array of Size n	https://www.geeksforgeeks.org/print-all-possible-combinations-of-r-elements-in-a-given-array-of-size-n/	Arrays		Hard
+Mo's Algorithm	https://www.geeksforgeeks.org/mos-algorithm-query-square-root-decomposition-set-1-introduction/	Arrays		Hard
+Valid Palindrome	https://leetcode.com/problems/valid-palindrome/	Strings		Easy
+Valid Anagram	https://leetcode.com/problems/valid-anagram/	Strings		Easy
+Valid parentheses	https://leetcode.com/problems/valid-parentheses/	Strings		Easy
+Remove Consecutive Characters	https://practice.geeksforgeeks.org/problems/consecutive-elements2306/1	Strings		Easy
+Longest Common Prefix	https://leetcode.com/problems/longest-common-prefix/	Strings		Easy
+Convert a Sentence into its Equivalent Mobile Numeric Keypad Sequence	https://www.geeksforgeeks.org/convert-sentence-equivalent-mobile-numeric-keypad-sequence/	Strings		Easy
+Print all the Duplicates in the Input String	https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/	Strings		Easy
+Longest Substring without Repeating Characters	https://leetcode.com/problems/longest-substring-without-repeating-characters/	Strings		Medium
+Longest Repeating Character Replacement	https://leetcode.com/problems/longest-repeating-character-replacement/	Strings		Medium
+Group Anagrams	https://leetcode.com/problems/group-anagrams/	Strings		Medium
+Longest Palindromic Substring	https://leetcode.com/problems/longest-palindromic-substring/	Strings		Medium
+Palindromic Substrings	https://leetcode.com/problems/palindromic-substrings/	Strings		Medium
+Next Permutation	https://practice.geeksforgeeks.org/problems/next-permutation5226/1	Strings		Medium
+Count Palindromic Subsequences	https://practice.geeksforgeeks.org/problems/count-palindromic-subsequences/1	Strings		Medium
+Smallest Window in a String Containing all the Characters of Another String	https://practice.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string-1587115621/1	Strings		Medium
+Wildcard String Matching	https://practice.geeksforgeeks.org/problems/wildcard-string-matching1126/1	Strings		Medium
+Longest Prefix Suffix	https://practice.geeksforgeeks.org/problems/longest-prefix-suffix2527/1	Strings		Medium
+Rabin-Karp Algorithm for Pattern Searching	https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/	Strings		Medium
+Transform One String to Another using Minimum Number of Given Operation	https://www.geeksforgeeks.org/transform-one-string-to-another-using-minimum-number-of-given-operation/	Strings		Medium
+Minimum Window Substring	https://leetcode.com/problems/minimum-window-substring/	Strings		Hard
+Boyer Moore Algorithm for Pattern Searching	https://www.geeksforgeeks.org/boyer-moore-algorithm-for-pattern-searching/	Strings		Hard
+Word Wrap	https://practice.geeksforgeeks.org/problems/word-wrap1646/1	Strings		Hard
+Zigzag (or diagonal) Traversal of Matrix	https://www.geeksforgeeks.org/zigzag-or-diagonal-traversal-of-matrix/	2D Arrays		Medium
+Set Matrix Zeroes	https://leetcode.com/problems/set-matrix-zeroes/	2D Arrays		Medium
+Spiral Matrix	https://leetcode.com/problems/spiral-matrix/	2D Arrays		Medium
+Rotate Image	https://leetcode.com/problems/rotate-image/	2D Arrays		Medium
+Word Search	https://leetcode.com/problems/word-search/	2D Arrays		Medium
+Find the Number of Islands | Set 1 (Using DFS)	https://www.geeksforgeeks.org/find-number-of-islands/	2D Arrays		Medium
+Given a Matrix of ‘O’ and ‘X’, Replace ‘O’ with ‘X’ if Surrounded by ‘X’	https://www.geeksforgeeks.org/given-matrix-o-x-replace-o-x-surrounded-x/	2D Arrays		Medium
+Find a Common Element in all Rows of a Given Row-Wise Sorted Matrix	https://www.geeksforgeeks.org/find-common-element-rows-row-wise-sorted-matrix/	2D Arrays		Medium
+Create a Matrix with Alternating Rectangles of O and X	https://www.geeksforgeeks.org/create-a-matrix-with-alternating-rectangles-of-0-and-x/	2D Arrays		Medium
+Maximum Size Rectangle of all 1s	https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/	2D Arrays		Hard
+Permute Two Arrays such that Sum of Every Pair is Greater or Equal to K	https://www.geeksforgeeks.org/permute-two-arrays-sum-every-pair-greater-equal-k/	Searching & Sorting		Easy
+counting sort	https://www.geeksforgeeks.org/counting-sort/	Searching & Sorting		Easy
+find common elements three sorted arrays	https://www.geeksforgeeks.org/find-common-elements-three-sorted-arrays/	Searching & Sorting		Easy
+Searching in an array where adjacent differ by at most k	https://www.geeksforgeeks.org/searching-array-adjacent-differ-k/	Searching & Sorting		Easy
+ceiling in a sorted array	https://www.geeksforgeeks.org/ceiling-in-a-sorted-array/	Searching & Sorting		Easy
+Piar with given difference	https://www.geeksforgeeks.org/find-a-pair-with-the-given-difference/	Searching & Sorting		Easy
+majority element	https://www.geeksforgeeks.org/majority-element/	Searching & Sorting		Medium
+count triplets with sum smaller that a given value	https://www.geeksforgeeks.org/count-triplets-with-sum-smaller-that-a-given-value/	Searching & Sorting		Medium
+Maximum Sum Subsequence with no adjacent elements	https://www.geeksforgeeks.org/maximum-sum-such-that-no-two-elements-are-adjacent/	Searching & Sorting		Medium
+Merge Sorted Arrays using O(1) Space	https://www.geeksforgeeks.org/merge-two-sorted-arrays-o1-extra-space/	Searching & Sorting		Medium
+Inversion of Array	https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1	Searching & Sorting		Medium
+Find Duplicates in O(n) Time and O(1) Extra Space	https://www.geeksforgeeks.org/find-duplicates-in-on-time-and-constant-extra-space/	Searching & Sorting		Medium
+Radix Sort	https://www.geeksforgeeks.org/radix-sort/	Searching & Sorting		Medium
+Product of Array except itself	https://www.geeksforgeeks.org/a-product-array-puzzle/	Searching & Sorting		Medium
+Make all Array Elements Equal	https://www.geeksforgeeks.org/make-array-elements-equal-minimum-cost/	Searching & Sorting		Medium
+Check if Reversing a Sub Array Make the Array Sorted	https://www.geeksforgeeks.org/check-reversing-sub-array-make-array-sorted/	Searching & Sorting		Medium
+Find Four Elements that Sum to a Given Value	https://www.geeksforgeeks.org/find-four-elements-that-sum-to-a-given-value-set-2/	Searching & Sorting		Hard
+Median of Two Sorted Array with Different Size	https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/	Searching & Sorting		Hard
+Median of Stream of Integers Running Integers	https://www.geeksforgeeks.org/median-of-stream-of-integers-running-integers/	Searching & Sorting		Hard
+Print Subarrays with 0 Sum	https://www.geeksforgeeks.org/print-all-subarrays-with-0-sum/	Searching & Sorting		Hard
+Aggressive Cows	https://www.spoj.com/problems/AGGRCOW/	Searching & Sorting		Hard
+Allocate Minimum number of Pages	https://practice.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1	Searching & Sorting		Hard
+Minimum Swaps to Sort	https://www.geeksforgeeks.org/minimum-number-swaps-required-sort-array/	Searching & Sorting		Hard
+Backtracking Set 2 Rat in a Maze	https://www.geeksforgeeks.org/backttracking-set-2-rat-in-a-maze/	Backtracking		Medium
+Combinational Sum	https://www.geeksforgeeks.org/combinational-sum/	Backtracking		Medium
+Crossword-Puzzle	https://www.hackerrank.com/challenges/crossword-puzzle/problem	Backtracking		Medium
+Longest Possible Route in a Matrix with Hurdles	https://www.geeksforgeeks.org/longest-possible-route-in-a-matrix-with-hurdles/	Backtracking		Medium
+Printing all solutions in N-Queen Problem	https://www.geeksforgeeks.org/printing-solutions-n-queen-problem/	Backtracking		Medium
+Solve the Sudoku	https://practice.geeksforgeeks.org/problems/solve-the-sudoku-1587115621/1	Backtracking		Medium
+Partition Equal Subset Sum	https://practice.geeksforgeeks.org/problems/subset-sum-problem2014/1	Backtracking		Medium
+M Coloring Problem	https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1	Backtracking		Medium
+Knight Tour	https://www.geeksforgeeks.org/backtracking-set-1-the-knights-tour-problem/	Backtracking		Hard
+Soduko	https://www.geeksforgeeks.org/backtracking-set-7-suduku/	Backtracking		Hard
+Remove Invalid Parentheses	https://www.geeksforgeeks.org/remove-invalid-parentheses/	Backtracking		Hard
+Word Break Problem using Backtracking	https://www.geeksforgeeks.org/word-break-problem-using-backtracking/	Backtracking		Hard
+Print all Palindromic Partitions of a String	https://www.geeksforgeeks.org/print-palindromic-partitions-string/	Backtracking		Hard
+Find Shortest Safe Route in a Path with Landmines	https://www.geeksforgeeks.org/find-shortest-safe-route-in-a-path-with-landmines/	Backtracking		Hard
+Partition of Set into K Subsets with Equal Sum	https://www.geeksforgeeks.org/partition-set-k-subsets-equal-sum/	Backtracking		Hard
+Backtracking set-7 hamiltonian cycle	https://www.geeksforgeeks.org/backtracking-set-7-hamiltonian-cycle/	Backtracking		Hard
+tug-of-war	https://www.geeksforgeeks.org/tug-of-war/	Backtracking		Hard
+Maximum Possible Number by doing at most K swaps	https://www.geeksforgeeks.org/find-maximum-number-possible-by-doing-at-most-k-swaps/	Backtracking		Hard
+Backtracking set-8 solving cryptarithmetic puzzles	https://www.geeksforgeeks.org/backtracking-set-8-solving-cryptarithmetic-puzzles/	Backtracking		Hard
+Find paths from corner cell to middle cell in maze	https://www.geeksforgeeks.org/find-paths-from-corner-cell-to-middle-cell-in-maze/	Backtracking		Hard
+Arithmetic Expressions	https://www.hackerrank.com/challenges/arithmetic-expressions/problem	Backtracking		Hard
+Reverse Linked List	https://leetcode.com/problems/reverse-linked-list/	Linked List		Easy
+Linked List Cycle	https://leetcode.com/problems/linked-list-cycle/	Linked List		Easy
+Merge Two Sorted Lists	https://leetcode.com/problems/merge-two-sorted-lists/	Linked List		Easy
+Delete without Head node	https://www.geeksforgeeks.org/given-only-a-pointer-to-a-node-to-be-deleted-in-a-singly-linked-list-how-do-you-delete-it/	Linked List		Easy
+Remove duplicates from an unsorted linked list	https://www.geeksforgeeks.org/remove-duplicates-from-an-unsorted-linked-list/	Linked List		Easy
+Sort a linked list of 0s-1s-or-2s	https://www.geeksforgeeks.org/sort-a-linked-list-of-0s-1s-or-2s/	Linked List		Easy
+Multiply two numbers represented linked lists	https://www.geeksforgeeks.org/multiply-two-numbers-represented-linked-lists/	Linked List		Easy
+Remove nth node from end of list	https://leetcode.com/problems/remove-nth-node-from-end-of-list/	Linked List		Medium
+Reorder List	https://leetcode.com/problems/reorder-list/	Linked List		Medium
+Detect and remove loop in a linked list	https://www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list/	Linked List		Medium
+Write a Function to get the Intersection Point of two Linked Lists	https://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two-linked-lists/	Linked List		Medium
+Flatten a linked list with next and child pointers	https://www.geeksforgeeks.org/flatten-a-linked-list-with-next-and-child-pointers/	Linked List		Medium
+Linked list in zig-zag fashion	https://www.geeksforgeeks.org/linked-list-in-zig-zag-fashion/	Linked List		Medium
+Reverse a doubly linked list	https://practice.geeksforgeeks.org/problems/reverse-a-doubly-linked-list/1	Linked List		Medium
+Delete nodes which have a greater value on right side	https://www.geeksforgeeks.org/delete-nodes-which-have-a-greater-value-on-right-side/	Linked List		Medium
+Segregate even and odd Elements in a Linked List	https://www.geeksforgeeks.org/segregate-even-and-odd-elements-in-a-linked-list/	Linked List		Medium
+Point to next higher value node in a linked list with an Arbitrary Pointer	https://www.geeksforgeeks.org/point-to-next-higher-value-node-in-a-linked-list-with-an-arbitrary-pointer/	Linked List		Medium
+Rearrange a given linked list in place	https://www.geeksforgeeks.org/rearrange-a-given-linked-list-in-place/	Linked List		Medium
+Sort Biotonic Doubly Linked Lists	https://www.geeksforgeeks.org/sort-biotonic-doubly-linked-list/	Linked List		Medium
+Merge K Sorted Lists	https://leetcode.com/problems/merge-k-sorted-lists/	Linked List		Hard
+Merge sort for linked list	https://www.geeksforgeeks.org/merge-sort-for-linked-list/	Linked List		Hard
+Quicksort on singly-linked list	https://www.geeksforgeeks.org/quicksort-on-singly-linked-list/	Linked List		Hard
+Sum of two linked lists	https://www.geeksforgeeks.org/sum-of-two-linked-lists/	Linked List		Hard
+Flattening a linked list	https://www.geeksforgeeks.org/flattening-a-linked-list/	Linked List		Hard
+Clone a linked list with next and random Pointer	https://www.geeksforgeeks.org/a-linked-list-with-next-and-arbit-pointer/	Linked List		Hard
+Subtract two numbers represented as linked lists	https://www.geeksforgeeks.org/subtract-two-numbers-represented-as-linked-lists/	Linked List		Hard
+Implement two stacks in an Array	https://www.geeksforgeeks.org/implement-two-stacks-in-an-array/	Stacks & Queues		Easy
+Evaluation of Postfix Expression	https://www.geeksforgeeks.org/stack-set-4-evaluation-postfix-expression/	Stacks & Queues		Easy
+Implement Stack using Queues	https://leetcode.com/problems/implement-stack-using-queues/	Stacks & Queues		Easy
+Queue Reversal	https://practice.geeksforgeeks.org/problems/queue-reversal/1	Stacks & Queues		Easy
+Implement Stack Queue using Deque	https://www.geeksforgeeks.org/implement-stack-queue-using-deque/	Stacks & Queues		Easy
+Reverse first k elements of queue	https://practice.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1	Stacks & Queues		Easy
+Design Stack with Middle Operation	https://www.geeksforgeeks.org/design-a-stack-with-find-middle-operation/	Stacks & Queues		Medium
+Infix to Postfix	https://www.geeksforgeeks.org/stack-set-2-infix-to-postfix/	Stacks & Queues		Medium
+Design and Implement Special stack	https://www.geeksforgeeks.org/design-and-implement-special-stack-data-structure/	Stacks & Queues		Medium
+Longest Valid String	https://www.geeksforgeeks.org/length-of-the-longest-valid-substring/	Stacks & Queues		Medium
+Find if an expression has duplicate parenthesis or not	https://www.geeksforgeeks.org/find-expression-duplicate-parenthesis-not/	Stacks & Queues		Medium
+Stack permutations check if an array is stack permutation of other	https://www.geeksforgeeks.org/stack-permutations-check-if-an-array-is-stack-permutation-of-other/	Stacks & Queues		Medium
+Count natural numbers whose permutation greater number	https://www.geeksforgeeks.org/count-natural-numbers-whose-permutation-greater-number/	Stacks & Queues		Medium
+Sort a stack using Recursion	https://www.geeksforgeeks.org/sort-a-stack-using-recursion/	Stacks & Queues		Medium
+Queue based approach for first non repeating character in a stream	https://www.geeksforgeeks.org/queue-based-approach-for-first-non-repeating-character-in-a-stream/	Stacks & Queues		Medium
+The Celebrity Problem	https://practice.geeksforgeeks.org/problems/the-celebrity-problem/1	Stacks & Queues		Medium
+Next larger Element	https://practice.geeksforgeeks.org/problems/next-larger-element-1587115620/1	Stacks & Queues		Medium
+Distance of nearest cell	https://practice.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115620/1	Stacks & Queues		Medium
+Rotten-oranges	https://practice.geeksforgeeks.org/problems/rotten-oranges2536/1	Stacks & Queues		Medium
+Next smaller element	https://www.geeksforgeeks.org/next-smaller-element/	Stacks & Queues		Medium
+Circular-tour	https://practice.geeksforgeeks.org/problems/circular-tour/1	Stacks & Queues		Medium
+Efficiently implement k-stacks single array	https://www.geeksforgeeks.org/efficiently-implement-k-stacks-single-array/	Stacks & Queues		Hard
+The celebrity problem	http://geeksforgeeks.org/the-celebrity-problem/	Stacks & Queues		Hard
+Iterative tower of hanoi	https://www.geeksforgeeks.org/iterative-tower-of-hanoi/	Stacks & Queues		Hard
+Find the maximum of minimums for every window size in a given array	https://www.geeksforgeeks.org/find-the-maximum-of-minimums-for-every-window-size-in-a-given-array/	Stacks & Queues		Hard
+lru cache implementation	https://www.geeksforgeeks.org/lru-cache-implementation/	Stacks & Queues		Hard
+Find a tour that visits all stations	https://www.geeksforgeeks.org/find-a-tour-that-visits-all-stations/	Stacks & Queues		Hard
+Activity selection problem greedy algo	https://www.geeksforgeeks.org/activity-selection-problem-greedy-algo-1/	Greedy		Easy
+Greedy algorithm to find minimum number of coins	https://www.geeksforgeeks.org/greedy-algorithm-to-find-minimum-number-of-coins/	Greedy		Easy
+Minimum sum two numbers formed digits array-2	https://www.geeksforgeeks.org/minimum-sum-two-numbers-formed-digits-array-2/	Greedy		Easy
+Minimum sum absolute difference pairs two arrays	https://www.geeksforgeeks.org/minimum-sum-absolute-difference-pairs-two-arrays/	Greedy		Easy
+Find maximum height pyramid from the given array of objects	https://www.geeksforgeeks.org/find-maximum-height-pyramid-from-the-given-array-of-objects/	Greedy		Easy
+Minimum cost for acquiring all coins with k extra coins allowed with every coin	https://www.geeksforgeeks.org/minimum-cost-for-acquiring-all-coins-with-k-extra-coins-allowed-with-every-coin/	Greedy		Easy
+Find maximum equal sum of every three stacks	http://geeksforgeeks.org/find-maximum-sum-possible-equal-sum-three-stacks/	Greedy		Easy
+Job sequencing problem	https://www.geeksforgeeks.org/job-sequencing-problem/	Greedy		Medium
+Greedy algorithm egyptian fraction	https://www.geeksforgeeks.org/greedy-algorithm-egyptian-fraction/	Greedy		Medium
+Fractional knapsack problem	https://www.geeksforgeeks.org/fractional-knapsack-problem/	Greedy		Medium
+Maximum length chain of pairs	https://www.geeksforgeeks.org/maximum-length-chain-of-pairs-dp-20/	Greedy		Medium
+Find smallest number with given number of digits and digit sum	https://www.geeksforgeeks.org/find-smallest-number-with-given-number-of-digits-and-digit-sum/	Greedy		Medium
+Maximize sum of consecutive differences circular-array	https://www.geeksforgeeks.org/maximize-sum-consecutive-differences-circular-array/	Greedy		Medium
+paper-cut minimum number squares	https://www.geeksforgeeks.org/paper-cut-minimum-number-squares/	Greedy		Medium
+Lexicographically smallest array-k consecutive swaps	http://geeksforgeeks.org/lexicographically-smallest-array-k-consecutive-swaps/	Greedy		Medium
+Problems-CHOCOLA	https://www.spoj.com/problems/CHOCOLA/	Greedy		Medium
+Find minimum time to finish all jobs with given constraints	https://www.geeksforgeeks.org/find-minimum-time-to-finish-all-jobs-with-given-constraints/	Greedy		Hard
+Job sequencing using disjoint set union	https://www.geeksforgeeks.org/job-sequencing-using-disjoint-set-union/	Greedy		Hard
+Rearrange characters string such that no two adjacent are same	https://www.geeksforgeeks.org/rearrange-characters-string-no-two-adjacent/	Greedy		Hard
+Minimum edges to reverse to make path from a source to a destination	https://www.geeksforgeeks.org/minimum-edges-reverse-make-path-source-destination/	Greedy		Hard
+Minimize Cash Flow among a given set of friends who have borrowed money from each other	https://www.geeksforgeeks.org/minimize-cash-flow-among-given-set-friends-borrowed-money/	Greedy		Hard
+Minimum Cost to cut a board into squares	https://www.geeksforgeeks.org/minimum-cost-cut-board-squares/	Greedy		Hard
+Maximum Depth of Binary Tree	https://leetcode.com/problems/maximum-depth-of-binary-tree/	Binary Trees		Easy
+Reverse Level Order Traversal	https://practice.geeksforgeeks.org/problems/reverse-level-order-traversal/1	Binary Trees		Easy
+Subtree of Another Tree	https://leetcode.com/problems/subtree-of-another-tree/	Binary Trees		Easy
+Invert Binary Tree	https://leetcode.com/problems/invert-binary-tree/	Binary Trees		Easy
+Binary Tree Level Order Traversal	https://leetcode.com/problems/binary-tree-level-order-traversal/	Binary Trees		Easy
+Left View of Binary Tree	https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1	Binary Trees		Easy
+Right View of Binary Tree	https://practice.geeksforgeeks.org/problems/right-view-of-binary-tree/1	Binary Trees		Easy
+ZigZag Tree Traversal	https://practice.geeksforgeeks.org/problems/zigzag-tree-traversal/1	Binary Trees		Easy
+Create a mirror tree from the given binary tree	https://www.geeksforgeeks.org/create-a-mirror-tree-from-the-given-binary-tree/	Binary Trees		Easy
+Leaf at same level	https://practice.geeksforgeeks.org/problems/leaf-at-same-level/1	Binary Trees		Easy
+Check for Balanced Tree	https://practice.geeksforgeeks.org/problems/check-for-balanced-tree/1	Binary Trees		Easy
+Transform to Sum Tree	https://practice.geeksforgeeks.org/problems/transform-to-sum-tree/1	Binary Trees		Easy
+Check if Tree is Isomorphic	https://practice.geeksforgeeks.org/problems/check-if-tree-is-isomorphic/1	Binary Trees		Easy
+Same Tree	https://leetcode.com/problems/same-tree/	Binary Trees		Easy
+Construct Binary Tree from Preorder and Inorder Traversal	https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/	Binary Trees		Medium
+Height of Binary Tree	https://practice.geeksforgeeks.org/problems/height-of-binary-tree/1	Binary Trees		Medium
+Diameter of a Binary Tree	https://practice.geeksforgeeks.org/problems/diameter-of-binary-tree/1	Binary Trees		Medium
+Top View of Binary Tree	https://practice.geeksforgeeks.org/problems/top-view-of-binary-tree/1	Binary Trees		Medium
+Bottom View of Binary Tree	https://practice.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1	Binary Trees		Medium
+Diagonal Traversal of Binary Tree	https://www.geeksforgeeks.org/diagonal-traversal-of-binary-tree/	Binary Trees		Medium
+Boundary Traversal of binary tree	https://practice.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1	Binary Trees		Medium
+Construct Binary Tree from String with Brackets	https://www.geeksforgeeks.org/construct-binary-tree-string-bracket-representation/	Binary Trees		Medium
+Minimum swap required to convert binary tree to binary search tree	https://www.geeksforgeeks.org/minimum-swap-required-convert-binary-tree-binary-search-tree/	Binary Trees		Medium
+Duplicate subtree in Binary Tree	https://practice.geeksforgeeks.org/problems/duplicate-subtree-in-binary-tree/1	Binary Trees		Medium
+Check if a given graph is tree or not	https://www.geeksforgeeks.org/check-given-graph-tree/	Binary Trees		Medium
+Lowest Common Ancestor in a Binary Tree	https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-binary-tree/1	Binary Trees		Medium
+Min distance between two given nodes of a Binary Tree	https://practice.geeksforgeeks.org/problems/min-distance-between-two-given-nodes-of-a-binary-tree/1	Binary Trees		Medium
+Duplicate Subtrees	https://practice.geeksforgeeks.org/problems/duplicate-subtrees/1	Binary Trees		Medium
+Kth ancestor of a node in binary tree	https://www.geeksforgeeks.org/kth-ancestor-node-binary-tree-set-2/	Binary Trees		Medium
+Binary Tree Maximum Path Sum	https://leetcode.com/problems/binary-tree-maximum-path-sum/	Binary Trees		Hard
+Serialize and Deserialize Binary Tree	https://leetcode.com/problems/serialize-and-deserialize-binary-tree/	Binary Trees		Hard
+Binary Tree to DLL	https://practice.geeksforgeeks.org/problems/binary-tree-to-dll/1	Binary Trees		Hard
+Print all k-sum paths in a binary tree	https://www.geeksforgeeks.org/print-k-sum-paths-binary-tree/	Binary Trees		Hard
+Lowest Common Ancestor of a Binary Search Tree	https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/	Binary Search Trees		Easy
+Binary Search Tree | Set 1 (Search and Insertion)	https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/	Binary Search Trees		Easy
+Minimum element in BST	https://practice.geeksforgeeks.org/problems/minimum-element-in-bst/1	Binary Search Trees		Easy
+Predecessor and Successor	https://practice.geeksforgeeks.org/problems/predecessor-and-successor/1	Binary Search Trees		Easy
+Check whether BST contains Dead End	https://practice.geeksforgeeks.org/problems/check-whether-bst-contains-dead-end/1	Binary Search Trees		Easy
+Binary Tree to BST	https://practice.geeksforgeeks.org/problems/binary-tree-to-bst/1	Binary Search Trees		Easy
+Kth largest element in BST	https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/1	Binary Search Trees		Easy
+Validate Binary Search Tree	https://leetcode.com/problems/validate-binary-search-tree/	Binary Search Trees		Medium
+Kth Smallest Element in a BST	https://leetcode.com/problems/kth-smallest-element-in-a-bst/	Binary Search Trees		Medium
+Delete Node in a BST	https://leetcode.com/problems/delete-node-in-a-bst/	Binary Search Trees		Medium
+Flatten BST to sorted list	https://www.geeksforgeeks.org/flatten-bst-to-sorted-list-increasing-order/	Binary Search Trees		Medium
+Preorder to Postorder	https://practice.geeksforgeeks.org/problems/preorder-to-postorder4423/1	Binary Search Trees		Medium
+Count BST nodes that lie in a given range	https://practice.geeksforgeeks.org/problems/count-bst-nodes-that-lie-in-a-given-range/1	Binary Search Trees		Medium
+Populate Inorder Successor for all Nodes	https://practice.geeksforgeeks.org/problems/populate-inorder-successor-for-all-nodes/1	Binary Search Trees		Medium
+Convert Normal BST to Balanced BST	https://www.geeksforgeeks.org/convert-normal-bst-balanced-bst/	Binary Search Trees		Medium
+Merge two BSTs	https://www.geeksforgeeks.org/merge-two-balanced-binary-search-trees/	Binary Search Trees		Medium
+Given n appointments, find all conflicting appointments	https://www.geeksforgeeks.org/given-n-appointments-find-conflicting-appointments/	Binary Search Trees		Hard
+Replace every element	https://www.geeksforgeeks.org/replace-every-element-with-the-least-greater-element-on-its-right/	Binary Search Trees		Hard
+Construct BST from given preorder traversal	https://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/	Binary Search Trees		Hard
+Find median of BST in O(n) time and O(1) space	https://www.geeksforgeeks.org/find-median-bst-time-o1-space/	Binary Search Trees		Hard
+Largest BST in a Binary Tree	https://www.geeksforgeeks.org/largest-bst-binary-tree-set-2/	Binary Search Trees		Hard
+Choose k array elements such that difference of maximum and minimum is minimized	https://www.geeksforgeeks.org/k-numbers-difference-maximum-minimum-k-number-minimized/	Heaps & Hashing		Medium
+Heap Sort	https://www.geeksforgeeks.org/heap-sort/	Heaps & Hashing		Medium
+Top K Frequent Elements	https://leetcode.com/problems/top-k-frequent-elements/	Heaps & Hashing		Medium
+k largest elements in an array	https://www.geeksforgeeks.org/k-largestor-smallest-elements-in-an-array/	Heaps & Hashing		Medium
+Next Greater Element	https://www.geeksforgeeks.org/next-greater-element/	Heaps & Hashing		Medium
+K’th Smallest/Largest Element in Unsorted Array	https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array/	Heaps & Hashing		Medium
+Find the maximum repeating number in O(n) time and O(1) extra space	https://www.geeksforgeeks.org/find-the-maximum-repeating-number-in-ok-time/	Heaps & Hashing		Medium
+K-th smallest element after removing some integers from natural numbers	https://www.geeksforgeeks.org/k-th-smallest-element-removing-integers-natural-numbers/	Heaps & Hashing		Medium
+Find k closest elements to a given value	https://www.geeksforgeeks.org/find-k-closest-elements-given-value/	Heaps & Hashing		Medium
+K’th largest element in a stream	https://www.geeksforgeeks.org/kth-largest-element-in-a-stream/	Heaps & Hashing		Medium
+Connect Ropes	https://www.geeksforgeeks.org/connect-n-ropes-minimum-cost/	Heaps & Hashing		Medium
+Cuckoo Hashing	https://www.geeksforgeeks.org/cuckoo-hashing/	Heaps & Hashing		Medium
+Itinerary from a List of Tickets	https://www.geeksforgeeks.org/find-itinerary-from-a-given-list-of-tickets/	Heaps & Hashing		Medium
+Largest Subarray with 0 Sum	http://geeksforgeeks.org/find-the-largest-subarray-with-0-sum/	Heaps & Hashing		Medium
+Count distinct elements in every window of size  k	https://www.geeksforgeeks.org/count-distinct-elements-in-every-window-of-size-k/	Heaps & Hashing		Medium
+Group Shifted Strings	https://www.geeksforgeeks.org/group-shifted-string/	Heaps & Hashing		Medium
+Merge K Sorted lists	https://leetcode.com/problems/merge-k-sorted-lists/	Heaps & Hashing		Hard
+Find Median from Data Stream	https://leetcode.com/problems/find-median-from-data-stream/	Heaps & Hashing		Hard
+Sliding Window Maximum	https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/	Heaps & Hashing		Hard
+Find the smallest positive number	https://www.geeksforgeeks.org/find-the-smallest-positive-number-missing-from-an-unsorted-array/	Heaps & Hashing		Hard
+Find Surpasser Count of each element in array	https://www.geeksforgeeks.org/find-surpasser-count-of-each-element-in-array/	Heaps & Hashing		Hard
+Tournament Tree and Binary Heap	https://www.geeksforgeeks.org/tournament-tree-and-binary-heap/	Heaps & Hashing		Hard
+Check for palindrome	https://www.geeksforgeeks.org/online-algorithm-for-checking-palindrome-in-a-stream/	Heaps & Hashing		Hard
+Length of the largest subarray with contiguous elements	https://www.geeksforgeeks.org/length-largest-subarray-contiguous-elements-set-2/	Heaps & Hashing		Hard
+Palindrome Substring Queries	https://www.geeksforgeeks.org/palindrome-substring-queries/	Heaps & Hashing		Hard
+Subarray distinct elements	https://www.geeksforgeeks.org/subarrays-distinct-elements/	Heaps & Hashing		Hard
+Find the recurring function	https://www.geeksforgeeks.org/find-recurring-sequence-fraction/	Heaps & Hashing		Hard
+K maximum sum combinations from two arrays	https://www.geeksforgeeks.org/k-maximum-sum-combinations-two-arrays/	Heaps & Hashing		Hard
+BFS	https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1	Graphs		Easy
+DFS	https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/	Graphs		Easy
+Flood Fill Algorithm	https://leetcode.com/problems/flood-fill/	Graphs		Easy
+Number of Triangles	https://www.geeksforgeeks.org/number-of-triangles-in-directed-and-undirected-graphs/	Graphs		Easy
+Detect cycle in a graph	https://www.geeksforgeeks.org/detect-cycle-in-a-graph/	Graphs		Medium
+Detect cycle in an undirected graph	https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1	Graphs		Medium
+Rat in a Maze Problem	https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1	Graphs		Medium
+Steps by Knight	https://practice.geeksforgeeks.org/problems/steps-by-knight5927/1	Graphs		Medium
+Clone graph	https://leetcode.com/problems/clone-graph/	Graphs		Medium
+Number of Operations to Make Network Connected	https://leetcode.com/problems/number-of-operations-to-make-network-connected/	Graphs		Medium
+Dijkstra’s shortest path algorithm	https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/	Graphs		Medium
+Topological Sort	https://practice.geeksforgeeks.org/problems/topological-sort/1	Graphs		Medium
+Oliver and the Game	https://www.hackerearth.com/practice/algorithms/graphs/topological-sort/practice-problems/algorithm/oliver-and-the-game-3/	Graphs		Medium
+Minimum time taken by each job to be completed given by a Directed Acyclic Graph	https://www.geeksforgeeks.org/minimum-time-taken-by-each-job-to-be-completed-given-by-a-directed-acyclic-graph/	Graphs		Medium
+Find whether it is possible to finish all tasks or not from given dependencies	https://www.geeksforgeeks.org/find-whether-it-is-possible-to-finish-all-tasks-or-not-from-given-dependencies/	Graphs		Medium
+Find the number of islands	https://practice.geeksforgeeks.org/problems/find-the-number-of-islands/1	Graphs		Medium
+Prim's Algo	https://www.geeksforgeeks.org/prims-minimum-spanning-tree-mst-greedy-algo-5/	Graphs		Medium
+Negative Weighted Cycle	https://practice.geeksforgeeks.org/problems/negative-weight-cycle3504/1	Graphs		Medium
+Floyd Warshall	https://practice.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1	Graphs		Medium
+Graph Coloring	https://www.geeksforgeeks.org/graph-coloring-applications/	Graphs		Medium
+Snakes and Ladders	https://leetcode.com/problems/snakes-and-ladders/	Graphs		Medium
+Kosaraju's Theorem	https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1	Graphs		Medium
+Journey to moon	https://www.hackerrank.com/challenges/journey-to-the-moon/problem	Graphs		Medium
+Vertex Cover	https://www.geeksforgeeks.org/vertex-cover-problem-set-1-introduction-approximate-algorithm-2/	Graphs		Medium
+M Coloring Problem	https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1	Graphs		Medium
+Cheapest Flights Within K Stops	https://leetcode.com/problems/cheapest-flights-within-k-stops/description/	Graphs		Medium
+Find if there is a path of more than k length from a source	https://www.geeksforgeeks.org/find-if-there-is-a-path-of-more-than-k-length-from-a-source/	Graphs		Medium
+Bellman Ford	https://www.geeksforgeeks.org/detect-negative-cycle-graph-bellman-ford/	Graphs		Medium
+Bipartitie Graph	https://www.geeksforgeeks.org/bipartite-graph/	Graphs		Medium
+Word-Ladder	https://leetcode.com/problems/word-ladder/	Graphs		Hard
+Allen Dictionary	https://practice.geeksforgeeks.org/problems/alien-dictionary/1	Graphs		Hard
+Kruskals MST	https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/	Graphs		Hard
+Total number spanning trees graph	https://www.geeksforgeeks.org/total-number-spanning-trees-graph/	Graphs		Hard
+Travelling Salesman	https://www.geeksforgeeks.org/travelling-salesman-problem-set-1/	Graphs		Hard
+Find longest path directed acyclic graph	https://www.geeksforgeeks.org/find-longest-path-directed-acyclic-graph/	Graphs		Hard
+Two Clique Problem	https://www.geeksforgeeks.org/two-clique-problem-check-graph-can-divided-two-cliques/	Graphs		Hard
+Minimise the cash flow	https://www.geeksforgeeks.org/minimize-cash-flow-among-given-set-friends-borrowed-money/	Graphs		Hard
+Chinese postman	https://www.geeksforgeeks.org/chinese-postman-route-inspection-set-1-introduction/	Graphs		Hard
+Water Jug	https://www.geeksforgeeks.org/water-jug-problem-using-bfs/	Graphs		Hard
+Water Jug 2	https://www.geeksforgeeks.org/water-jug-problem-using-bfs/	Graphs		Hard
+Construct a trie from scratch	https://www.geeksforgeeks.org/trie-insert-and-search/	Tries		Medium
+Print unique rows in a given boolean matrix	https://practice.geeksforgeeks.org/problems/unique-rows-in-boolean-matrix/1	Tries		Medium
+Word Break Problem | (Trie solution)	https://www.geeksforgeeks.org/word-break-problem-trie-solution/	Tries		Medium
+Given a sequence of words, print all anagrams together	https://practice.geeksforgeeks.org/problems/k-anagrams-1/0	Tries		Medium
+Find shortest unique prefix for every word in a given list	https://www.geeksforgeeks.org/find-all-shortest-unique-prefixes-to-represent-each-word-in-a-given-list/	Tries		Hard
+Implement a Phone Directory	https://practice.geeksforgeeks.org/problems/phone-directory/0	Tries		Hard
+Knapsack with Duplicate Items	https://practice.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1	DP		Easy
+BBT counter	https://practice.geeksforgeeks.org/problems/bbt-counter4914/1	DP		Easy
+Reach a given score	https://practice.geeksforgeeks.org/problems/reach-a-given-score-1587115621/1	DP		Easy
+Maximum difference of zeros and ones in binary string	https://practice.geeksforgeeks.org/problems/maximum-difference-of-zeros-and-ones-in-binary-string4111/1	DP		Easy
+Climbing Stairs	https://leetcode.com/problems/climbing-stairs/	DP		Easy
+Permutation Coefficient	https://www.geeksforgeeks.org/permutation-coefficient/	DP		Easy
+Longest Repeating Subsequence	https://practice.geeksforgeeks.org/problems/longest-repeating-subsequence2004/1	DP		Easy
+Pairs with specific difference	https://practice.geeksforgeeks.org/problems/pairs-with-specific-difference1533/1	DP		Easy
+Longest subsequence-1	https://practice.geeksforgeeks.org/problems/longest-subsequence-such-that-difference-between-adjacents-is-one4724/1	DP		Easy
+Coin Change	https://leetcode.com/problems/coin-change/	DP		Medium
+LIS	https://leetcode.com/problems/longest-increasing-subsequence/	DP		Medium
+Longest Common Subsequence	https://leetcode.com/problems/longest-common-subsequence/	DP		Medium
+Word Break	https://leetcode.com/problems/word-break/	DP		Medium
+Combination Sum IV	https://leetcode.com/problems/combination-sum-iv/	DP		Medium
+House Robber	https://leetcode.com/problems/house-robber/	DP		Medium
+Houe Robber 2	https://leetcode.com/problems/house-robber-ii/	DP		Medium
+Decode Ways	https://leetcode.com/problems/decode-ways/	DP		Medium
+Unique Paths	https://leetcode.com/problems/unique-paths/	DP		Medium
+Jumps Game	https://leetcode.com/problems/jump-game/	DP		Medium
+Knapsack Problem	https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1	DP		Medium
+nCr	https://practice.geeksforgeeks.org/problems/ncr1019/1	DP		Medium
+Catalan Number	https://www.geeksforgeeks.org/program-nth-catalan-number/	DP		Medium
+Edit Distance	https://practice.geeksforgeeks.org/problems/edit-distance3702/1	DP		Medium
+Subset Sum	https://practice.geeksforgeeks.org/problems/subset-sum-problem2014/1	DP		Medium
+Gold mine	https://www.geeksforgeeks.org/gold-mine-problem/	DP		Medium
+Assembly Line Scheduling	https://www.geeksforgeeks.org/assembly-line-scheduling-dp-34/	DP		Medium
+Maximize The Cut Segments	https://practice.geeksforgeeks.org/problems/cutted-segments1642/1	DP		Medium
+Maximum sum increasing subsequence	https://practice.geeksforgeeks.org/problems/maximum-sum-increasing-subsequence4749/1	DP		Medium
+Count all subsequences having product less than K	https://www.geeksforgeeks.org/count-subsequences-product-less-k/	DP		Medium
+Maximum sum increasing subsequence	https://www.geeksforgeeks.org/maximum-subsequence-sum-such-that-no-three-are-consecutive/	DP		Medium
+Egg dropping puzzle	https://practice.geeksforgeeks.org/problems/egg-dropping-puzzle-1587115620/1	DP		Medium
+Max length chain	https://practice.geeksforgeeks.org/problems/max-length-chain/1	DP		Medium
+Largest Square in Matrix	https://practice.geeksforgeeks.org/problems/largest-square-formed-in-a-matrix0806/1	DP		Medium
+Maximum Path Sum	https://practice.geeksforgeeks.org/problems/path-in-matrix3805/1	DP		Medium
+Minimum Number of Jumps	https://practice.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1	DP		Medium
+Minimum removals from array to make max – min <= K	http://geeksforgeeks.org/minimum-removals-array-make-max-min-k/	DP		Medium
+Longest Common Substring	https://practice.geeksforgeeks.org/problems/longest-common-substring1452/1	DP		Medium
+Partition Equal Subset Sum	https://practice.geeksforgeeks.org/problems/subset-sum-problem2014/1	DP		Medium
+Longest Palindromic Subsequnce	https://www.geeksforgeeks.org/longest-palindromic-subsequence-dp-12/	DP		Medium
+Count Palindromic Subsequences	https://practice.geeksforgeeks.org/problems/count-palindromic-subsequences/1	DP		Medium
+Longest Palindromic Substring	https://leetcode.com/problems/longest-palindromic-substring/	DP		Medium
+Longest Alternating Sequence	https://practice.geeksforgeeks.org/problems/longest-alternating-subsequence5951/1	DP		Medium
+Weighted Job Scheduling	https://www.geeksforgeeks.org/weighted-job-scheduling/	DP		Medium
+Coin Game	https://www.geeksforgeeks.org/coin-game-winner-every-player-three-choices/	DP		Medium
+Coin Game Winner	https://www.geeksforgeeks.org/count-derangements-permutation-such-that-no-element-appears-in-its-original-position/	DP		Medium
+Optimal Strategy for a game	https://practice.geeksforgeeks.org/problems/optimal-strategy-for-a-game-1587115620/1	DP		Medium
+Word Wrap	https://practice.geeksforgeeks.org/problems/word-wrap1646/1	DP		Medium
+Mobile numeric keypad	https://practice.geeksforgeeks.org/problems/mobile-numeric-keypad5456/1	DP		Medium
+Maximum Length of Pair Chain	https://leetcode.com/problems/maximum-length-of-pair-chain/	DP		Medium
+Matrix Chain Multiplication	https://www.geeksforgeeks.org/matrix-chain-multiplication-dp-8/	DP		Hard
+Maximum profit by buying and selling a share at most twice	https://www.geeksforgeeks.org/maximum-profit-by-buying-and-selling-a-share-at-most-twice/	DP		Hard
+Optimal BST	https://www.geeksforgeeks.org/optimal-binary-search-tree-dp-24/	DP		Hard
+Largest Submatrix with sum 0	https://www.geeksforgeeks.org/largest-rectangular-sub-matrix-whose-sum-0/	DP		Hard
+Largest area rectangular sub-matrix with equal number of 1’s and 0’s	https://www.geeksforgeeks.org/largest-area-rectangular-sub-matrix-equal-number-1s-0s/	DP		Hard
+Count set bits in an integer	https://practice.geeksforgeeks.org/problems/set-bits0143/1	Bit Manipulation		Easy
+Find the two non-repeating elements in an array of repeating elements	https://practice.geeksforgeeks.org/problems/finding-the-numbers0215/1	Bit Manipulation		Easy
+Program to find whether a no is power of two	https://practice.geeksforgeeks.org/problems/power-of-2/0	Bit Manipulation		Easy
+Find position of the only set bit	https://practice.geeksforgeeks.org/problems/find-position-of-set-bit3706/1	Bit Manipulation		Easy
+Count number of bits to be flipped to convert A to B	https://practice.geeksforgeeks.org/problems/bit-difference/0	Bit Manipulation		Easy
+Count total set bits in all numbers from 1 to n	https://practice.geeksforgeeks.org/problems/count-total-set-bits/0	Bit Manipulation		Medium
+Copy set bits in a range	https://www.geeksforgeeks.org/copy-set-bits-in-a-range/	Bit Manipulation		Medium
+Calculate square of a number without using *, / and pow()	https://www.geeksforgeeks.org/calculate-square-of-a-number-without-using-and-pow/	Bit Manipulation		Medium
+Divide two integers without using multiplication, division and mod operator	https://www.geeksforgeeks.org/divide-two-integers-without-using-multiplication-division-mod-operator/	Bit Manipulation		Medium
+Power Set	https://practice.geeksforgeeks.org/problems/power-set4302/1	Bit Manipulation		Medium
+Range Sum Query - Immutable	https://leetcode.com/problems/range-sum-query-immutable/	Segment Trees		Medium
+Range Minimum Query	https://cp-algorithms.com/sequences/rmq.html	Segment Trees		Medium
+Range Sum Query - Mutable	https://leetcode.com/problems/range-sum-query-mutable/	Segment Trees		Medium
+Create Sorted Array through Instructions	https://leetcode.com/problems/create-sorted-array-through-instructions/	Segment Trees		Hard
+Count of Range Sum	https://leetcode.com/problems/count-of-range-sum/	Segment Trees		Hard
+Count of Smaller Numbers After Self	https://leetcode.com/problems/count-of-smaller-numbers-after-self/	Segment Trees		Hard

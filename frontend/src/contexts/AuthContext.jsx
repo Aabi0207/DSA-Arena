@@ -1,5 +1,3 @@
-// contexts/AuthContext.js
-
 import { createContext, useContext, useEffect, useState } from "react";
 import { getUserFromLocalStorage, saveUserToLocalStorage, clearUserFromLocalStorage } from "../utils/auth";
 

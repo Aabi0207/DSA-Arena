@@ -17,7 +17,7 @@ class CustomUserManager(BaseUserManager):
 
         # Set default score and rank
         user.score = 0
-        user.rank = "JADHAV"
+        user.rank = "Chulbul Pandey"
         user.save(using=self._db)
         return user
 
@@ -52,7 +52,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     portfolio = models.URLField(blank=True, null=True)
 
     score = models.IntegerField(default=0)
-    rank = models.CharField(max_length=50, default="JADHAV", blank=True, null=True)
+    rank = models.CharField(max_length=50, default="Chulbul Pandey", blank=True, null=True)
 
     privilege = models.CharField(
         max_length=50,

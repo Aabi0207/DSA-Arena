@@ -13,11 +13,11 @@ import AlertPopup from "../AlertPopup/AlertPopup";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Sidebar = ({ activeSection = "sheet" }) => {
-  const [isExpanded, setIsExpanded] = useState(true); // Default to expanded
+  const [isExpanded, setIsExpanded] = useState(true);
   const [alertMessage, setAlertMessage] = useState("");
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
-  const [sheets, setSheets] = useState([]); // State to store sheets data
-  const { sheetId } = useParams(); // Get sheetId from URL (if available)
+  const [sheets, setSheets] = useState([]);
+  const { sheetId } = useParams();
   const navigate = useNavigate();
 
   // Fetch sheets data on component mount
@@ -32,27 +32,21 @@ const Sidebar = ({ activeSection = "sheet" }) => {
       });
   }, []);
 
-  const handleComingSoon = () => {
-    setAlertMessage("Coming Soon!");
-  };
-
   const toggleMobileSidebar = () => {
     setIsMobileSidebarOpen((prev) => !prev);
   };
 
   const handleDSAHeaderClick = () => {
-    setIsExpanded((prev) => !prev); // Toggle expand/collapse
-    setIsMobileSidebarOpen(false);
+    setIsExpanded((prev) => !prev);
   };
 
   const handleSheetClick = (sheetId) => {
-    navigate(`/sheet/${sheetId}`); // Navigate to the sheet URL
+    navigate(`/sheet/${sheetId}`);
     setIsMobileSidebarOpen(false);
   };
 
   return (
     <>
-      {/* Hamburger Icon */}
       <div className="hamburger-icon" onClick={toggleMobileSidebar}>
         <Menu size={28} />
       </div>

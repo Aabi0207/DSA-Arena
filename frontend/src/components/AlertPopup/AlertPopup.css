@@ -23,25 +23,6 @@
     font-size: 16px;
   }
   
-  /* Type-specific styles */
-  /* .alert-success .alert-icon {
-    background-color: #00c86f;
-  } */
-  
-  /* .alert-error{
-    color: #ff4c4c;
-  } */
-  
-  /* .alert-warning .alert-icon {
-    background-color: #ffc107;
-    color: black;
-  } */
-  
-  /* .alert-info .alert-icon {
-    background-color: #2196f3;
-  }
-  */
-  
   .alert-message {
     font-size: 14px;
   }
