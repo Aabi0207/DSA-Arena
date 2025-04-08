@@ -289,10 +289,10 @@ pre{
   -webkit-user-select: none;
 }
 
-.mdnotes-code-block,
+/* .mdnotes-code-block,
 .mdnotes-table-container {
-  touch-action: none; /* Let the parent handle touch events */
-}
+  touch-action: none;
+} */
 
 /* Add this to prevent text selection during swipes */
 .mdnotes-content {
@@ -340,4 +340,19 @@ pre{
     margin-top: 10px;
     animation: swipeHint 2s infinite;
   }
+}
+
+.mdnotes-code-block {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333;
+  touch-action: pan-y; /* Allow vertical scrolling */
+}
+
+.mdnotes-code-content {
+  background-color: #121212;
+  touch-action: pan-y; /* Allow vertical scrolling */
+  overflow-y: auto; /* Enable vertical scroll if needed */
+  max-height: 400px; /* Set a max height to enable scrolling */
 }

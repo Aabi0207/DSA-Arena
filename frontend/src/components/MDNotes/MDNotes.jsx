@@ -93,30 +93,39 @@ const MDNotes = () => {
   };
 
   const handleTouchStart = (e) => {
-    // Only start tracking if we're not interacting with a specific element
-    if (
-      e.target.tagName === "PRE" ||
-      e.target.tagName === "CODE" ||
-      e.target.tagName === "A"
-    ) {
-      return;
+    // Check if we're touching a code block or its children
+    const isCodeBlock =
+      e.target.closest(".mdnotes-code-block") ||
+      e.target.closest(".mdnotes-code-content") ||
+      e.target.closest("pre") ||
+      e.target.closest("code");
+
+    if (!isCodeBlock) {
+      setTouchStart(e.targetTouches[0].clientX);
     }
-    setTouchStart(e.targetTouches[0].clientX);
   };
 
   const handleTouchMove = (e) => {
     if (!touchStart) return;
 
-    // Prevent scrolling when we're trying to swipe
-    e.preventDefault();
-    setTouchEnd(e.targetTouches[0].clientX);
+    // Check if we're moving within a code block
+    const isCodeBlock =
+      e.target.closest(".mdnotes-code-block") ||
+      e.target.closest(".mdnotes-code-content") ||
+      e.target.closest("pre") ||
+      e.target.closest("code");
+
+    if (!isCodeBlock) {
+      e.preventDefault();
+      setTouchEnd(e.targetTouches[0].clientX);
+    }
   };
 
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
 
     const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50; // Minimum swipe distance
+    const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
 
     if (isLeftSwipe) {
