@@ -96,3 +96,12 @@ class UserNote(models.Model):
 
     def __str__(self):
         return f"Note by {self.user.display_name} on {self.question.question}"
+
+
+class MarkdownNote(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='markdown_notes')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='markdown_notes')
+    content = models.TextField(blank=True)
+
+    def __str__(self):
+        return f"Note by {self.user.display_name} on {self.question.question}"

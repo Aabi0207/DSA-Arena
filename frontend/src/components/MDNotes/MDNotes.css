@@ -1,0 +1,343 @@
+.mdnotes-container {
+  width: 80%;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #000;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
+
+.mdnotes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.mdnotes-question-title {
+  font-size: 1.8rem;
+  margin: 0;
+  color: white;
+  max-width: 85%;
+}
+
+.mdnotes-edit-button {
+  background-color: #111;
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.mdnotes-edit-button:hover {
+  background-color: #2a2a2a;
+}
+
+.mdnotes-edit-icon {
+  stroke: white;
+}
+
+.mdnotes-content {
+  font-size: 1rem;
+  line-height: 1.7;
+  word-wrap: break-word;
+}
+
+.mdnotes-markdown-wrapper {
+  /* Add these properties */
+  touch-action: pan-y; /* Allows vertical scrolling but prevents horizontal scrolling */
+  overflow: hidden; /* Prevents scroll interference */
+  position: relative; /* Helps with touch event handling */
+}
+
+.mdnotes-heading {
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.mdnotes-h1 {
+  color: #00ffff;
+  font-size: 1.8rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+
+.mdnotes-h2 {
+  color: #00e5e5;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #222;
+  padding-bottom: 0.3rem;
+}
+
+.mdnotes-h3 {
+  color: #00cccc;
+  font-size: 1.25rem;
+}
+
+.mdnotes-paragraph {
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+}
+
+.mdnotes-list {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.mdnotes-list-item {
+  margin-bottom: 0.5rem;
+}
+
+.mdnotes-blockquote {
+  border-left: 4px solid #00cccc;
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  color: #bbb;
+  margin-bottom: 1.25rem;
+}
+
+.mdnotes-link {
+  color: #00ffff;
+  text-decoration: none;
+  border-bottom: 1px dotted #00ffff;
+  transition: all 0.2s ease;
+}
+
+.mdnotes-link:hover {
+  border-bottom: 1px solid #00ffff;
+}
+
+.mdnotes-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+}
+
+.mdnotes-inline-code {
+  background-color: #1a1a1a;
+  /* padding: 0.2rem 0.4rem; */
+  border-radius: 3px;
+  font-family: "Fira Code", monospace;
+  font-size: 0.9em;
+  color: #00ffff;
+}
+
+pre{
+  margin-bottom: 10px;
+}
+
+/* Code Block Styling - Improved */
+.mdnotes-code-block {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333;
+}
+
+.mdnotes-code-header {
+  background-color: #1e1e1e;
+  padding: 0.5rem 1rem;
+  font-family: "Fira Code", monospace;
+  font-size: 0.8rem;
+  color: #aaa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.mdnotes-code-language {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: #00ffff;
+}
+
+.mdnotes-code-content {
+  background-color: #121212;
+}
+
+.mdnotes-syntax-highlighter {
+  margin: 0 !important;
+  background-color: #121212 !important;
+  padding: 1rem !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Override SyntaxHighlighter default line styles */
+.mdnotes-syntax-highlighter code {
+  background-color: transparent !important;
+}
+
+.mdnotes-syntax-highlighter span {
+  background-color: transparent !important;
+}
+
+/* Copy Button Styling */
+.mdnotes-copy-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #333;
+  border: none;
+  color: #ddd;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mdnotes-copy-button:hover {
+  background-color: #444;
+}
+
+.mdnotes-copy-icon, .mdnotes-check-icon {
+  stroke: #ddd;
+}
+
+.mdnotes-check-icon {
+  stroke: #00ffff;
+}
+
+.mdnotes-table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.mdnotes-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #333;
+}
+
+.mdnotes-thead {
+  background-color: #222;
+}
+
+.mdnotes-th, .mdnotes-td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #333;
+  text-align: left;
+}
+
+.mdnotes-th {
+  font-weight: 600;
+  color: #00ffff;
+}
+
+/* Edit textarea */
+.mdnotes-edit-textarea {
+  width: 100%;
+  min-height: 300px;
+  border: 2px solid #3a3a3a;
+  border-radius: 6px;
+  background-color: #111;
+  color: #fff;
+  padding: 14px;
+  font-family: monospace;
+  font-size: 1rem;
+}
+
+/* Action buttons */
+.mdnotes-action-btns {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.mdnotes-save-btn {
+  padding: 10px 20px;
+  background: #ffffff;
+  border: none;
+  border-radius: 6px;
+  color: #121212;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mdnotes-cancel-btn {
+  padding: 10px 20px;
+  background: #3a3a3a;
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mdnotes-last-ab {
+  justify-content: space-between;
+}
+
+/* Add these styles at the bottom of your CSS file */
+.mdnotes-container {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mdnotes-code-block,
+.mdnotes-table-container {
+  touch-action: none; /* Let the parent handle touch events */
+}
+
+/* Add this to prevent text selection during swipes */
+.mdnotes-content {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@media (max-width: 768px) {
+  .mdnotes-container {
+    width: 95%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+  
+  .mdnotes-question-title {
+    font-size: 1.4rem;
+  }
+  
+  .mdnotes-action-btns {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .mdnotes-save-btn,
+  .mdnotes-cancel-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Add swipe hint animation */
+@keyframes swipeHint {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  .mdnotes-container:after {
+    content: "← Swipe →";
+    display: block;
+    text-align: center;
+    color: #666;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    animation: swipeHint 2s infinite;
+  }
+}

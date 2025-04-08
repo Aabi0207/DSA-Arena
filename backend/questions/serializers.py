@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import DSASheet, Topic, Question, UserQuestionStatus, UserSheetProgress
-from questions.models import Topic, Question, UserNote
+from questions.models import Topic, Question, UserNote, MarkdownNote
 
 class DSASheetSerializer(serializers.ModelSerializer):
     class Meta:
@@ -132,3 +132,27 @@ class SavedQuestionSerializer(serializers.ModelSerializer):
     def get_is_solved(self, obj):
         user = self.context.get('user')
         return UserQuestionStatus.objects.filter(user=user, question=obj, status="SOLVED").exists()
+
+
+class SimpleQuestionWithNoteSerializer(serializers.ModelSerializer):
+    content = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = Question
+        fields = ['id', 'question', 'content']
+    
+    def get_content(self, obj):
+        user = self.context.get('user')
+        if user:
+            note = MarkdownNote.objects.filter(user=user, question=obj).first()
+            return note.content if note else ""
+        return ""
+
+
+class MarkdownNoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MarkdownNote
+        fields = ['id', 'content']
+        extra_kwargs = {
+            'content': {'required': True}
+        }

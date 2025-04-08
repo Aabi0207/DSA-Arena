@@ -3,10 +3,10 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
-from .models import DSASheet, UserSheetProgress, CustomUser, Topic, Question, SCORE_MAPPING, UserQuestionStatus, UserNote
-from .serializers import DSASheetSerializer, DSASheetDetailSerializer, UserSheetProgressSerializer, TopicWithQuestionsSerializer, UserNoteSerializer, SavedQuestionSerializer
+from .models import DSASheet, UserSheetProgress, CustomUser, Topic, Question, SCORE_MAPPING, UserQuestionStatus, UserNote, MarkdownNote
+from .serializers import DSASheetSerializer, DSASheetDetailSerializer, UserSheetProgressSerializer, TopicWithQuestionsSerializer, UserNoteSerializer, SavedQuestionSerializer, SimpleQuestionWithNoteSerializer, MarkdownNoteSerializer
 from users.utils import calculate_rank
-
+from django.shortcuts import get_object_or_404
 
 class DSASheetListView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
@@ -235,3 +235,94 @@ class SavedQuestionsByTopicView(APIView):
             })
 
         return Response(result)
+    
+
+class TopicQuestionsNotesView(APIView):
+    def post(self, request):
+        # Get data from POST request
+        username = request.data.get('username')
+        topic_id = request.data.get('topic_id')
+        
+        # Validate required fields
+        if not username or not topic_id:
+            return Response(
+                {'error': 'Both username and topic_id are required'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        # Get user and topic
+        try:
+            user = CustomUser.objects.get(username=username)
+            topic = Topic.objects.get(id=topic_id)
+        except CustomUser.DoesNotExist:
+            return Response(
+                {'error': 'User not found'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        except Topic.DoesNotExist:
+            return Response(
+                {'error': 'Topic not found'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        
+        # Get questions with notes
+        questions = Question.objects.filter(topic=topic)
+        data = []
+        
+        for question in questions:
+            note = MarkdownNote.objects.filter(user=user, question=question).first()
+            data.append({
+                'id': question.id,
+                'question': question.question,
+                'content': note.content if note else ""
+            })
+        
+        return Response(data, status=status.HTTP_200_OK)
+
+
+class MarkdownNoteUpsertView(APIView):
+    def post(self, request):
+        # Get data from POST request
+        username = request.data.get('username')
+        question_id = request.data.get('question_id')
+        content = request.data.get('content')
+        
+        # Validate required fields
+        if not username or not question_id or not content:
+            return Response(
+                {'error': 'username, question_id and content are required'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        # Get user and question
+        try:
+            user = CustomUser.objects.get(username=username)
+            question = Question.objects.get(id=question_id)
+        except CustomUser.DoesNotExist:
+            return Response(
+                {'error': 'User not found'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        except Question.DoesNotExist:
+            return Response(
+                {'error': 'Question not found'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        
+        # Create or update note
+        note, created = MarkdownNote.objects.update_or_create(
+            user=user,
+            question=question,
+            defaults={'content': content}
+        )
+        
+        # Return success response
+        return Response(
+            {
+                'success': True,
+                'id': note.id,
+                'question_id': question_id,
+                'content': content
+            },
+            status=status.HTTP_201_CREATED if created else status.HTTP_200_OK
+        )

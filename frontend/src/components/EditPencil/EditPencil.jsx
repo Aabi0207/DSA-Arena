@@ -1,6 +1,6 @@
 import React from "react";
 import { Pencil } from "lucide-react";
-import "./EditIconButton.css";
+import "./EditPencil.css";
 
 const EditIconButton = ({ onClick }) => {
   return (

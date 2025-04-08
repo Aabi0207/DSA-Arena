@@ -1,8 +1,9 @@
-// src/components/QuestionList/QuestionList.jsx
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./QuestionList.css";
 import Question from "../Question/Question";
-import { ChevronRight, ChevronDown } from "lucide-react";
+import { ChevronRight, ChevronDown, StickyNote } from "lucide-react";
+import HoverMessage from "../HoverMessage/HoverMessage";
 
 const QuestionList = ({
   topic,
@@ -14,6 +15,7 @@ const QuestionList = ({
   const [isOpen, setIsOpen] = useState(keep_open);
   const [questionsState, setQuestionsState] = useState(topic.questions);
   const [solvedCount, setSolvedCount] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setQuestionsState(topic.questions);
@@ -46,6 +48,10 @@ const QuestionList = ({
     }
   };
 
+  const handleNotesClick = () => {
+    navigate(`/notes/${topic.id}`);
+  };
+
   return (
     <div className="questionlist-wrapper">
       <div className="questionlist-header" onClick={() => setIsOpen(!isOpen)}>
@@ -64,6 +70,21 @@ const QuestionList = ({
             )}
           </div>
         </div>
+
+        {!isSavedView && (
+          <HoverMessage message={"VIew Notes"}>
+          <button
+          className={`notes-icon-button ${highlight ? "highlight" : ""}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleNotesClick();
+            }}
+          >
+            <StickyNote size={16} className={`notes-icon ${highlight ? "notes-highlight" : ""}`} />
+          </button>
+          </HoverMessage>
+
+        )}
       </div>
 
       {isOpen && (

@@ -63,17 +63,17 @@ const Profile = ({ userProfile, username }) => {
     const formData = new FormData();
     formData.append("username", username);
     formData.append("profile_photo", file);
-  
+
     try {
       const res = await axios.post("http://127.0.0.1:8000/users/update-photo/", formData);
       const newProfilePhotoUrl = `${res.data.profile_photo}`;
-  
+
       // Update profileData state
       setProfileData((prev) => ({
         ...prev,
         profile_photo: res.data.profile_photo,
       }));
-  
+
       const user = JSON.parse(localStorage.getItem("user") || "{}");
       user.profile_photo = newProfilePhotoUrl;
       localStorage.setItem("user", JSON.stringify(user));
@@ -81,6 +81,7 @@ const Profile = ({ userProfile, username }) => {
       console.error("Profile photo upload failed:", err);
     }
   };
+
   return (
     <>
       <Header titleText="" />
@@ -91,12 +92,12 @@ const Profile = ({ userProfile, username }) => {
         />
       )}
       <div
-        className={`profile-banner ${isEditable ? "banner-edit-mode" : ""}`}
+        className={`profile-banner ${isEditable ? "profile-banner-edit-mode" : ""}`}
         style={{ backgroundImage: `url(${bannerUrl})` }}
       >
         {isEditable && (
           <div
-            className="edit-icon-button banner-edit"
+            className="profile-edit-icon-button profile-banner-edit"
             onClick={() => bannerInputRef.current.click()}
           >
             <Pencil size={18} />
@@ -117,7 +118,7 @@ const Profile = ({ userProfile, username }) => {
           />
           {isEditable && (
             <div
-              className="edit-icon-button profile-edit-center"
+              className="profile-edit-icon-button profile-photo-edit-center"
               onClick={() => photoInputRef.current.click()}
             >
               <Pencil size={20} />
@@ -132,10 +133,12 @@ const Profile = ({ userProfile, username }) => {
           )}
         </div>
       </div>
-      <div className="below-section" style={{display: "flex", justifyContent: "space-between"}}>
-        
-      <UserInfo userInfo={profileData} isEditable={isEditable} />
-      <UserInfoSocial userInfo={profileData} isEditable={isEditable} />
+      <div
+        className="profile-below-section"
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <UserInfo userInfo={profileData} isEditable={isEditable} />
+        <UserInfoSocial userInfo={profileData} isEditable={isEditable} />
       </div>
     </>
   );
