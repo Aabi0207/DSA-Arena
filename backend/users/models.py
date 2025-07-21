@@ -18,6 +18,7 @@ class CustomUserManager(BaseUserManager):
         # Set default score and rank
         user.score = 0
         user.rank = "Chulbul Pandey"
+        user.preferred_language = 'C++'
         user.save(using=self._db)
         return user
 
@@ -43,6 +44,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     tagline = models.CharField(max_length=255, blank=True, null=True)
     pronouns = models.CharField(max_length=50, blank=True, null=True)
     location = models.CharField(max_length=100, blank=True, null=True)
+    preferred_language = models.CharField(max_length=100, blank=True, null=True)
 
     profile_photo = models.ImageField(upload_to="profile_pics/", blank=True, null=True)
     profile_banner = models.ImageField(upload_to="profile_banner/", blank=True, null=True)

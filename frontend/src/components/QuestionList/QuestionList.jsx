@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./QuestionList.css";
 import Question from "../Question/Question";
-import { ChevronRight, ChevronDown, StickyNote } from "lucide-react";
+import { ChevronRight, ChevronDown } from "lucide-react";
 import HoverMessage from "../HoverMessage/HoverMessage";
 
 const QuestionList = ({
@@ -48,9 +48,9 @@ const QuestionList = ({
     }
   };
 
-  const handleNotesClick = () => {
-    navigate(`/notes/${topic.id}`);
-  };
+  // const handleNotesClick = () => {
+  //   navigate(`/notes/${topic.id}`);
+  // };
 
   return (
     <div className="questionlist-wrapper">
@@ -71,7 +71,7 @@ const QuestionList = ({
           </div>
         </div>
 
-        {!isSavedView && (
+        {/* {!isSavedView && (
           <HoverMessage message={"VIew Notes"}>
           <button
           className={`notes-icon-button ${highlight ? "highlight" : ""}`}
@@ -84,7 +84,7 @@ const QuestionList = ({
           </button>
           </HoverMessage>
 
-        )}
+        )} */}
       </div>
 
       {isOpen && (

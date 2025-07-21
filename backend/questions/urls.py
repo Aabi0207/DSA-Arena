@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import DSASheetListView, DSASheetDetailView, get_user_sheet_progress, TopicsWithQuestionsView, update_question_status, UserNoteView, SavedQuestionsByTopicView, TopicQuestionsNotesView, MarkdownNoteUpsertView
+from .views import DSASheetListView, DSASheetDetailView, get_user_sheet_progress, TopicsWithQuestionsView, update_question_status, UserNoteView, SavedQuestionsByTopicView, TopicQuestionsNotesView, MarkdownNoteUpsertView, my_streaming_view
 
 urlpatterns = [
     path('sheets/', DSASheetListView.as_view(), name='sheet-list'),
@@ -11,4 +11,5 @@ urlpatterns = [
     path('saved/', SavedQuestionsByTopicView.as_view(), name='saved-questions'),
     path('topic/questions-notes/', TopicQuestionsNotesView.as_view()),
     path('markdown-note/upsert/', MarkdownNoteUpsertView.as_view()),
+    path('stream_output/', my_streaming_view, name='stream_output'),
 ]

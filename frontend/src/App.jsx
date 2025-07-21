@@ -9,7 +9,7 @@ import "./App.css";
 import SavedPage from "./pages/SavedPage";
 import ProfilePage from "./pages/ProfilePage";
 import LeaderboardPage from "./pages/LeaderboardPage";
-import NotePage from "./pages/NotePage";
+import 'highlight.js/styles/github-dark.css'; // using rehype-highlight
 
 const App = () => {
   return (
@@ -55,7 +55,6 @@ const AppRoutes = () => {
         <Route path="/saved" element={user ? <SavedPage /> : <Navigate to="/login" />} />
         <Route path="/leaderboard" element={user ? <LeaderboardPage /> : <Navigate to="/login" />} />
         <Route path="/profile/:username" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
-        <Route path="/notes/:topic_id" element={user ? <NotePage /> : <Navigate to="/login" />} />
         <Route path="*" element={<Navigate to="/sheet/3" />} />
       </Routes>
     </Router>

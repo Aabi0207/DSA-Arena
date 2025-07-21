@@ -32,3 +32,28 @@ input:-webkit-autofill:active {
   font-weight: 500;
   color: #666;
 }
+
+/* GLOBAL SCROLLBAR STYLING (for dark theme) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #444 #1e1e1e;
+}

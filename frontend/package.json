@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/genai": "^1.9.0",
+    "@google/generative-ai": "^0.24.1",
     "axios": "^1.8.3",
     "framer-motion": "^12.5.0",
     "lucide-react": "^0.482.0",
@@ -19,6 +21,7 @@
     "react-router-dom": "^7.3.0",
     "react-swipeable": "^7.0.2",
     "react-syntax-highlighter": "^15.6.1",
+    "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {

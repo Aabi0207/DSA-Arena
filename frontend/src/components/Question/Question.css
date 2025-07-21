@@ -240,6 +240,8 @@
   }
 }
 
+
+
 @media screen and (max-width: 1000px){
   .question-container{
     max-width: 80vw;
@@ -300,5 +302,29 @@
   
   .notes-icon-box {
     width: calc((75vw) * 0.15);
+  }
+}
+
+/* Show save on desktop, hide on mobile */
+.desktop-save-btn {
+  display: flex;
+}
+
+.mobile-ai-btn {
+  display: none;
+}
+
+/* On small screens, reverse behavior */
+@media screen and (max-width: 768px) {
+  .desktop-save-btn {
+    display: none;
+  }
+
+  .mobile-ai-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc((75vw) * 0.13);
+    border-left: 1px solid #2d2d2d;
   }
 }

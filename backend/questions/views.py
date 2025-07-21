@@ -7,6 +7,18 @@ from .models import DSASheet, UserSheetProgress, CustomUser, Topic, Question, SC
 from .serializers import DSASheetSerializer, DSASheetDetailSerializer, UserSheetProgressSerializer, TopicWithQuestionsSerializer, UserNoteSerializer, SavedQuestionSerializer, SimpleQuestionWithNoteSerializer, MarkdownNoteSerializer
 from users.utils import calculate_rank
 from django.shortcuts import get_object_or_404
+from django.http import StreamingHttpResponse
+import google.generativeai as genai  # pip install google-generativeai
+import json
+from .utils import get_leetcode_problem_html
+from django.conf import settings
+
+GEMINI_API_KEY = settings.GEMINI_API_KEY
+genai.configure(api_key=GEMINI_API_KEY)
+
+# client = genai.Client()
+
+model = genai.GenerativeModel("gemini-2.5-flash")
 
 class DSASheetListView(APIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
@@ -325,4 +337,143 @@ class MarkdownNoteUpsertView(APIView):
                 'content': content
             },
             status=status.HTTP_201_CREATED if created else status.HTTP_200_OK
+        )
+    
+@permission_classes([AllowAny])
+@api_view(['POST'])
+def my_streaming_view(request):
+    email = request.data.get('email')
+    if not email:
+        return Response({'error': 'Email is required'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    try:
+        user = CustomUser.objects.get(email=email)
+    except CustomUser.DoesNotExist:
+        return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    slug = request.data.get('slug')
+    if not slug:
+        return Response({"error": "Slug is required"}, status=400)
+
+    preferred_lang = request.data.get('lang', 'C++')
+    data = get_leetcode_problem_html(slug, preferred_lang)
+
+    prompt = f"""
+You are an expert coding mentor specializing in data structures and algorithms.
+
+The user is solving the following LeetCode problem:
+
+**Title:** {data['title']}
+
+**Problem Description:**
+{data['content_text']}
+
+**Language:** {preferred_lang}
+
+**Starter Code:**
+```{preferred_lang.lower()}
+{data['code']}
+```
+
+**Instructions:**
+Please provide a comprehensive solution following this structure:
+
+1. **Problem Understanding**: Briefly explain what the problem is asking for and identify key constraints.
+
+2. **Approach Strategy**: 
+   - Describe the algorithmic approach you'll use
+   - Explain why this approach is suitable for this problem
+   - Mention any alternative approaches if applicable
+
+3. **Step-by-Step Solution**:
+   - Break down the solution into logical steps
+   - Explain the reasoning behind each step
+
+4. **Complete Code Solution**: 
+   - Provide the complete, working code in {preferred_lang}
+   - Use the given starter code structure
+   - Include clear comments explaining key logic
+   - Follow language-specific best practices
+
+5. **Example Walkthrough**: 
+   - Walk through the solution with at least one example from the problem
+   - Show how variables change during execution
+   - Explain the flow of logic
+
+6. **Complexity Analysis**:
+   - Time Complexity: O(?) with explanation
+   - Space Complexity: O(?) with explanation
+   - Justify your complexity analysis
+
+7. **Edge Cases & Considerations**:
+   - Mention important edge cases to consider
+   - Any potential pitfalls or optimizations
+
+**Requirements:**
+- Write clean, readable, and efficient code
+- Use meaningful variable names
+- Add inline comments for complex logic
+- Ensure the solution handles all constraints mentioned in the problem
+- Format code properly with consistent indentation
+
+Please structure your response clearly with headers for each section.
+"""
+
+    try:
+        # Generate streaming response from Gemini model
+        response = model.generate_content(
+            prompt,
+            stream=True,
+            generation_config=genai.types.GenerationConfig(
+                temperature=0.7,
+                top_p=0.8,
+                top_k=40,
+                max_output_tokens=8192,
+            )
+        )
+        
+        def generate_response():
+            try:
+                for chunk in response:
+                    if chunk.text:
+                        # Format each chunk as JSON for frontend consumption
+                        data = {
+                            'type': 'content',
+                            'content': chunk.text,
+                            'status': 'generating'
+                        }
+                        yield f"data: {json.dumps(data)}\n\n"
+                
+                # Send completion signal
+                completion_data = {
+                    'type': 'complete',
+                    'content': '',
+                    'status': 'completed'
+                }
+                yield f"data: {json.dumps(completion_data)}\n\n"
+                
+            except Exception as e:
+                # Send error signal
+                error_data = {
+                    'type': 'error',
+                    'content': str(e),
+                    'status': 'error'
+                }
+                yield f"data: {json.dumps(error_data)}\n\n"
+        
+        # Return streaming response with appropriate headers
+        streaming_response = StreamingHttpResponse(
+            generate_response(),
+            content_type='text/event-stream'
+        )
+        streaming_response['Cache-Control'] = 'no-cache'
+        # streaming_response['Connection'] = 'keep-alive'
+        streaming_response['X-Accel-Buffering'] = 'no'  # Disable nginx buffering
+        
+        return streaming_response
+        
+    except Exception as e:
+        return Response(
+            {'error': f'Failed to generate response: {str(e)}'}, 
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
